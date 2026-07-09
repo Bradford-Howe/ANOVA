@@ -6,7 +6,10 @@ library(emmeans)
 Lab7Data = read.table('Lab7_Caffeine.csv', sep = ',', header = T)
 Lab7Data$caffeine = factor(Lab7Data$caffeine)
 
+# "contr.sum" is the correct option for typle type III SS
 options(contrasts = c("contr.sum", "contr.poly"))
+# "contr.treatment" is a reference group type contrast closer to a type I or
+# type II SS.
 #options(contrasts = c("contr.treatment", "contr.poly"))
 
 model = lm(accuracy_scores ~ caffeine, Lab7Data )
@@ -64,3 +67,4 @@ title(sub = "This is where the note goes.",
      adj = .055,
      line = 3
 )
+
