@@ -1,10 +1,23 @@
 library(car)
 library(psych)
 library(emmeans)
-
+library(interactions)
+install.packages("cat_plot")
 
 Lab7Data = read.table('Lab7_Caffeine.csv', sep = ',', header = T)
 Lab7Data$caffeine = factor(Lab7Data$caffeine)
+
+library(jtools)
+interactions::cat_plot(model2)
+
+model2 = lm (mpg~vs*cyl,thisdata) 
+
+summary(model2)
+
+thisdata = mtcars
+
+thisdata$cyl = factor(thisdata$cyl)
+thisdata$vs = factor(thisdata$vs)
 
 # "contr.sum" is the correct option for typle type III SS
 options(contrasts = c("contr.sum", "contr.poly"))
@@ -12,11 +25,11 @@ options(contrasts = c("contr.sum", "contr.poly"))
 # type II SS.
 #options(contrasts = c("contr.treatment", "contr.poly"))
 
+leveneTest(accuracy_scores ~ caffeine, data = Lab7Data)
+
 model = lm(accuracy_scores ~ caffeine, Lab7Data )
 
 summary(model)
-
-leveneTest(accuracy_scores ~ caffeine, data = Lab7Data)
 
 Anova(model, type = 3)
 
