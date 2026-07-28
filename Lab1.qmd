@@ -1,0 +1,53 @@
+---
+title: "Lab 1"
+format: html
+---
+
+```{r}
+#| echo: false
+DataForPlot = mtcars
+
+#Set a serifed font
+par(family = "serif")
+
+# Create the barplot (histogram-like)
+bp = barplot(table(mtcars$carb),
+            space = 0,         # Changes from a barplot to a Histogram
+            col = "white",     # Leaves no bar fill for a minimalist printing
+            ylab = "Frequency",
+            xlab = "Number of Carburetors",
+            cex.lab = 1.3,    # Sets the font of the axis labels to be larger
+            main = "",        # Stops the default label from being printed
+            cex.names = 1,    # Optional: size axis labels: 1 is no change.
+            cex.axis = 1,     # Optional: size axis numbers.
+            yaxs = 'i',       # Tightens the axis to the plot.
+            xaxs = 'i',
+            mgp = c(2.2, 0.5, 0)  # Changes the margins around the plot;
+                                  # see par(); c(axis title, axis labels and axis line)
+            
+            )
+
+# Add left-justified figure "label" (bold "Figure 1")
+# This should be the first thing written- in bold.
+title(main = expression(bold("Figure 1")),
+      adj = 0,      # 0 = left justified
+      line = 3.5)    # adjusts the distance from the figure
+
+# Add left-justified italic caption/title
+# There should be a full line space between the bottom of the figure label
+# and this title.
+title(main = expression(italic("Frequency Distribution of Carburetors in the mtcars Dataset")),
+      adj = 0,
+      line = 1.8)
+
+# Add Left-justified note. 
+mtext(expression(paste(italic("Note."), " This is where the note goes.")),
+      side = 1,          # bottom
+      line = 3.8,        # distance below x-axis 
+      adj = 0,           # 0 = left justified
+      cex = .9)         # Optional: slightly smaller text for notes: 1 is no change.
+
+#Restore default font
+par(family = "")
+```
+
