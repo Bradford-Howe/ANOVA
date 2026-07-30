@@ -1,0 +1,51 @@
+---
+title: "Lab 2"
+format: html
+execute:
+   echo: false
+---
+
+```{r}
+library(knitr)
+```
+
+
+```{r}
+TransformationTable = data.frame(iris$Sepal.Length)
+
+TransformationTable$Plus3 = TransformationTable[,1] + 3
+
+TransformationTable$DivBy3 = TransformationTable[,1] / 3
+
+TransformationTable$DivBy3Plus5 = (TransformationTable[,1] / 3) + 5
+
+kable(TransformationTable)
+```
+
+```{r}
+
+boxplot(iris$Sepal.Length)
+
+FirstQuart = summary(iris$Sepal.Length)[2]
+ThirdQuart = summary(iris$Sepal.Length)[5]
+Median = median(iris$Sepal.Length)
+
+Midline = Median
+IQR = ThirdQuart - FirstQuart
+BoxTop = ThirdQuart
+BoxBottom = FirstQuart
+UpperWhisker = ThirdQuart + IQR * 1.5
+LowerWhisker = FirstQuart - IQR * 1.5
+# UpperWhisker = max(iris$Sepal.Length)
+# LowerWhisker = min(iris$Sepal.Length)
+
+abline(h = Midline)
+abline(h = BoxTop)
+abline(h = BoxBottom)
+abline(h = UpperWhisker)
+abline(h = LowerWhisker)
+
+summary(iris$Sepal.Length)
+
+```
+

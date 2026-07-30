@@ -4,10 +4,11 @@ format: html
 execute:
   echo: false
 ---
+```{r}
+library(knitr)
+```
 
 ```{r}
-#| echo: false
-
 # Create frequency table for carburetors 0–9, even though some of those numbers
 # have zero fequency; i.e., there are no cars with 0 or 5 carburetors. This
 # leaves all options open for making a frequency table.
@@ -52,13 +53,11 @@ tab = rbind(tab, data.frame(
 ))
 
 # Print the table
-knitr::kable(tab, row.names = FALSE)
+kable(tab, row.names = FALSE)
 ```
 
 
 ```{r}
-#| echo: false
-
 #Set a serifed font
 par(family = "serif")
 
@@ -143,6 +142,48 @@ bp = barplot(table(carb),
                                   # see par(); c(axis title, axis labels and axis line)
             
             )
+
+#Restore default font
+par(family = "")
+```
+
+
+```{r}
+#Set a serifed font
+par(family = "serif")
+
+# Create the barplot (histogram-like)
+bp = barplot(table(carb),
+            space = 0,         # Changes from a barplot to a Histogram
+            col = "white",     # Leaves no bar fill for a minimalist printing
+            ylab = "Frequency",
+            xlab = "Number of Carburetors",
+            cex.lab = 1.3,    # Sets the font of the axis labels to be larger
+            main = "",        # Stops the default label from being printed
+            cex.names = 1,    # Optional: size axis labels: 1 is no change.
+            cex.axis = 1,     # Optional: size axis numbers.
+            yaxs = 'i',       # Tightens the axis to the plot.
+            xaxs = 'i',
+            mgp = c(2.2, 0.5, 0)  # Changes the margins around the plot;
+                                  # see par(); c(axis title, axis labels and axis line)
+            
+            )
+
+### Superimpose a normal curve on the current plot.
+
+# To draw on a plot, the computer needs numbers instead of factor levels  
+
+CarbForPlot = as.numeric(carb)
+
+# This function looks at your plot, gets all the x values and uses those to 
+# draw the normal curve.
+curve(dnorm(x,
+            mean = mean(CarbForPlot),
+            sd = sd(CarbForPlot)) * length(CarbForPlot),
+      add = T,          # Says you can add the line to an existing plot
+      col = "black",    # Line color
+      lwd = 2)          # Line width
+
 
 #Restore default font
 par(family = "")
