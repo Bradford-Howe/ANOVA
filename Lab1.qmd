@@ -1,17 +1,75 @@
 ---
 title: "Lab 1"
 format: html
+execute:
+  echo: false
 ---
 
 ```{r}
 #| echo: false
-DataForPlot = mtcars
+
+# Create frequency table for carburetors 0–9, even though some of those numbers
+# have zero fequency; i.e., there are no cars with 0 or 5 carburetors. This
+# leaves all options open for making a frequency table.
+carb = factor(mtcars$carb, levels = 0:9)
+
+# This set of functions gives us the frequency for each level we just made and
+# makes the table have the right format for our work.
+freq = as.numeric(table(carb))
+
+# This gives us the total number of engines measured.
+freq_total = sum(freq)
+
+# Relative frequency is the frequency of a certain value relative to the total.
+rel_freq = freq / freq_total
+
+# This function adds in sequence the frequencies we have measured; i.e., the
+# number of engines with 0 carbs. plus those with 1, plus those with 2...
+cumu_f = cumsum(freq)
+
+# The converts the cumulative fequency to a percentage of the total.
+cumu_pct = cumu_f / freq_total * 100
+
+# Build the table. In the data.frame function you write the name of the column,
+# then the equal sign, then what you want to go in that column.
+tab = data.frame(
+  Carburetors = 0:9, # Make a line in the table for each value
+  f = freq,
+  `Relative f` = round(rel_freq, 2), # Rounds to two decimal places
+  `Cumulative f` = cumu_f,
+  `Cumulative %` = round(cumu_pct),
+  check.names = FALSE
+)
+
+# Add Total row
+tab = rbind(tab, data.frame(
+  Carburetors = "Total",
+  f = freq_total,
+  `Relative f` = "",
+  `Cumulative f` = "",
+  `Cumulative %` = "",
+  check.names = FALSE
+))
+
+# Print the table
+knitr::kable(tab, row.names = FALSE)
+```
+
+
+```{r}
+#| echo: false
 
 #Set a serifed font
 par(family = "serif")
 
-# Create the barplot (histogram-like)
-bp = barplot(table(mtcars$carb),
+# This version of the variable carbs will give you no gaps in your histogram and
+# only show you categories which are populated.
+carbNoGaps = factor(carb)
+
+
+# Create the histogram using the barplot function. This relies on the frequency
+# table we just made.
+bp = barplot(table(carbNoGaps),
             space = 0,         # Changes from a barplot to a Histogram
             col = "white",     # Leaves no bar fill for a minimalist printing
             ylab = "Frequency",
@@ -27,27 +85,65 @@ bp = barplot(table(mtcars$carb),
             
             )
 
-# Add left-justified figure "label" (bold "Figure 1")
-# This should be the first thing written- in bold.
-title(main = expression(bold("Figure 1")),
-      adj = 0,      # 0 = left justified
-      line = 3.5)    # adjusts the distance from the figure
-
-# Add left-justified italic caption/title
-# There should be a full line space between the bottom of the figure label
-# and this title.
-title(main = expression(italic("Frequency Distribution of Carburetors in the mtcars Dataset")),
-      adj = 0,
-      line = 1.8)
-
-# Add Left-justified note. 
-mtext(expression(paste(italic("Note."), " This is where the note goes.")),
-      side = 1,          # bottom
-      line = 3.8,        # distance below x-axis 
-      adj = 0,           # 0 = left justified
-      cex = .9)         # Optional: slightly smaller text for notes: 1 is no change.
-
 #Restore default font
 par(family = "")
 ```
 
+
+```{r}
+# Set a serifed font
+par(family = "serif")
+
+# Bin the carburetor values into three groups: 1-3, 4-6, and 7-9
+carbBinned = cut(mtcars$carb,
+                  breaks = c(0, 3, 6, 9),
+                  labels = c("1-3", "4-6", "7-9"))
+
+# Create the barplot (now truly histogram-like with bins)
+bp = barplot(table(carbBinned),
+             space = 0,           # Changes from a barplot to a Histogram
+             col = "white",       # Leaves no bar fill for a minimalist printing
+             ylab = "Frequency",
+             xlab = "Number of Carburetors",
+             cex.lab = 1.3,       # Sets the font of the axis labels to be larger
+             main = "",           # Stops the default label from being printed
+             cex.names = 1,       # Optional: size axis labels: 1 is no change.
+             cex.axis = 1,        # Optional: size axis numbers.
+             yaxs = "i",          # Tightens the axis to the plot.
+             xaxs = "i",
+             mgp = c(2.2, 0.5, 0) # Changes the margins around the plot;
+                                  # see par(); c(axis title, axis labels and axis line)
+)
+
+# Restore default font
+par(family = "")
+```
+
+
+
+```{r}
+#| echo: false
+
+#Set a serifed font
+par(family = "serif")
+
+# Create the barplot (histogram-like)
+bp = barplot(table(carb),
+            space = 0,         # Changes from a barplot to a Histogram
+            col = "white",     # Leaves no bar fill for a minimalist printing
+            ylab = "Frequency",
+            xlab = "Number of Carburetors",
+            cex.lab = 1.3,    # Sets the font of the axis labels to be larger
+            main = "",        # Stops the default label from being printed
+            cex.names = 1,    # Optional: size axis labels: 1 is no change.
+            cex.axis = 1,     # Optional: size axis numbers.
+            yaxs = 'i',       # Tightens the axis to the plot.
+            xaxs = 'i',
+            mgp = c(2.2, 0.5, 0)  # Changes the margins around the plot;
+                                  # see par(); c(axis title, axis labels and axis line)
+            
+            )
+
+#Restore default font
+par(family = "")
+```
