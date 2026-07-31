@@ -19,7 +19,17 @@ TransformationTable$DivBy3 = TransformationTable[,1] / 3
 
 TransformationTable$DivBy3Plus5 = (TransformationTable[,1] / 3) + 5
 
+Means = round(colMeans(TransformationTable),2)
+Variance = round(apply(TransformationTable,2, var),2)
+StdDev = round(apply(TransformationTable,2, sd),2)
+
+TransformationTableResults = rbind(c("Means",Means),
+                                   c("Variance",Variance),
+                                   c("Std. Dev.",StdDev)
+                                   )
+
 kable(TransformationTable)
+kable(TransformationTableResults)
 ```
 
 ```{r}
