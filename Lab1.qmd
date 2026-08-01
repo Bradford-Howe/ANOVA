@@ -61,10 +61,8 @@ kable(tab, row.names = FALSE)
 #Set a serifed font
 par(family = "serif")
 
-# This version of the variable carbs will give you no gaps in your histogram and
-# only show you categories which are populated.
+# This version of the variable carbs will give you no gaps, giving you a histotram.
 carbNoGaps = factor(carb)
-
 
 # Create the histogram using the barplot function. This relies on the frequency
 # table we just made.

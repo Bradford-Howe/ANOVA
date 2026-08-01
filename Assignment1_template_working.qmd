@@ -1,0 +1,163 @@
+---
+title: "Assignment1_Template"
+format: html
+execute:
+   echo: false
+---
+
+```{r}
+library(datasets)
+library(knitr)
+```
+
+
+
+1) For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
+
+```{r}
+# This will put the relevant data into a variable for you.
+Assignment1_Data = trees$Height
+```
+
+
+A. Calculate the mean, variance, and standard deviation. (20 pts)
+
+```{r}
+# Put the variable below into the relevant functions to accomplish your task.
+Assignment1_Data
+
+
+```
+
+
+B. Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exlude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
+
+```{r}
+# Create frequency table for Height, including every integer from the 
+# minimum to the maximum even if some have zero frequency. This 
+# leaves all options open for making a frequency table.
+all_heights = min(trees$Height):max(trees$Height)
+height = factor(trees$Height, levels = all_heights)
+# This set of functions gives us the frequency for each level we just made and
+# makes the table have the right format for our work.
+freq = as.numeric(table(height))
+# This gives us the total number of trees measured.
+freq_total = sum(freq)
+# Relative frequency is the frequency of a certain value relative to the total.
+rel_freq = freq / freq_total
+# This function adds in sequence the frequencies we have measured; i.e., the
+# number of trees with the lowest height plus those with the next height...
+cumu_f = cumsum(freq)
+# The converts the cumulative fequency to a percentage of the total.
+cumu_pct = cumu_f / freq_total * 100
+# Build the table. In the data.frame function you write the name of the column,
+# then the equal sign, then what you want to go in that column.
+tab = data.frame(
+  Height = all_heights, # Make a line in the table for each value
+  f = freq,
+  `Relative f` = round(rel_freq, 2), # Rounds to two decimal places
+  `Cumulative f` = cumu_f,
+  `Cumulative %` = round(cumu_pct),
+  check.names = FALSE
+)
+# Add Total row
+tab = rbind(tab, data.frame(
+  Height = "Total",
+  f = freq_total,
+  `Relative f` = "",
+  `Cumulative f` = "",
+  `Cumulative %` = "",
+  check.names = FALSE
+))
+# Print the table
+kable(tab, row.names = FALSE)
+```
+
+
+
+C. Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. (30 points)
+```{r}
+# Set a serifed font
+par(family = "serif")
+
+# Force every integer from min to max Height to appear
+all_heights = min(Assignment1_Data):max(Assignment1_Data)
+htab = table(factor(Assignment1_Data, levels = all_heights))
+x_vals = as.numeric(names(htab))
+y_freq = as.numeric(htab)
+
+# Create the barplot (now with correct spacing)
+bp = barplot(y_freq,
+             space = 0,
+             col = "white",
+             ylab = "Frequency",
+             xlab = "Height",
+             cex.lab = 1.3,
+             main = "",
+             cex.names = 0.8,          # slightly smaller so labels fit
+             cex.axis = 1,
+             yaxs = "i",
+             xaxs = "i",
+             mgp = c(2.2, 0.5, 0),
+             names.arg = x_vals)
+
+#####################################################
+##### Uncomment the next lines to add a normal curve.
+# mu = mean(Assignment1_Data)
+# sigma = sd(Assignment1_Data)
+# n = length(Assignment1_Data)
+# fine_x = seq(min(x_vals), max(x_vals), length.out = 300)
+# dens_fine = dnorm(fine_x, mean = mu, sd = sigma) * n
+# fine_bp = approx(x = x_vals, y = bp, xout = fine_x)$y
+# lines(fine_bp, dens_fine, col = "black", lwd = 2)
+
+# Restore default font
+par(family = "")
+```
+
+
+D. Make a histogram of the frequency data. Looking at the histogram, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (15 points) 
+
+```{r}
+# Set a serifed font
+par(family = "serif")
+
+breaks = seq(from = min(Assignment1_Data),
+             to   = max(Assignment1_Data) + 3,
+             by   = 3)
+
+labels = paste0(breaks[-length(breaks)], "-", breaks[-1] - 1)
+
+A1_Data_Binned = cut(Assignment1_Data,
+                     breaks = breaks,
+                     labels = labels,
+                     include.lowest = TRUE,
+                     right = FALSE)
+
+bp = barplot(table(A1_Data_Binned),
+             space = 0,           
+             col = "white",       
+             ylab = "Frequency",
+             xlab = "Heights",
+             cex.lab = 1.3,       
+             main = "",           
+             cex.names = 1,       
+             cex.axis = 1,        
+             yaxs = "i",          
+             xaxs = "i",
+             mgp = c(2.2, 0.5, 0) 
+)
+
+# Restore default font
+par(family = "")
+```
+
+
+E. Make a boxplot (10 points).
+```{r}
+boxplot(Assignment1_Data)
+```
+
+
+
+

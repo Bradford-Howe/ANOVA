@@ -33,8 +33,10 @@ kable(TransformationTableResults)
 ```
 
 ```{r}
-
+#This line is all you need to generate a boxplot.
 boxplot(iris$Sepal.Length)
+#########################################
+
 
 FirstQuart = summary(iris$Sepal.Length)[2]
 ThirdQuart = summary(iris$Sepal.Length)[5]
