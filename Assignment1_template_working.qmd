@@ -1,6 +1,6 @@
 ---
 title: "Assignment1_Template"
-format: html
+format: docx
 execute:
    echo: false
 ---
@@ -14,7 +14,7 @@ library(knitr)
 
 
 
-1. For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
+1\. For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
 ```{r}
 # This will put the relevant data into a variable for you. You do not need to do anything to it.
 Assignment1_Data = trees$Height
@@ -23,7 +23,7 @@ Assignment1_Data = trees$Height
 
 
 
-A) Calculate the mean, variance, and standard deviation. (20 pts)
+A\) Calculate the mean, variance, and standard deviation. (20 pts)
 ```{r}
 # Put the variable below into the relevant functions to accomplish your task.
 mean(Assignment1_Data)
@@ -35,7 +35,7 @@ sd(Assignment1_Data)
 
 
 
-B) Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exlude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
+B\) Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exlude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
 ```{r}
 
 # Leave these two lines alone, they will give you the pieces for your table.
@@ -90,7 +90,7 @@ kable(tab, row.names = FALSE)
 
 
 
-C) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally,describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
+C\) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally,describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
 ```{r}
 
 
@@ -139,7 +139,7 @@ par(family = "")
 
 
 
-D) Make a histogram of the frequency data. Looking at the histogram, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (15 points) 
+D\) Make a histogram of the frequency data. Looking at the histogram, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (15 points) 
 ```{r}
 
 #####################################################
@@ -181,7 +181,7 @@ par(family = "")
 
 
 
-E) Make a boxplot. (10 points)
+E\) Make a boxplot. (10 points)
 ```{r}
 # Put your variable into the correct function to draw the boxplot.
 boxplot(Assignment1_Data)
