@@ -7,23 +7,23 @@ execute:
 
 ```{r}
 # These are the libraries you will need. You do not need to do anything here.
-
 library(datasets)
 library(knitr)
+
 ```
 
 
 
 1. For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
-
 ```{r}
 # This will put the relevant data into a variable for you. You do not need to do anything to it.
 Assignment1_Data = trees$Height
+
 ```
 
 
-A) Calculate the mean, variance, and standard deviation. (20 pts)
 
+A) Calculate the mean, variance, and standard deviation. (20 pts)
 ```{r}
 # Put the variable below into the relevant functions to accomplish your task.
 Assignment1_Data
@@ -32,17 +32,17 @@ Assignment1_Data
 ```
 
 
+
 B) Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exlude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
-
 ```{r}
-
 
 # Leave these two lines alone, they will give you the pieces for your table.
 all_heights = min(trees$Height):max(trees$Height)
 height = factor(trees$Height, levels = all_heights)
 
-
+# Leave this line alone. It colates your fequencies.
 freq = as.numeric(table(height))
+
 
 # Uncomment the four lines below and replace the ### below with the corect pieces. You should look at the first lab for these.
 
@@ -89,12 +89,13 @@ freq = as.numeric(table(height))
 
 
 
-C) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. (30 points)
+C) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally,describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
 ```{r}
 
 
 #####################################################
 ##### Uncomment the next section to draw the frequency distribution graph.
+
 
 # par(family = "serif")
 # 
@@ -125,6 +126,7 @@ C) Make a frequency distribution graph with the normal curve superimposed on it.
 #####################################################
 ##### Uncomment the next section to add a normal curve.
 
+
 # mu = mean(Assignment1_Data)
 # sigma = sd(Assignment1_Data)
 # n = length(Assignment1_Data)
@@ -138,12 +140,13 @@ par(family = "")
 ```
 
 
-D) Make a histogram of the frequency data. Looking at the histogram, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (15 points) 
 
+D) Make a histogram of the frequency data.In the APA note that you add, include all the real upper and lower limits being used in the histogram. (15 points) 
 ```{r}
 
 #####################################################
 ##### Uncomment the next section to draw the histogram.
+
 
 # par(family = "serif")
 # 
@@ -177,6 +180,7 @@ D) Make a histogram of the frequency data. Looking at the histogram, describe th
 
 
 ```
+
 
 
 E) Make a boxplot. (10 points)
