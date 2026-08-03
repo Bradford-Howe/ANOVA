@@ -1,0 +1,35 @@
+---
+title: "Lab 4"
+format: html
+execute:
+   echo: false
+---
+
+```{r}
+library(knitr)
+
+```
+
+
+```{r}
+# Probability (p-value) of a t-score.
+t_score = .376
+df = 14
+Tails = 2
+
+pt(t_score,df, lower.tail = F) * Tails
+
+```
+
+
+```{r}
+# get a t-score (t-crit) from a probablity value (p-value or alpha)
+
+probability = .025
+df = 14
+
+qt(probability, df)
+
+
+```
+

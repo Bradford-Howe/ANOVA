@@ -1,6 +1,6 @@
 ---
 title: "Assignment1_Template"
-format: html
+format: d
 execute:
    echo: false
 ---
@@ -33,7 +33,7 @@ Assignment1_Data
 
 
 
-B\) Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exlude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
+B\) Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exclude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
 ```{r}
 #| fig-width: 7.5
 #| fig-height: 4.5
