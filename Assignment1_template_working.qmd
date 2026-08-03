@@ -14,7 +14,7 @@ library(knitr)
 
 
 
-1\. For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
+For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
 ```{r}
 # This will put the relevant data into a variable for you. You do not need to do anything to it.
 Assignment1_Data = trees$Height
@@ -90,9 +90,11 @@ kable(tab, row.names = FALSE)
 
 
 
-C\) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally,describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
+C\) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
 ```{r}
-
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
 
 #####################################################
 ##### Uncomment the next section to draw the frequency distribution graph.
@@ -141,6 +143,9 @@ par(family = "")
 
 D\) Make a histogram of the frequency data. Looking at the histogram, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (15 points) 
 ```{r}
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
 
 #####################################################
 ##### Uncomment the next section to draw the histogram.
@@ -183,6 +188,10 @@ par(family = "")
 
 E\) Make a boxplot. (10 points)
 ```{r}
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
+
 # Put your variable into the correct function to draw the boxplot.
 boxplot(Assignment1_Data)
 

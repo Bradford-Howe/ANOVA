@@ -14,7 +14,7 @@ library(knitr)
 
 
 
-1\. For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
+For the variable ‘Height’ in the ‘trees’ data set, complete the following tasks.
 ```{r}
 # This will put the relevant data into a variable for you. You do not need to do anything to it.
 Assignment1_Data = trees$Height
@@ -35,6 +35,10 @@ Assignment1_Data
 
 B\) Make a frequency distribution table. Make sure it includes the frequency, relative frequency, cumulative frequency and cumulative percentage. Do not exlude values which have a frequency of 0 (zero). Make sure your table is presented in APA style. Do not group the data into intervals. (60 points)
 ```{r}
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
+
 
 # Leave these two lines alone, they will give you the pieces for your table.
 all_heights = min(trees$Height):max(trees$Height)
@@ -89,9 +93,11 @@ freq = as.numeric(table(height))
 
 
 
-C\) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally,describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
+C\) Make a frequency distribution graph with the normal curve superimposed on it. Plot the scores on the x axis and the frequency on the y axis. Make sure your graph is presented in APA style. Do not group the data into intervals. Finally, describe the distribution as you have been instructed in class (not as ‘pretty,’ ‘fun,’ ‘strange,’ etc.). (30 points)
 ```{r}
-
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
 
 #####################################################
 ##### Uncomment the next section to draw the frequency distribution graph.
@@ -141,8 +147,12 @@ par(family = "")
 
 
 
-D\) Make a histogram of the frequency data.In the APA note that you add, include all the real upper and lower limits being used in the histogram. (15 points) 
+D\) Make a histogram of the frequency data and present it in APA format. In the note that you add, include all the real upper and lower limits being used in the histogram. Assume the real limits are exactly between each described range(i.e.; .5 above one bar and .5 below the next). (15 points) 
 ```{r}
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
+
 
 #####################################################
 ##### Uncomment the next section to draw the histogram.
@@ -185,6 +195,10 @@ D\) Make a histogram of the frequency data.In the APA note that you add, include
 
 E\) Make a boxplot. (10 points)
 ```{r}
+#| fig-width: 7.5
+#| fig-height: 4.5
+#| fig-dpi: 300
+
 # Put your variable into the correct function to draw the boxplot.
 Assignment1_Data
 
