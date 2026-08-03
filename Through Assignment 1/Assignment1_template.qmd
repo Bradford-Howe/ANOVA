@@ -195,7 +195,7 @@ D\) Make a histogram of the frequency data and present it in APA format. In the 
 
 E\) Make a boxplot. (10 points)
 ```{r}
-#| fig-width: 7.5
+#| fig-width: 2.5
 #| fig-height: 4.5
 #| fig-dpi: 300
 
