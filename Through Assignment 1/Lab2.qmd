@@ -3,6 +3,8 @@ title: "Lab 2"
 format: html
 execute:
    echo: false
+   warning: false
+   message: false
 ---
 
 ```{r}

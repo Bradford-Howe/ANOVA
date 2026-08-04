@@ -1,8 +1,10 @@
 ---
 title: "Assignment1_Template"
-format: d
+format: html
 execute:
    echo: false
+   warning: false
+   message: false
 ---
 
 ```{r}

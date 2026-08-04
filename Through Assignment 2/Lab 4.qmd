@@ -3,16 +3,19 @@ title: "Lab 4"
 format: html
 execute:
    echo: false
+   warning: false
+   message: false
 ---
 
 ```{r}
 library(knitr)
+library(car)
 
 ```
 
 
-```{r}
 # Probability (p-value) of a t-score.
+```{r}
 t_score = .376
 df = 14
 Tails = 2
@@ -22,8 +25,8 @@ pt(t_score,df, lower.tail = F) * Tails
 ```
 
 
+# Get a t-score (t-crit) from a probablity value (p-value or alpha)
 ```{r}
-# get a t-score (t-crit) from a probablity value (p-value or alpha)
 
 probability = .025
 df = 14
@@ -33,3 +36,34 @@ qt(probability, df)
 
 ```
 
+
+# Independent-groups t-test (equal n)
+```{r}
+
+EqualIndependentData = rbind(iris[iris$Species == "setosa",],
+                             iris[iris$Species == "versicolor",]
+                             )
+
+leveneTest(Sepal.Length ~ Species,EqualIndependentData)
+
+t.test(Sepal.Length ~ Species,EqualIndependentData)
+
+```
+
+
+
+# Independent-groups t-test (unequal n)
+```{r}
+
+SmallVersicolor = iris[iris$Species == "versicolor",]
+SmallVersicolor = SmallVersicolor[1:20,]
+
+UnequalIndependentData = rbind(iris[iris$Species == "setosa",],
+                               SmallVersicolor
+                               )
+
+leveneTest(Sepal.Length ~ Species, UnequalIndependentData)
+
+t.test(Sepal.Length ~ Species, UnequalIndependentData)
+
+```

@@ -64,16 +64,74 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="probability-p-value-of-a-t-score." class="level1">
+<h1>Probability (p-value) of a t-score.</h1>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7125532</code></pre>
 </div>
 </div>
+</section>
+<section id="get-a-t-score-t-crit-from-a-probablity-value-p-value-or-alpha" class="level1">
+<h1>Get a t-score (t-crit) from a probablity value (p-value or alpha)</h1>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.144787</code></pre>
 </div>
 </div>
+</section>
+<section id="independent-groups-t-test-equal-n" class="level1">
+<h1>Independent-groups t-test (equal n)</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value   Pr(&gt;F)   
+group  1  8.1727 0.005196 **
+      98                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Sepal.Length by Species
+t = -10.521, df = 86.538, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means between group setosa and group versicolor is not equal to 0
+95 percent confidence interval:
+ -1.1057074 -0.7542926
+sample estimates:
+    mean in group setosa mean in group versicolor 
+                   5.006                    5.936 </code></pre>
+</div>
+</div>
+</section>
+<section id="independent-groups-t-test-unequal-n" class="level1">
+<h1>Independent-groups t-test (unequal n)</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value   Pr(&gt;F)   
+group  1  10.991 0.001471 **
+      68                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Sepal.Length by Species
+t = -6.7368, df = 24.365, p-value = 5.3e-07
+alternative hypothesis: true difference in means between group setosa and group versicolor is not equal to 0
+95 percent confidence interval:
+ -1.2656285 -0.6723715
+sample estimates:
+    mean in group setosa mean in group versicolor 
+                   5.006                    5.975 </code></pre>
+</div>
+</div>
+</section>
 
 </main>
 <!-- /main column -->
