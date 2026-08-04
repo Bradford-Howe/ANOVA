@@ -76,13 +76,79 @@ ul.task-list li input[type="checkbox"] {
 <h1>Get a t-score (t-crit) from a probablity value (p-value or alpha)</h1>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.144787</code></pre>
+<pre><code>[1] 2.144787</code></pre>
+</div>
+</div>
+</section>
+<section id="repeated-measures-paired-t-test" class="level1">
+<h1>Repeated-measures (paired) t-test</h1>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   vars  n mean   sd median trimmed  mad  min max range skew kurtosis   se
+X1    1 10 0.75 1.79   0.35    0.68 1.56 -1.6 3.7   5.3 0.42     -1.3 0.57</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   vars  n mean sd median trimmed  mad  min max range skew kurtosis   se
+X1    1 10 2.33  2   1.75    2.24 2.45 -0.1 5.5   5.6 0.28    -1.66 0.63</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  1  0.2482 0.6244
+      18               </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  PreGroup and PostGroup
+t = -4.0621, df = 9, p-value = 0.002833
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -2.4598858 -0.7001142
+sample estimates:
+mean difference 
+          -1.58 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.284558</code></pre>
 </div>
 </div>
 </section>
 <section id="independent-groups-t-test-equal-n" class="level1">
 <h1>Independent-groups t-test (equal n)</h1>
 <div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             vars  n mean   sd median trimmed  mad min max range skew kurtosis
+Sepal.Length    1 50 5.01 0.35    5.0    5.00 0.30 4.3 5.8   1.5 0.11    -0.45
+Sepal.Width     2 50 3.43 0.38    3.4    3.42 0.37 2.3 4.4   2.1 0.04     0.60
+Petal.Length    3 50 1.46 0.17    1.5    1.46 0.15 1.0 1.9   0.9 0.10     0.65
+Petal.Width     4 50 0.25 0.11    0.2    0.24 0.00 0.1 0.6   0.5 1.18     1.26
+Species*        5 50 1.00 0.00    1.0    1.00 0.00 1.0 1.0   0.0  NaN      NaN
+               se
+Sepal.Length 0.05
+Sepal.Width  0.05
+Petal.Length 0.02
+Petal.Width  0.01
+Species*     0.00</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             vars  n mean   sd median trimmed  mad min max range  skew kurtosis
+Sepal.Length    1 50 5.94 0.52   5.90    5.94 0.52 4.9 7.0   2.1  0.10    -0.69
+Sepal.Width     2 50 2.77 0.31   2.80    2.78 0.30 2.0 3.4   1.4 -0.34    -0.55
+Petal.Length    3 50 4.26 0.47   4.35    4.29 0.52 3.0 5.1   2.1 -0.57    -0.19
+Petal.Width     4 50 1.33 0.20   1.30    1.32 0.22 1.0 1.8   0.8 -0.03    -0.59
+Species*        5 50 2.00 0.00   2.00    2.00 0.00 2.0 2.0   0.0   NaN      NaN
+               se
+Sepal.Length 0.07
+Sepal.Width  0.04
+Petal.Length 0.07
+Petal.Width  0.03
+Species*     0.00</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Levene's Test for Homogeneity of Variance (center = median)
       Df F value   Pr(&gt;F)   
@@ -95,20 +161,68 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <pre><code>
     Welch Two Sample t-test
 
-data:  Sepal.Length by Species
+data:  group1$Sepal.Length and group2$Sepal.Length
 t = -10.521, df = 86.538, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means between group setosa and group versicolor is not equal to 0
+alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -1.1057074 -0.7542926
 sample estimates:
-    mean in group setosa mean in group versicolor 
-                   5.006                    5.936 </code></pre>
+mean of x mean of y 
+    5.006     5.936 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  group1$Sepal.Length and group2$Sepal.Length
+t = -10.521, df = 98, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.1054165 -0.7545835
+sample estimates:
+mean of x mean of y 
+    5.006     5.936 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |         95% CI
+--------------------------
+-2.10     | [-2.59, -1.61]
+
+- Estimated using pooled SD.</code></pre>
 </div>
 </div>
 </section>
 <section id="independent-groups-t-test-unequal-n" class="level1">
 <h1>Independent-groups t-test (unequal n)</h1>
 <div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>             vars  n mean   sd median trimmed  mad min max range skew kurtosis
+Sepal.Length    1 50 5.01 0.35    5.0    5.00 0.30 4.3 5.8   1.5 0.11    -0.45
+Sepal.Width     2 50 3.43 0.38    3.4    3.42 0.37 2.3 4.4   2.1 0.04     0.60
+Petal.Length    3 50 1.46 0.17    1.5    1.46 0.15 1.0 1.9   0.9 0.10     0.65
+Petal.Width     4 50 0.25 0.11    0.2    0.24 0.00 0.1 0.6   0.5 1.18     1.26
+Species*        5 50 1.00 0.00    1.0    1.00 0.00 1.0 1.0   0.0  NaN      NaN
+               se
+Sepal.Length 0.05
+Sepal.Width  0.05
+Petal.Length 0.02
+Petal.Width  0.01
+Species*     0.00</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             vars  n mean   sd median trimmed  mad min max range  skew kurtosis
+Sepal.Length    1 20 5.97 0.60   5.95    5.98 0.59 4.9 7.0   2.1 -0.04    -1.07
+Sepal.Width     2 20 2.76 0.38   2.85    2.78 0.37 2.0 3.3   1.3 -0.47    -1.05
+Petal.Length    3 20 4.26 0.45   4.45    4.29 0.37 3.3 4.9   1.6 -0.57    -0.89
+Petal.Width     4 20 1.32 0.20   1.40    1.34 0.15 1.0 1.6   0.6 -0.59    -1.15
+Species*        5 20 2.00 0.00   2.00    2.00 0.00 2.0 2.0   0.0   NaN      NaN
+               se
+Sepal.Length 0.13
+Sepal.Width  0.08
+Petal.Length 0.10
+Petal.Width  0.04
+Species*     0.00</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Levene's Test for Homogeneity of Variance (center = median)
       Df F value   Pr(&gt;F)   
@@ -121,14 +235,34 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <pre><code>
     Welch Two Sample t-test
 
-data:  Sepal.Length by Species
+data:  group1$Sepal.Length and group2$Sepal.Length
 t = -6.7368, df = 24.365, p-value = 5.3e-07
-alternative hypothesis: true difference in means between group setosa and group versicolor is not equal to 0
+alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -1.2656285 -0.6723715
 sample estimates:
-    mean in group setosa mean in group versicolor 
-                   5.006                    5.975 </code></pre>
+mean of x mean of y 
+    5.006     5.975 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  group1$Sepal.Length and group2$Sepal.Length
+t = -8.3746, df = 68, p-value = 4.577e-12
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.1998907 -0.7381093
+sample estimates:
+mean of x mean of y 
+    5.006     5.975 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cohen's d |         95% CI
+--------------------------
+-2.22     | [-2.85, -1.57]
+
+- Estimated using pooled SD.</code></pre>
 </div>
 </div>
 </section>

@@ -1,0 +1,19 @@
+---
+title: "Lab 5"
+format: html
+execute:
+   echo: false
+   warning: false
+   message: false
+---
+
+```{r}
+library(knitr)
+
+```
+
+
+```{r}
+
+```
+

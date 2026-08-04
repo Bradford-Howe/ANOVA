@@ -10,6 +10,9 @@ execute:
 ```{r}
 library(knitr)
 library(car)
+library(emmeans)
+library(effectsize)
+library(psych)
 
 ```
 
@@ -31,22 +34,61 @@ pt(t_score,df, lower.tail = F) * Tails
 probability = .025
 df = 14
 
-qt(probability, df)
+qt(probability, df, lower.tail = F)
 
 
 ```
 
 
+# Repeated-measures (paired) t-test
+```{r}
+
+PreGroup = sleep$extra[1:10]
+
+PostGroup = sleep$extra[11:20]
+
+describe (PreGroup)
+
+describe (PostGroup)
+
+diff = PostGroup - PreGroup
+sd(df)
+
+leveneTest(extra~group,sleep)
+
+t.test(PreGroup,PostGroup, paired = TRUE)
+
+# cohen's d
+mean(diff) / sd(diff)
+
+
+```
+
 # Independent-groups t-test (equal n)
 ```{r}
 
-EqualIndependentData = rbind(iris[iris$Species == "setosa",],
-                             iris[iris$Species == "versicolor",]
+group1 = iris[iris$Species == "setosa",]
+
+group2 = iris[iris$Species == "versicolor",]
+
+EqualIndependentData = rbind(group1,
+                             group2
                              )
+
+describe(group1)
+
+describe(group2)
 
 leveneTest(Sepal.Length ~ Species,EqualIndependentData)
 
-t.test(Sepal.Length ~ Species,EqualIndependentData)
+t.test(group1$Sepal.Length ,group2$Sepal.Length)
+
+# Equal group sizes should make the test robust to violations of homogeneity
+# of variance. So, the following method should be acceptable.
+t.test(group1$Sepal.Length, group2$Sepal.Length,
+       var.equal = T)
+
+cohens_d(group1$Sepal.Length,group2$Sepal.Length)
 
 ```
 
@@ -55,15 +97,24 @@ t.test(Sepal.Length ~ Species,EqualIndependentData)
 # Independent-groups t-test (unequal n)
 ```{r}
 
-SmallVersicolor = iris[iris$Species == "versicolor",]
-SmallVersicolor = SmallVersicolor[1:20,]
+group1 = iris[iris$Species == "setosa",]
 
-UnequalIndependentData = rbind(iris[iris$Species == "setosa",],
-                               SmallVersicolor
-                               )
+group2 = iris[iris$Species == "versicolor",][1:20,]
+
+UnequalIndependentData = rbind(group1, group2)
+
+describe(group1)
+
+describe(group2)
 
 leveneTest(Sepal.Length ~ Species, UnequalIndependentData)
 
-t.test(Sepal.Length ~ Species, UnequalIndependentData)
+t.test(group1$Sepal.Length, group2$Sepal.Length)
+
+t.test(group1$Sepal.Length, group2$Sepal.Length,
+       var.equal = TRUE)
+
+cohens_d(group1$Sepal.Length, group2$Sepal.Length)
+
 
 ```
