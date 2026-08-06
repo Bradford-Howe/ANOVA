@@ -7,29 +7,18 @@ library(ggpubr)
 library(emmeans)
 library(psych)
 
+for (i in 1:4)
+{
+      a=t.test(iris[iris$Species == levels(iris$Species)[1],i],
+             iris[iris$Species == levels(iris$Species)[2],i])
+      b=t.test(iris[iris$Species == levels(iris$Species)[1],i],
+             iris[iris$Species == levels(iris$Species)[3],i])
+      c=t.test(iris[iris$Species == levels(iris$Species)[2],i],
+             iris[iris$Species == levels(iris$Species)[3],i])
+      print(a)
+      print(b)
+      print(c)
+}
 
-Lab8Data = read.table('Lab8_Displays.csv',sep = ',', header = T)
-
-Lab8Data$Resolution = factor(Lab8Data$Resolution)
-Lab8Data$LightLevel = factor(Lab8Data$LightLevel)
-
-options(contrasts = c("contr.sum", "contr.poly"))
-options(contrasts = c("contr.treatment", "contr.poly"))
-
-
-a = lm(LivesLost ~ Resolution*LightLevel,Lab8Data)
-summary(a)
-Anova(a, type = 3)
-
-
-describe(Lab8Data)
-
-data(mtcars)
-data(bfi)
-rm(mtcars)
-mtcars$mpg =  mtcars$mpg + 1
-datasets::mtcars$mpg
-mtcars$mpg
-obk
-obk.long
-OBrienKaiser
+t.test(iris[iris$Species == levels(iris$Species)[2],2],
+       iris[iris$Species == levels(iris$Species)[3],2])
