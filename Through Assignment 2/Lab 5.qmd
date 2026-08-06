@@ -9,11 +9,98 @@ execute:
 
 ```{r}
 library(knitr)
+library(car)
+library(emmeans)
+library(effectsize)
+library(psych)
 
 ```
 
 
+# Power analysis for the repeated-measures (paired) t-test
+```{r}
+PreGroup = sleep$extra[1:10]
+PostGroup = sleep$extra[11:20]
+diff = PostGroup - PreGroup
+
+# Cohen's d
+d = mean(diff) / sd(diff)
+d
+
+# Power of the test just demonstrated 
+power.t.test(n = 10, 
+             mean(diff),
+             sd = sd(diff),
+             type = "paired",
+             alternative = c("one.sided")
+             )
+
+# Sample size needed for a future experiment (80% power)
+power.t.test(power = 0.80,
+             mean(diff),
+             sd = sd(diff),
+             type = "paired",
+             alternative = c("one.sided")
+             )
+
+
+```
+
+
+
+# Power analysis for the independent-groups t-test (equal n)
 ```{r}
 
+group1 = iris[iris$Species == "setosa",]
+group2 = iris[iris$Species == "versicolor",]
+
+# Cohen's d
+d = cohens_d(group1$Sepal.Length, group2$Sepal.Length)
+d
+
+# Power of the test just demonstrated
+power.t.test(n = 50, 
+             delta = d$Cohens_d, 
+             sd = 1,
+             type = "two.sample"
+             )
+
+# Sample size needed for a future experiment (80% power)
+power.t.test(power = 0.80,
+             delta = d$Cohens_d, 
+             sd = 1,
+             type = "two.sample"
+             )
+
 ```
+
+
+# Power analysis for the independent-groups t-test (unequal n)
+```{r}
+
+group1 = iris[iris$Species == "setosa",]
+group2 = iris[iris$Species == "versicolor",][1:20,]
+
+# Cohen's d
+d = cohens_d(group1$Sepal.Length, group2$Sepal.Length)
+d
+
+# Power of the test just demonstrated (approximate with smaller n)
+power.t.test(n = 20,
+             delta = d$Cohens_d, 
+             sd = 1,
+             type = "two.sample"
+             )
+
+# Sample size needed for a future experiment (80% power)
+power.t.test(power = 0.80,
+             delta = d$Cohens_d, 
+             sd = 1,
+             type = "two.sample"
+             )
+
+```
+
+
+
 

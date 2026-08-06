@@ -75,9 +75,9 @@ EqualIndependentData = rbind(group1,
                              group2
                              )
 
-describe(group1)
+describe(group1$Sepal.Length)
 
-describe(group2)
+describe(group2$Sepal.Length)
 
 leveneTest(Sepal.Length ~ Species,EqualIndependentData)
 
@@ -87,6 +87,18 @@ t.test(group1$Sepal.Length ,group2$Sepal.Length)
 # of variance. So, the following method should be acceptable.
 t.test(group1$Sepal.Length, group2$Sepal.Length,
        var.equal = T)
+
+# Explicity calculate the pooled standard deviation in order to obtain Cohen's d.
+m1 = mean(group1$Sepal.Length)
+m2 = mean(group2$Sepal.Length)
+s1 = sd(group1$Sepal.Length)
+s2 = sd(group2$Sepal.Length)
+n1 = nrow(group1)
+n2 = nrow(group2)
+
+sd_pooled = sqrt( ((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2) )
+
+(m1 - m2) / sd_pooled
 
 cohens_d(group1$Sepal.Length,group2$Sepal.Length)
 
@@ -103,9 +115,9 @@ group2 = iris[iris$Species == "versicolor",][1:20,]
 
 UnequalIndependentData = rbind(group1, group2)
 
-describe(group1)
+describe(group1$Sepal.Length)
 
-describe(group2)
+describe(group2$Sepal.Length)
 
 leveneTest(Sepal.Length ~ Species, UnequalIndependentData)
 

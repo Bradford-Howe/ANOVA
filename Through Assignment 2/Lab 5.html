@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 4</title>
+<title>Lab 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,18 +23,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Lab 4_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lab 4_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Lab 4_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Lab 4_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="Lab 4_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lab 4_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Lab 4_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Lab 4_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lab 4_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Lab 4_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Lab 4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Lab 4_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Lab 5_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lab 5_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Lab 5_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Lab 5_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Lab 5_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lab 5_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Lab 5_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Lab 5_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lab 5_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Lab 5_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Lab 5_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Lab 5_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 4</h1>
+<h1 class="title">Lab 5</h1>
 </div>
 
 
@@ -64,108 +64,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="probability-p-value-of-a-t-score." class="level1">
-<h1>Probability (p-value) of a t-score.</h1>
+<section id="power-analysis-for-the-repeated-measures-paired-t-test" class="level1">
+<h1>Power analysis for the repeated-measures (paired) t-test</h1>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7125532</code></pre>
-</div>
-</div>
-</section>
-<section id="get-a-t-score-t-crit-from-a-probablity-value-p-value-or-alpha" class="level1">
-<h1>Get a t-score (t-crit) from a probablity value (p-value or alpha)</h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.144787</code></pre>
-</div>
-</div>
-</section>
-<section id="repeated-measures-paired-t-test" class="level1">
-<h1>Repeated-measures (paired) t-test</h1>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>   vars  n mean   sd median trimmed  mad  min max range skew kurtosis   se
-X1    1 10 0.75 1.79   0.35    0.68 1.56 -1.6 3.7   5.3 0.42     -1.3 0.57</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   vars  n mean sd median trimmed  mad  min max range skew kurtosis   se
-X1    1 10 2.33  2   1.75    2.24 2.45 -0.1 5.5   5.6 0.28    -1.66 0.63</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  1  0.2482 0.6244
-      18               </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  PreGroup and PostGroup
-t = -4.0621, df = 9, p-value = 0.002833
-alternative hypothesis: true mean difference is not equal to 0
-95 percent confidence interval:
- -2.4598858 -0.7001142
-sample estimates:
-mean difference 
-          -1.58 </code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.284558</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Paired t test power calculation 
+
+              n = 10
+          delta = 1.58
+             sd = 1.229995
+      sig.level = 0.05
+          power = 0.9816254
+    alternative = one.sided
+
+NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Paired t test power calculation 
+
+              n = 1.58
+          delta = 28.83211
+             sd = 1.229995
+      sig.level = 0.05
+          power = 0.8
+    alternative = one.sided
+
+NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>
+</div>
 </div>
 </section>
-<section id="independent-groups-t-test-equal-n" class="level1">
-<h1>Independent-groups t-test (equal n)</h1>
+<section id="power-analysis-for-the-independent-groups-t-test-equal-n" class="level1">
+<h1>Power analysis for the independent-groups t-test (equal n)</h1>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>   vars  n mean   sd median trimmed mad min max range skew kurtosis   se
-X1    1 50 5.01 0.35      5       5 0.3 4.3 5.8   1.5 0.11    -0.45 0.05</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   vars  n mean   sd median trimmed  mad min max range skew kurtosis   se
-X1    1 50 5.94 0.52    5.9    5.94 0.52 4.9   7   2.1  0.1    -0.69 0.07</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value   Pr(&gt;F)   
-group  1  8.1727 0.005196 **
-      98                    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  group1$Sepal.Length and group2$Sepal.Length
-t = -10.521, df = 86.538, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -1.1057074 -0.7542926
-sample estimates:
-mean of x mean of y 
-    5.006     5.936 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  group1$Sepal.Length and group2$Sepal.Length
-t = -10.521, df = 98, p-value &lt; 2.2e-16
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -1.1054165 -0.7545835
-sample estimates:
-mean of x mean of y 
-    5.006     5.936 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -2.104197</code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |         95% CI
 --------------------------
@@ -173,59 +108,69 @@ mean of x mean of y
 
 - Estimated using pooled SD.</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 50
+          delta = 2.104197
+             sd = 1
+      sig.level = 0.05
+          power = 1
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 4.728827
+          delta = 2.104197
+             sd = 1
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
 </div>
 </section>
-<section id="independent-groups-t-test-unequal-n" class="level1">
-<h1>Independent-groups t-test (unequal n)</h1>
+<section id="power-analysis-for-the-independent-groups-t-test-unequal-n" class="level1">
+<h1>Power analysis for the independent-groups t-test (unequal n)</h1>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>   vars  n mean   sd median trimmed mad min max range skew kurtosis   se
-X1    1 50 5.01 0.35      5       5 0.3 4.3 5.8   1.5 0.11    -0.45 0.05</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   vars  n mean  sd median trimmed  mad min max range  skew kurtosis   se
-X1    1 20 5.97 0.6   5.95    5.98 0.59 4.9   7   2.1 -0.04    -1.07 0.13</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value   Pr(&gt;F)   
-group  1  10.991 0.001471 **
-      68                    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  group1$Sepal.Length and group2$Sepal.Length
-t = -6.7368, df = 24.365, p-value = 5.3e-07
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -1.2656285 -0.6723715
-sample estimates:
-mean of x mean of y 
-    5.006     5.975 </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  group1$Sepal.Length and group2$Sepal.Length
-t = -8.3746, df = 68, p-value = 4.577e-12
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -1.1998907 -0.7381093
-sample estimates:
-mean of x mean of y 
-    5.006     5.975 </code></pre>
-</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |         95% CI
 --------------------------
 -2.22     | [-2.85, -1.57]
 
 - Estimated using pooled SD.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 20
+          delta = 2.215702
+             sd = 1
+      sig.level = 0.05
+          power = 0.9999994
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+     Two-sample t test power calculation 
+
+              n = 4.400065
+          delta = 2.215702
+             sd = 1
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
 </section>
