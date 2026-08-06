@@ -18,6 +18,7 @@ library(psych)
 
 
 # Power analysis for the repeated-measures (paired) t-test
+### Note: with this small df (9) the textbook will give a higher power than what you see here.
 ```{r}
 PreGroup = sleep$extra[1:10]
 PostGroup = sleep$extra[11:20]
@@ -31,16 +32,14 @@ d
 power.t.test(n = 10, 
              mean(diff),
              sd = sd(diff),
-             type = "paired",
-             alternative = c("one.sided")
+             type = "paired"
              )
 
 # Sample size needed for a future experiment (80% power)
 power.t.test(power = 0.80,
-             mean(diff),
+             delta = mean(diff),
              sd = sd(diff),
-             type = "paired",
-             alternative = c("one.sided")
+             type = "paired"
              )
 
 
@@ -49,6 +48,7 @@ power.t.test(power = 0.80,
 
 
 # Power analysis for the independent-groups t-test (equal n)
+### Note: No problem with this higher df (49)
 ```{r}
 
 group1 = iris[iris$Species == "setosa",]
@@ -78,11 +78,11 @@ power.t.test(power = 0.80,
 # Power analysis for the independent-groups t-test (unequal n)
 ```{r}
 
-group1 = iris[iris$Species == "setosa",]
+group1 = iris[iris$Species == "virginica",]
 group2 = iris[iris$Species == "versicolor",][1:20,]
 
 # Cohen's d
-d = cohens_d(group1$Sepal.Length, group2$Sepal.Length)
+d = cohens_d(group1$Sepal.Width, group2$Sepal.Width)
 d
 
 # Power of the test just demonstrated (approximate with smaller n)

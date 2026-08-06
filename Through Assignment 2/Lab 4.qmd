@@ -98,6 +98,8 @@ n2 = nrow(group2)
 
 sd_pooled = sqrt( ((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2) )
 
+sd_pooled
+
 (m1 - m2) / sd_pooled
 
 cohens_d(group1$Sepal.Length,group2$Sepal.Length)
@@ -109,24 +111,36 @@ cohens_d(group1$Sepal.Length,group2$Sepal.Length)
 # Independent-groups t-test (unequal n)
 ```{r}
 
-group1 = iris[iris$Species == "setosa",]
+group1 = iris[iris$Species == "virginica",]
 
 group2 = iris[iris$Species == "versicolor",][1:20,]
 
 UnequalIndependentData = rbind(group1, group2)
 
-describe(group1$Sepal.Length)
+describe(group1$Sepal.Width)
 
-describe(group2$Sepal.Length)
+describe(group2$Sepal.Width)
 
-leveneTest(Sepal.Length ~ Species, UnequalIndependentData)
+leveneTest(Sepal.Width ~ Species, UnequalIndependentData)
 
-t.test(group1$Sepal.Length, group2$Sepal.Length)
+t.test(group1$Sepal.Width, group2$Sepal.Width)
 
-t.test(group1$Sepal.Length, group2$Sepal.Length,
+t.test(group1$Sepal.Width, group2$Sepal.Width,
        var.equal = TRUE)
 
-cohens_d(group1$Sepal.Length, group2$Sepal.Length)
+# Explicity calculate the pooled standard deviation in order to obtain Cohen's d.
+m1 = mean(group1$Sepal.Width)
+m2 = mean(group2$Sepal.Width)
+s1 = sd(group1$Sepal.Width)
+s2 = sd(group2$Sepal.Width)
+n1 = nrow(group1)
+n2 = nrow(group2)
+
+sd_pooled = sqrt( ((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2) )
+
+sd_pooled
+
+cohens_d(group1$Sepal.Width, group2$Sepal.Width)
 
 
 ```

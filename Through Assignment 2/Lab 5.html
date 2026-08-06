@@ -66,6 +66,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="power-analysis-for-the-repeated-measures-paired-t-test" class="level1">
 <h1>Power analysis for the repeated-measures (paired) t-test</h1>
+<section id="note-with-this-small-df-9-the-textbook-will-give-a-higher-power-than-what-you-see-here." class="level3">
+<h3 class="anchored" data-anchor-id="note-with-this-small-df-9-the-textbook-will-give-a-higher-power-than-what-you-see-here.">Note: with this small df (9) the textbook will give a higher power than what you see here.</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.284558</code></pre>
@@ -78,8 +80,8 @@ ul.task-list li input[type="checkbox"] {
           delta = 1.58
              sd = 1.229995
       sig.level = 0.05
-          power = 0.9816254
-    alternative = one.sided
+          power = 0.949605
+    alternative = two.sided
 
 NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>
 </div>
@@ -87,19 +89,22 @@ NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code
 <pre><code>
      Paired t test power calculation 
 
-              n = 1.58
-          delta = 28.83211
+              n = 6.912532
+          delta = 1.58
              sd = 1.229995
       sig.level = 0.05
           power = 0.8
-    alternative = one.sided
+    alternative = two.sided
 
 NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>
 </div>
 </div>
 </section>
+</section>
 <section id="power-analysis-for-the-independent-groups-t-test-equal-n" class="level1">
 <h1>Power analysis for the independent-groups t-test (equal n)</h1>
+<section id="note-no-problem-with-this-higher-df-49" class="level3">
+<h3 class="anchored" data-anchor-id="note-no-problem-with-this-higher-df-49">Note: No problem with this higher df (49)</h3>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |         95% CI
@@ -136,13 +141,14 @@ NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
 </section>
+</section>
 <section id="power-analysis-for-the-independent-groups-t-test-unequal-n" class="level1">
 <h1>Power analysis for the independent-groups t-test (unequal n)</h1>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Cohen's d |         95% CI
---------------------------
--2.22     | [-2.85, -1.57]
+<pre><code>Cohen's d |       95% CI
+------------------------
+0.63      | [0.10, 1.16]
 
 - Estimated using pooled SD.</code></pre>
 </div>
@@ -151,10 +157,10 @@ NOTE: n is number in *each* group</code></pre>
      Two-sample t test power calculation 
 
               n = 20
-          delta = 2.215702
+          delta = 0.63169
              sd = 1
       sig.level = 0.05
-          power = 0.9999994
+          power = 0.4948258
     alternative = two.sided
 
 NOTE: n is number in *each* group</code></pre>
@@ -163,8 +169,8 @@ NOTE: n is number in *each* group</code></pre>
 <pre><code>
      Two-sample t test power calculation 
 
-              n = 4.400065
-          delta = 2.215702
+              n = 40.3228
+          delta = 0.63169
              sd = 1
       sig.level = 0.05
           power = 0.8
