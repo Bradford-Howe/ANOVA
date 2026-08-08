@@ -1,0 +1,192 @@
+---
+title: "Assignment 2"
+format: html
+execute:
+   echo: FALSE
+   warning: FALSE
+   message: FALSE
+---
+
+```{r}
+library(knitr)
+library(psych)      # describe(), describeBy()
+library(car)        # leveneTest() 
+library(effectsize) # cohens_d()
+```
+
+
+---
+
+### Submission notes
+
+- Render this document into a word document, input your answers, and submit the finished word document together with this `.qmd` source.
+
+- Do not put your name anywhere in the document (anonymous grading).
+
+- All of your responses to questions 1-5 should be manually input to the Word document you generate here. All of you numerical results for questions 6-9 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
+
+
+### Overview & Instructions for questions four through six.
+
+Your main task is to choose the correct test for the given research context and report the following items.
+
+a. Is the test significant? (α = .05, two-tailed). Include the t value, df, and p-value from the output.
+
+b. Cohen’s d and briefly interpret its magnitude (small / medium / large).
+
+c. Confidence interval- Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?
+
+The code deliberately lets you run different statistical processes by setting logical flags and uncommenting code. Setting the flags incorrectly or choosing the wrong code produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.
+
+- Read the research context carefully.
+- Decide which testing method to use.
+- Uncomment code and set the flag(s) (i.e., `paired_flag = T` or `F`) accordingly.
+- Render this script into a Word document, then produce the items listed above (a through c).
+
+You may also change the outcome variable (column name) if you want to explore but be sure to restore the original variable because that is what will be graded.
+
+
+---
+
+### 4. Transmission type and fuel efficiency  
+Research context:
+A researcher wants to know whether cars with automatic transmissions (`am == 0`) and cars with manual transmissions (`am == 1`) differ in fuel efficiency. The data come from the `mtcars` data set; each row is a different car. We will examine the `mpg` column.
+
+If you wish to explore, you may change "mpg" to another continuous variable ("hp", "wt", "qsec", "disp",etc.). Remember though, the assignment is to examine mpg.
+
+```{r}
+# Creating groups and making them equal sizes.
+group1 = mtcars[mtcars$am == 0, c("am","mpg")]   # automatic 
+group2 = mtcars[mtcars$am == 1, c("am","mpg")]   # manual    
+group1 = group1[7:19,]
+AMDF = rbind(group1, group2)
+
+# Descriptives
+describe(group1$mpg)
+describe(group2$mpg)
+```
+
+```{r}
+# Optional:  Levene's test
+# Uncomment the next line to run it.
+# leveneTest(mpg ~ factor(am), AMDF)
+```
+
+```{r}
+# Is this a paired / repeated-measures design or an independent-groups design?
+# Set the flag to the value that matches the research context and your data.
+paired_flag = F
+Welch_flag = F
+
+# Running and reporting the t-test you have chosen.
+tt = t.test(group1$mpg, group2$mpg, paired = paired_flag, var.equal = !Welch_flag)
+tt
+
+# Cohen's d uses the same paired flag
+d = cohens_d(group1$mpg, group2$mpg, paired = paired_flag)
+d
+```
+
+
+---
+
+### 5. Two soporific drugs and extra sleep  
+
+The `sleep` data set records the extra hours of sleep obtained by subjects under two different drugs (`group`). Importantly, the same ten subjects each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.
+
+```{r}
+# Explicit vectors (order follows subject ID, so pairing is preserved)
+group1 = sleep$extra[sleep$group == 1]
+group2 = sleep$extra[sleep$group == 2]
+
+# Descriptives
+describe(group1)
+describe(group2)
+```
+
+```{r}
+# Optional:  Levene's test
+# Uncomment the next line to run it.
+# leveneTest(extra ~ factor(group), data = sleep)
+```
+
+```{r}
+# Is this a paired / repeated-measures design or an independent-groups design?
+# Set the flag to the value that matches the research context and your data.
+paired_flag = F
+Welch_flag = F
+
+# Running and reporting the t-test you have chosen.
+tt = t.test(group1, group2, paired = paired_flag, var.equal = !Welch_flag)
+tt
+
+# Cohen's d uses the same paired flag
+d = cohens_d(group1, group2, paired = paired_flag)
+d
+```
+
+
+---
+
+### 6. Average fuel efficiency versus a benchmark  
+Research context
+
+Is the average fuel efficiency of the cars in `mtcars` different from a hypothesized value of 17 mpg? Use the code below to get your t and its p-value. Then, compare that p-value to an alpha of .05 to determine if you have found a significant difference.
+
+```{r}
+# Levene's test is not applicable to a one-sample design. (No action needed here.)
+```
+
+```{r}
+# This will put your data into a variable called x. You can put x into a function to get information about your data.
+x   = mtcars$mpg    
+
+# This will give you all the descriptives about your data
+describe(x)
+
+# choose the functions below to get you the correct t-test formula. Comment them out so they don't appear in your Word document.
+# for simplicity, one of the first four will give you your n.
+n = 17
+n = 17 - 1
+n = length(mtcars$mpg)
+n = length(mtcars$mpg) - 1
+17 # Just the number 17
+mean(17)
+mean(mtcars$mpg)
+var(17)
+var(mtcars$mpg)
+sd(17)
+sd(mtcars$mpg)
+mean(mtcars$mpg)
+sqrt(17)
+sqrt(mtcars$mpg)
+sqrt(n)
+
+# Put your chosen functions, values, or variables into the correct form to calculate your observed t.
+
+numerator = 1
+
+denominator = 2
+
+t_score = numerator /  denominator
+
+t_score
+
+# Uncomment the next few lines to get your p-value.
+# df = n - 1
+# Tails = 2
+# 
+# pt(abs(t_score), df, lower.tail = F) * Tails
+
+
+# Again, choose the correct functions, values, or variables for your numerator and denominator to get your Cohen's d.
+ 
+d_numerator = 1
+
+d_denominator = 2
+
+cohens_d = abs(d_numerator / d_denominator)
+
+cohens_d
+```
+

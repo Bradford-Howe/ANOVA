@@ -23,18 +23,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="t_tests_assignment_rewrite (2)_files/libs/clipboard/clipboard.min.js"></script>
-<script src="t_tests_assignment_rewrite (2)_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="t_tests_assignment_rewrite (2)_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="t_tests_assignment_rewrite (2)_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="t_tests_assignment_rewrite (2)_files/libs/quarto-html/popper.min.js"></script>
-<script src="t_tests_assignment_rewrite (2)_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="t_tests_assignment_rewrite (2)_files/libs/quarto-html/anchor.min.js"></script>
-<link href="t_tests_assignment_rewrite (2)_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="t_tests_assignment_rewrite (2)_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Assignment2_template_working_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Assignment2_template_working_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Assignment2_template_working_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Assignment2_template_working_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Assignment2_template_working_files/libs/quarto-html/popper.min.js"></script>
+<script src="Assignment2_template_working_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Assignment2_template_working_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Assignment2_template_working_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Assignment2_template_working_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Assignment2_template_working_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Assignment2_template_working_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Assignment2_template_working_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -69,8 +69,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="submission-notes">Submission notes</h3>
 <ul>
 <li><p>Render this document into a word document, input your answers, and submit the finished word document together with this <code>.qmd</code> source.</p></li>
-<li><p>Do <strong>not</strong> put your name anywhere in the document (anonymous grading).</p></li>
-<li><p>All numerical results should come show up when the grader runs the script above; the written answers are short interpretations only.</p></li>
+<li><p>Do not put your name anywhere in the document (anonymous grading).</p></li>
+<li><p>All of your responses to questions 1-5 should be manually input to the Word document you generate here. All of you numerical results for questions 6-9 should come up when the grader runs this script. However, you still need to manually write the specific statistics and the short interpretations which are requested below.</p></li>
 </ul>
 </section>
 <section id="overview-instructions-for-questions-four-through-six." class="level3">
@@ -81,25 +81,24 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Cohen’s d and briefly interpret its magnitude (small / medium / large).</p></li>
 <li><p>Confidence interval- Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?</p></li>
 </ol>
-<p>The code deliberately lets you run either a paired or an independent-groups analysis by setting a single logical flag. Setting the flag incorrectly produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.</p>
+<p>The code deliberately lets you run different statistical processes by setting logical flags and uncommenting code. Setting the flags incorrectly or choosing the wrong code produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.</p>
 <ul>
 <li>Read the research context carefully.</li>
-<li>Decide whether the observations are paired / repeated-measures or independent.</li>
-<li>Set the flag (<code>paired_flag = T</code> or <code>F</code>) accordingly.</li>
-<li>Run the chunks, then produce the items listed above (a through c).</li>
+<li>Decide which testing method to use.</li>
+<li>Uncomment code and set the flag(s) accordingly (i.e., <code>Welch_flag = T</code> if you believe the experiment requires a Welch’s correction).</li>
+<li>Render this script into a Word document, then produce the items listed above (a through c).</li>
 </ul>
-<p>You may also change the outcome variable (column name) if you want to explore.</p>
-<p>Optional assumption checks remain commented; uncomment them if you wish.</p>
+<p>You may also change the outcome variable (column name) if you want to explore but be sure to restore the original variable because that is what will be graded.</p>
 <hr>
 </section>
 <section id="transmission-type-and-fuel-efficiency" class="level3">
 <h3 class="anchored" data-anchor-id="transmission-type-and-fuel-efficiency">4. Transmission type and fuel efficiency</h3>
 <p>Research context: A researcher wants to know whether cars with automatic transmissions (<code>am == 0</code>) and cars with manual transmissions (<code>am == 1</code>) differ in fuel efficiency. The data come from the <code>mtcars</code> data set; each row is a different car. We will examine the <code>mpg</code> column.</p>
-<p>If you wish to explore, you may change “mpg” to another continuous variable (“hp”, “wt”, “qsec”, “disp”,etc.). Remeber though, the assignment is to examine mpg.</p>
+<p>If you wish to explore, you may change “mpg” to another continuous variable (“hp”, “wt”, “qsec”, “disp”,etc.). Remember though, the assignment is to examine mpg.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>   vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
-X1    1 19 17.15 3.83   17.3   17.12 3.11 10.4 24.4    14 0.01     -0.8 0.88</code></pre>
+<pre><code>   vars  n  mean   sd median trimmed  mad  min  max range  skew kurtosis   se
+X1    1 13 15.85 3.28   15.5   15.84 3.26 10.4 21.5  11.1 -0.17    -0.93 0.91</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars  n  mean   sd median trimmed  mad min  max range skew kurtosis   se
@@ -110,8 +109,8 @@ X1    1 13 24.39 6.17   22.8   24.38 6.67  15 33.9  18.9 0.05    -1.46 1.71</cod
 <div class="cell-output cell-output-stdout">
 <pre><code>Levene's Test for Homogeneity of Variance (center = median)
       Df F value  Pr(&gt;F)  
-group  1  4.1876 0.04957 *
-      30                  
+group  1   5.437 0.02843 *
+      24                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -121,19 +120,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <pre><code>
     Welch Two Sample t-test
 
-data:  group1 and group2
-t = -3.7671, df = 18.332, p-value = 0.001374
+data:  group1$mpg and group2$mpg
+t = -4.4089, df = 18.273, p-value = 0.0003278
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -11.280194  -3.209684
+ -12.602806  -4.474117
 sample estimates:
 mean of x mean of y 
- 17.14737  24.39231 </code></pre>
+ 15.85385  24.39231 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |         95% CI
 --------------------------
--1.48     | [-2.27, -0.67]
+-1.73     | [-2.63, -0.81]
 
 - Estimated using pooled SD.</code></pre>
 </div>
@@ -145,15 +144,20 @@ mean of x mean of y
 <p>The <code>sleep</code> data set records the extra hours of sleep obtained by subjects under two different drugs (<code>group</code>). Importantly, the same ten subjects each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>
- Descriptive statistics by group 
-group: 1
-    vars  n mean   sd median trimmed  mad min max range skew kurtosis   se
-X1*    1 10  5.5 3.03    5.5     5.5 3.71   1  10     9    0    -1.56 0.96
------------------------------------------------------------- 
-group: 2
-    vars  n mean   sd median trimmed  mad min max range skew kurtosis   se
-X1*    1 10  5.5 3.03    5.5     5.5 3.71   1  10     9    0    -1.56 0.96</code></pre>
+<pre><code>   vars  n mean   sd median trimmed  mad  min max range skew kurtosis   se
+X1    1 10 0.75 1.79   0.35    0.68 1.56 -1.6 3.7   5.3 0.42     -1.3 0.57</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   vars  n mean sd median trimmed  mad  min max range skew kurtosis   se
+X1    1 10 2.33  2   1.75    2.24 2.45 -0.1 5.5   5.6 0.28    -1.66 0.63</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  1  0.2482 0.6244
+      18               </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -181,33 +185,20 @@ mean difference
 <section id="average-fuel-efficiency-versus-a-benchmark" class="level3">
 <h3 class="anchored" data-anchor-id="average-fuel-efficiency-versus-a-benchmark">6. Average fuel efficiency versus a benchmark</h3>
 <p>Research context</p>
-<p>Is the average fuel efficiency of the cars in <code>mtcars</code> different from a hypothesized value of 20 mpg? Only one sample of cars is available and the population standard deviation is unknown.</p>
+<p>Is the average fuel efficiency of the cars in <code>mtcars</code> different from a hypothesized value of 17 mpg? Use the code below to get your t and it’s p-value. Then, compare that p-value to an alpha of .05 to determine if you have found a significant difference.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
 X1    1 32 20.09 6.03   19.2    19.7 5.41 10.4 33.9  23.5 0.61    -0.37 1.07</code></pre>
 </div>
-</div>
-<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  x
-t = 0.08506, df = 31, p-value = 0.9328
-alternative hypothesis: true mean is not equal to 20
-95 percent confidence interval:
- 17.91768 22.26357
-sample estimates:
-mean of x 
- 20.09062 </code></pre>
+<pre><code>[1] 2.900841</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Cohen's d |        95% CI
--------------------------
-0.02      | [-0.33, 0.36]
-
-- Deviation from a difference of 20.</code></pre>
+<pre><code>[1] 0.00678831</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.512801</code></pre>
 </div>
 </div>
 </section>
