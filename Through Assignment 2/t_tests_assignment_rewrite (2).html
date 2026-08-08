@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Student Name (leave blank for anonymous grading)">
 
-<title>t-test Practice Assignment</title>
+<title>Assignment 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,45 +34,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="t_tests_assignment_rewrite (2)_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap-4d7f0bce1131f3e5f9547cd857cfbfc8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="t_tests_assignment_rewrite (2)_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
 
-<body class="quarto-light">
+<body class="fullcontent quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul class="collapse">
-  <li><a href="#overview-instructions" id="toc-overview-instructions" class="nav-link active" data-scroll-target="#overview-instructions">Overview &amp; Instructions</a></li>
-  <li><a href="#transmission-type-and-fuel-efficiency" id="toc-transmission-type-and-fuel-efficiency" class="nav-link" data-scroll-target="#transmission-type-and-fuel-efficiency">1. Transmission type and fuel efficiency</a></li>
-  <li><a href="#two-soporific-drugs-and-extra-sleep" id="toc-two-soporific-drugs-and-extra-sleep" class="nav-link" data-scroll-target="#two-soporific-drugs-and-extra-sleep">2. Two soporific drugs and extra sleep</a></li>
-  <li><a href="#average-fuel-efficiency-versus-a-benchmark" id="toc-average-fuel-efficiency-versus-a-benchmark" class="nav-link" data-scroll-target="#average-fuel-efficiency-versus-a-benchmark">3. Average fuel efficiency versus a benchmark</a></li>
-  <li><a href="#submission-notes" id="toc-submission-notes" class="nav-link" data-scroll-target="#submission-notes">Submission notes</a></li>
-  </ul>
-</nav>
-</div>
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">t-test Practice Assignment</h1>
-<p class="subtitle lead">Choosing and running the appropriate <em>t</em>-test</p>
+<h1 class="title">Assignment 2</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Student Name (leave blank for anonymous grading) </p>
-          </div>
-  </div>
     
   
     
@@ -119,58 +64,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="overview-instructions" class="level2">
-<h2 class="anchored" data-anchor-id="overview-instructions">Overview &amp; Instructions</h2>
-<p>This assignment rewrites the three calculation problems (original questions 4–6) using the familiar built-in datasets <code>mtcars</code> and <code>sleep</code>. The code style matches the preceding labs (explicit <code>group1</code> / <code>group2</code> subsets, base R + <code>psych</code> / <code>effectsize</code> / <code>car</code>).</p>
-<p><strong>Your main task is to choose the correct test.</strong></p>
-<p>For each problem a research context is given. The code deliberately lets you run <em>either</em> a paired or an independent-groups analysis by setting a single logical flag. Setting the flag incorrectly produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.</p>
+<hr>
+<section id="submission-notes" class="level3">
+<h3 class="anchored" data-anchor-id="submission-notes">Submission notes</h3>
+<ul>
+<li><p>Render this document into a word document, input your answers, and submit the finished word document together with this <code>.qmd</code> source.</p></li>
+<li><p>Do <strong>not</strong> put your name anywhere in the document (anonymous grading).</p></li>
+<li><p>All numerical results should come show up when the grader runs the script above; the written answers are short interpretations only.</p></li>
+</ul>
+</section>
+<section id="overview-instructions-for-questions-four-through-six." class="level3">
+<h3 class="anchored" data-anchor-id="overview-instructions-for-questions-four-through-six.">Overview &amp; Instructions for questions four through six.</h3>
+<p>Your main task is to choose the correct test for the given research context and report the following items.</p>
+<ol type="a">
+<li><p>Is the test significant? (α = .05, two-tailed). Include the t value, df, and p-value from the output.</p></li>
+<li><p>Cohen’s d and briefly interpret its magnitude (small / medium / large).</p></li>
+<li><p>Confidence interval- Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?</p></li>
+</ol>
+<p>The code deliberately lets you run either a paired or an independent-groups analysis by setting a single logical flag. Setting the flag incorrectly produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.</p>
 <ul>
 <li>Read the research context carefully.</li>
 <li>Decide whether the observations are paired / repeated-measures or independent.</li>
-<li>Set the flag (<code>paired_flag = TRUE</code> or <code>FALSE</code>) accordingly.</li>
-<li>Run the chunks, then answer a–c.</li>
+<li>Set the flag (<code>paired_flag = T</code> or <code>F</code>) accordingly.</li>
+<li>Run the chunks, then produce the items listed above (a through c).</li>
 </ul>
-<p>You may also change the outcome variable (column name) if you want to explore. Optional assumption checks remain commented; uncomment them if you wish.</p>
-<p>No Excel or SPSS is required. Focus on correct test selection and clear interpretation of the R output.</p>
+<p>You may also change the outcome variable (column name) if you want to explore.</p>
+<p>Optional assumption checks remain commented; uncomment them if you wish.</p>
 <hr>
 </section>
-<section id="transmission-type-and-fuel-efficiency" class="level2">
-<h2 class="anchored" data-anchor-id="transmission-type-and-fuel-efficiency">1. Transmission type and fuel efficiency</h2>
-<p><em>(rewritten from original problem 4)</em></p>
-<p><strong>Research context</strong><br>
-A researcher wants to know whether cars with automatic transmissions (<code>am == 0</code>) and cars with manual transmissions (<code>am == 1</code>) differ in fuel efficiency. The data come from the <code>mtcars</code> data set; each row is a different car. We will examine the <code>mpg</code> column.</p>
-<p>You may change <code>"mpg"</code> to another continuous variable (<code>"hp"</code>, <code>"wt"</code>, <code>"qsec"</code>, <code>"disp"</code>, …) in the two places marked below.</p>
+<section id="transmission-type-and-fuel-efficiency" class="level3">
+<h3 class="anchored" data-anchor-id="transmission-type-and-fuel-efficiency">4. Transmission type and fuel efficiency</h3>
+<p>Research context: A researcher wants to know whether cars with automatic transmissions (<code>am == 0</code>) and cars with manual transmissions (<code>am == 1</code>) differ in fuel efficiency. The data come from the <code>mtcars</code> data set; each row is a different car. We will examine the <code>mpg</code> column.</p>
+<p>If you wish to explore, you may change “mpg” to another continuous variable (“hp”, “wt”, “qsec”, “disp”,etc.). Remeber though, the assignment is to examine mpg.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicit group subsets</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group1 <span class="ot">=</span> mtcars[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"mpg"</span>]   <span class="co"># automatic  — change "mpg" here if desired</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>group2 <span class="ot">=</span> mtcars[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"mpg"</span>]   <span class="co"># manual     — and here</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptives</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(group1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
 X1    1 19 17.15 3.83   17.3   17.12 3.11 10.4 24.4    14 0.01     -0.8 0.88</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(group2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars  n  mean   sd median trimmed  mad min  max range skew kurtosis   se
 X1    1 13 24.39 6.17   22.8   24.38 6.67  15 33.9  18.9 0.05    -1.46 1.71</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: homogeneity of variance (Levene's test)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Simply uncomment the next line to run it</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># leveneTest(mpg ~ factor(am), data = mtcars)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value  Pr(&gt;F)  
+group  1  4.1876 0.04957 *
+      30                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># *** STUDENT CHOICE ***</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is this a paired / repeated-measures design or an independent-groups design?</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the flag to the value that matches the research context.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (Setting it incorrectly is a common error — think before you change it.)</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>paired_flag <span class="ot">=</span> <span class="cn">FALSE</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">t.test</span>(group1, group2, <span class="at">paired =</span> paired_flag)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>tt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -184,9 +130,6 @@ sample estimates:
 mean of x mean of y 
  17.14737  24.39231 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cohen's d uses the same flag</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">cohens_d</span>(group1, group2, <span class="at">paired =</span> paired_flag)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |         95% CI
 --------------------------
@@ -195,26 +138,12 @@ mean of x mean of y
 - Estimated using pooled SD.</code></pre>
 </div>
 </div>
-<p><strong>a. Is the test significant?</strong> (α = .05, two-tailed)</p>
-<p><em>Write your answer here (include the </em>t* value, <em>df</em>, and <em>p</em>-value from the output).*</p>
-<p><strong>b. Cohen’s <em>d</em></strong></p>
-<p><em>Report the value and briefly interpret its magnitude (small / medium / large).</em></p>
-<p><strong>c.&nbsp;Confidence interval</strong></p>
-<p><em>Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?</em></p>
 <hr>
 </section>
-<section id="two-soporific-drugs-and-extra-sleep" class="level2">
-<h2 class="anchored" data-anchor-id="two-soporific-drugs-and-extra-sleep">2. Two soporific drugs and extra sleep</h2>
-<p><em>(rewritten from original problem 5)</em></p>
-<p><strong>Research context</strong><br>
-The <code>sleep</code> data set records the <em>extra</em> hours of sleep obtained by subjects under two different drugs (<code>group</code>). Importantly, the <em>same ten subjects</em> each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.</p>
+<section id="two-soporific-drugs-and-extra-sleep" class="level3">
+<h3 class="anchored" data-anchor-id="two-soporific-drugs-and-extra-sleep">5. Two soporific drugs and extra sleep</h3>
+<p>The <code>sleep</code> data set records the extra hours of sleep obtained by subjects under two different drugs (<code>group</code>). Importantly, the same ten subjects each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explicit vectors (order follows subject ID, so pairing is preserved)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>group1 <span class="ot">=</span> sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>group2 <span class="ot">=</span> sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptives by group</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">describeBy</span>(sleep<span class="sc">$</span>extra, <span class="at">group =</span> sleep<span class="sc">$</span>group)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  Descriptive statistics by group 
@@ -228,14 +157,6 @@ X1*    1 10  5.5 3.03    5.5     5.5 3.71   1  10     9    0    -1.56 0.96</code
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># *** STUDENT CHOICE ***</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Is this a paired / repeated-measures design or an independent-groups design?</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the flag to the value that matches the research context.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (Setting it incorrectly is a common error — think before you change it.)</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>paired_flag <span class="ot">=</span> <span class="cn">TRUE</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">t.test</span>(group1, group2, <span class="at">paired =</span> paired_flag)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>tt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -249,47 +170,25 @@ sample estimates:
 mean difference 
           -1.58 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cohen's d uses the same flag</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">cohens_d</span>(group1, group2, <span class="at">paired =</span> paired_flag)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |         95% CI
 --------------------------
 -1.28     | [-2.12, -0.41]</code></pre>
 </div>
 </div>
-<p><strong>a. Is the test significant?</strong> (α = .05, two-tailed)</p>
-<p><em>Write your answer here (include the </em>t* value, <em>df</em>, and <em>p</em>-value from the output).*</p>
-<p><strong>b. Cohen’s <em>d</em></strong></p>
-<p><em>Report the value and briefly interpret its magnitude (small / medium / large).</em></p>
-<p><strong>c.&nbsp;Confidence interval</strong></p>
-<p><em>Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?</em></p>
 <hr>
 </section>
-<section id="average-fuel-efficiency-versus-a-benchmark" class="level2">
-<h2 class="anchored" data-anchor-id="average-fuel-efficiency-versus-a-benchmark">3. Average fuel efficiency versus a benchmark</h2>
-<p><em>(rewritten from original problem 6)</em></p>
-<p><strong>Research context</strong><br>
-Is the average fuel efficiency of the cars in <code>mtcars</code> different from a hypothesized value of 20 mpg? Only one sample of cars is available and the population standard deviation is unknown.</p>
-<p>You may change the variable or the null value below if you wish to explore.</p>
+<section id="average-fuel-efficiency-versus-a-benchmark" class="level3">
+<h3 class="anchored" data-anchor-id="average-fuel-efficiency-versus-a-benchmark">6. Average fuel efficiency versus a benchmark</h3>
+<p>Research context</p>
+<p>Is the average fuel efficiency of the cars in <code>mtcars</code> different from a hypothesized value of 20 mpg? Only one sample of cars is available and the population standard deviation is unknown.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose the variable and the null hypothesis value</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x   <span class="ot">=</span> mtcars<span class="sc">$</span>mpg    <span class="co"># change "mpg" if desired</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">=</span> <span class="dv">20</span>            <span class="co"># change the hypothesized mean if desired</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
 X1    1 32 20.09 6.03   19.2    19.7 5.41 10.4 33.9  23.5 0.61    -0.37 1.07</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This problem compares one sample mean against a known constant.</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Do not attempt to turn it into a two-group (independent or paired) test.</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The correct call uses the mu argument.</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>tt <span class="ot">=</span> <span class="fu">t.test</span>(x, <span class="at">mu =</span> mu0)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>tt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     One Sample t-test
@@ -303,9 +202,6 @@ sample estimates:
 mean of x 
  20.09062 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cohen's d for a one-sample design</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> <span class="fu">cohens_d</span>(x, <span class="at">mu =</span> mu0)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cohen's d |        95% CI
 -------------------------
@@ -314,22 +210,6 @@ mean of x
 - Deviation from a difference of 20.</code></pre>
 </div>
 </div>
-<p><strong>a. Is the test significant?</strong> (α = .05, two-tailed)</p>
-<p><em>Write your answer here (include the </em>t* value, <em>df</em>, and <em>p</em>-value from the output).*</p>
-<p><strong>b. Cohen’s <em>d</em></strong></p>
-<p><em>Report the value and briefly interpret its magnitude (small / medium / large).</em></p>
-<p><strong>c.&nbsp;Confidence interval</strong></p>
-<p><em>Report the 95 % CI for the mean. Does the interval contain the hypothesized value (μ₀)? What does that tell you?</em></p>
-<hr>
-</section>
-<section id="submission-notes" class="level2">
-<h2 class="anchored" data-anchor-id="submission-notes">Submission notes</h2>
-<ul>
-<li>Knit this document to HTML (or PDF) and submit the rendered file together with the <code>.qmd</code> source.</li>
-<li>Do <strong>not</strong> put your name anywhere in the document (anonymous grading).</li>
-<li>All numerical results should come from the R output above; the written answers are short interpretations only.</li>
-<li>If you experimented with different variables or deliberately tried the wrong flag setting, briefly note what you did so the grader can reproduce your numbers. ```</li>
-</ul>
 </section>
 
 </main>

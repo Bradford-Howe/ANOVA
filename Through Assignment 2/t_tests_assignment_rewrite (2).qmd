@@ -1,59 +1,63 @@
 ---
-title: "t-test Practice Assignment"
-subtitle: "Choosing and running the appropriate *t*-test"
-author: "Student Name (leave blank for anonymous grading)"
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    code-fold: false
-    theme: cosmo
-editor: source
+title: "Assignment 2"
+format: html
+execute:
+   echo: false
+   warning: false
+   message: false
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  echo = TRUE,
-  warning = FALSE,
-  message = FALSE,
-  comment = ""
-)
+```{r}
+library(knitr)
 library(psych)      # describe(), describeBy()
-library(car)        # leveneTest() — optional
+library(car)        # leveneTest() 
 library(effectsize) # cohens_d()
 ```
 
-## Overview & Instructions
+---
 
-This assignment rewrites the three calculation problems (original questions 4–6) using the familiar built-in datasets `mtcars` and `sleep`. The code style matches the preceding labs (explicit `group1` / `group2` subsets, base R + `psych` / `effectsize` / `car`).
+### Submission notes
 
-**Your main task is to choose the correct test.**
+- Render this document into a word document, input your answers, and submit the finished word document together with this `.qmd` source.
 
-For each problem a research context is given. The code deliberately lets you run *either* a paired or an independent-groups analysis by setting a single logical flag. Setting the flag incorrectly produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.
+- Do not put your name anywhere in the document (anonymous grading).
+
+- All numerical results should come show up when the grader runs the script above; the written answers are short interpretations only.
+
+
+### Overview & Instructions for questions four through six.
+
+Your main task is to choose the correct test for the given research context and report the following items.
+
+a. Is the test significant? (α = .05, two-tailed). Include the t value, df, and p-value from the output.
+
+b. Cohen’s d and briefly interpret its magnitude (small / medium / large).
+
+c. Confidence interval- Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?
+
+The code deliberately lets you run either a paired or an independent-groups analysis by setting a single logical flag. Setting the flag incorrectly produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.
 
 - Read the research context carefully.
 - Decide whether the observations are paired / repeated-measures or independent.
-- Set the flag (`paired_flag = TRUE` or `FALSE`) accordingly.
-- Run the chunks, then answer a–c.
+- Set the flag (`paired_flag = T` or `F`) accordingly.
+- Run the chunks, then produce the items listed above (a through c).
 
-You may also change the outcome variable (column name) if you want to explore. Optional assumption checks remain commented; uncomment them if you wish.
+You may also change the outcome variable (column name) if you want to explore.
 
-No Excel or SPSS is required. Focus on correct test selection and clear interpretation of the R output.
+Optional assumption checks remain commented; uncomment them if you wish.
 
 ---
 
-## 1. Transmission type and fuel efficiency  
-*(rewritten from original problem 4)*
-
-**Research context**  
+### 4. Transmission type and fuel efficiency  
+Research context:
 A researcher wants to know whether cars with automatic transmissions (`am == 0`) and cars with manual transmissions (`am == 1`) differ in fuel efficiency. The data come from the `mtcars` data set; each row is a different car. We will examine the `mpg` column.
 
-You may change `"mpg"` to another continuous variable (`"hp"`, `"wt"`, `"qsec"`, `"disp"`, …) in the two places marked below.
+If you wish to explore, you may change "mpg" to another continuous variable ("hp", "wt", "qsec", "disp",etc.). Remeber though, the assignment is to  examine mpg.
 
 ```{r problem1-groups}
 # Explicit group subsets
-group1 = mtcars[mtcars$am == 0, "mpg"]   # automatic  — change "mpg" here if desired
-group2 = mtcars[mtcars$am == 1, "mpg"]   # manual     — and here
+group1 = mtcars[mtcars$am == 0, "mpg"]   # automatic 
+group2 = mtcars[mtcars$am == 1, "mpg"]   # manual    
 
 # Descriptives
 describe(group1)
@@ -62,15 +66,13 @@ describe(group2)
 
 ```{r problem1-levene}
 # Optional: homogeneity of variance (Levene's test)
-# Simply uncomment the next line to run it
-# leveneTest(mpg ~ factor(am), data = mtcars)
+# Simply uncomment the next line to run it.
+ leveneTest(mpg ~ factor(am), data = mtcars)
 ```
 
 ```{r problem1-ttest}
-# *** STUDENT CHOICE ***
 # Is this a paired / repeated-measures design or an independent-groups design?
 # Set the flag to the value that matches the research context.
-# (Setting it incorrectly is a common error — think before you change it.)
 paired_flag = FALSE
 
 tt = t.test(group1, group2, paired = paired_flag)
@@ -81,27 +83,15 @@ d = cohens_d(group1, group2, paired = paired_flag)
 d
 ```
 
-**a. Is the test significant?** (α = .05, two-tailed)  
 
-*Write your answer here (include the *t* value, *df*, and *p*-value from the output).*
-
-**b. Cohen’s *d***  
-
-*Report the value and briefly interpret its magnitude (small / medium / large).*
-
-**c. Confidence interval**  
-
-*Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?*
 
 ---
 
-## 2. Two soporific drugs and extra sleep  
-*(rewritten from original problem 5)*
+### 5. Two soporific drugs and extra sleep  
 
-**Research context**  
-The `sleep` data set records the *extra* hours of sleep obtained by subjects under two different drugs (`group`). Importantly, the *same ten subjects* each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.
+The `sleep` data set records the extra hours of sleep obtained by subjects under two different drugs (`group`). Importantly, the same ten subjects each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.
 
-```{r problem2-groups}
+```{r}
 # Explicit vectors (order follows subject ID, so pairing is preserved)
 group1 = sleep$extra[sleep$group == 1]
 group2 = sleep$extra[sleep$group == 2]
@@ -110,11 +100,10 @@ group2 = sleep$extra[sleep$group == 2]
 describeBy(sleep$extra, group = sleep$group)
 ```
 
-```{r problem2-ttest}
-# *** STUDENT CHOICE ***
+```{r}
 # Is this a paired / repeated-measures design or an independent-groups design?
 # Set the flag to the value that matches the research context.
-# (Setting it incorrectly is a common error — think before you change it.)
+
 paired_flag = TRUE
 
 tt = t.test(group1, group2, paired = paired_flag)
@@ -125,29 +114,16 @@ d = cohens_d(group1, group2, paired = paired_flag)
 d
 ```
 
-**a. Is the test significant?** (α = .05, two-tailed)  
 
-*Write your answer here (include the *t* value, *df*, and *p*-value from the output).*
-
-**b. Cohen’s *d***  
-
-*Report the value and briefly interpret its magnitude (small / medium / large).*
-
-**c. Confidence interval**  
-
-*Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?*
 
 ---
 
-## 3. Average fuel efficiency versus a benchmark  
-*(rewritten from original problem 6)*
+### 6. Average fuel efficiency versus a benchmark  
+Research context
 
-**Research context**  
 Is the average fuel efficiency of the cars in `mtcars` different from a hypothesized value of 20 mpg? Only one sample of cars is available and the population standard deviation is unknown.
 
-You may change the variable or the null value below if you wish to explore.
-
-```{r problem3-prep}
+```{r}
 # Choose the variable and the null hypothesis value
 x   = mtcars$mpg    # change "mpg" if desired
 mu0 = 20            # change the hypothesized mean if desired
@@ -155,10 +131,8 @@ mu0 = 20            # change the hypothesized mean if desired
 describe(x)
 ```
 
-```{r problem3-ttest}
-# This problem compares one sample mean against a known constant.
-# Do not attempt to turn it into a two-group (independent or paired) test.
-# The correct call uses the mu argument.
+```{r}
+
 
 tt = t.test(x, mu = mu0)
 tt
@@ -168,24 +142,4 @@ d = cohens_d(x, mu = mu0)
 d
 ```
 
-**a. Is the test significant?** (α = .05, two-tailed)  
 
-*Write your answer here (include the *t* value, *df*, and *p*-value from the output).*
-
-**b. Cohen’s *d***  
-
-*Report the value and briefly interpret its magnitude (small / medium / large).*
-
-**c. Confidence interval**  
-
-*Report the 95 % CI for the mean. Does the interval contain the hypothesized value (μ₀)? What does that tell you?*
-
----
-
-## Submission notes
-
-- Knit this document to HTML (or PDF) and submit the rendered file together with the `.qmd` source.
-- Do **not** put your name anywhere in the document (anonymous grading).
-- All numerical results should come from the R output above; the written answers are short interpretations only.
-- If you experimented with different variables or deliberately tried the wrong flag setting, briefly note what you did so the grader can reproduce your numbers.
-```
