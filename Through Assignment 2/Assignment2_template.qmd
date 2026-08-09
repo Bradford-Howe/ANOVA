@@ -24,10 +24,10 @@ library(effectsize) # cohens_d()
 
 - Do not put your name anywhere in the document (anonymous grading).
 
-- All of you numerical results for questions 5-8 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
+- All of your numerical results for questions 5-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
 
 
-Q1. 	The incidence of schizophrenia in the population is 2% in adults. A proposed screening test claims to have a sensitivity of 96% (meaning that if someone is schizophrenic, the test indicates it 96% of the time). It also claims to have a 93% specificity (meaning that if someone is healthy, the test indicates it 93% of the time). There is a 7% likelihood that a healthy person’s test result is positive (indicating schizophrenia). What is the likelihood that someone is healthy given the test is positive (indicating schizophrenia)? 
+Q1. The incidence of schizophrenia in the population is 2% in adults. A proposed screening test claims to have a sensitivity of 96% (meaning that if someone is schizophrenic, the test indicates it 96% of the time). It also claims to have a 93% specificity (meaning that if someone is healthy, the test indicates it 93% of the time). There is a 7% likelihood that a healthy person’s test result is positive (indicating schizophrenia). What is the likelihood that someone is healthy given the test is positive (indicating schizophrenia)? 
 
 
 ## Overview & instructions for questions two through four.
@@ -36,7 +36,7 @@ Q1. 	The incidence of schizophrenia in the population is 2% in adults. A propose
 
 ---
 
-Q2.How does the Central Limit Theorem define the shape, or ‘nature’ of our sampling distributions of M₁ and M₂? How does the same theorem (not the variance sum law) define the shape, or ‘nature’ of the sampling distribution of mean differences between M₁ − M₂?
+Q2. How does the Central Limit Theorem define the shape, or ‘nature’ of our sampling distributions of M₁ and M₂? How does the same theorem (not the variance sum law) define the shape, or ‘nature’ of the sampling distribution of mean differences between M₁ − M₂?
 
 Q3. How does the Central Limit Theorem (CLT) allow us to calculate a relevant t-statistic via the sampling distribution of the difference scores?
 
@@ -110,7 +110,7 @@ d
 Q6. Two soporific drugs and extra sleep.  
 
 Research context:
-The `sleep` data set records the extra hours of sleep obtained by subjects under the effects of a drug during two nights (`group`from the data, night1 and night2 for us). Importantly, the same ten subjects participated each night. The label group1 is for the first night and group2 is for the second night.
+The `sleep` data set records the extra hours of sleep obtained by subjects under the effects of a drug during two nights (`group` from the data, night1 and night2 for us). Importantly, the same ten subjects participated each night. The label group1 is for the first night and group2 is for the second night.
 
 
 ```{r}
