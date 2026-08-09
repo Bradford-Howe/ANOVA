@@ -1,6 +1,6 @@
 ---
 title: "Assignment 2"
-format: html
+format: docx
 execute:
    echo: FALSE
    warning: FALSE
@@ -15,7 +15,8 @@ library(effectsize) # cohens_d()
 ```
 
 
----
+
+### A.I. generation of responses is not permitted and will be considered academic dishonesty.
 
 ### Submission notes
 
@@ -23,10 +24,27 @@ library(effectsize) # cohens_d()
 
 - Do not put your name anywhere in the document (anonymous grading).
 
-- All of your responses to questions 1-5 should be manually input to the Word document you generate here. All of you numerical results for questions 6-9 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
+- All of you numerical results for questions 5-8 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
 
 
-### Overview & Instructions for questions four through six.
+Q1. 	The incidence of schizophrenia in the population is 2% in adults. A proposed screening test claims to have a sensitivity of 96% (meaning that if someone is schizophrenic, the test indicates it 96% of the time). It also claims to have a 93% specificity (meaning that if someone is healthy, the test indicates it 93% of the time). There is a 7% likelihood that a healthy person’s test result is positive (indicating schizophrenia). What is the likelihood that someone is healthy given the test is positive (indicating schizophrenia)? 
+
+
+## Overview & instructions for questions two through four.
+
+### All three of these questions are about the independent groups t-test. Your answers should be short answers which contain formulae, not simply formulae.
+
+---
+
+Q2.How does the Central Limit Theorem define the shape, or ‘nature’ of our sampling distributions of M₁ and M₂? How does the same theorem (not the variance sum law) define the shape, or ‘nature’ of the sampling distribution of mean differences between M₁ − M₂?
+
+Q3. How does the Central Limit Theorem (CLT) allow us to calculate a relevant t-statistic via the sampling distribution of the difference scores?
+
+Q4. How does the sampling distribution of the difference scores allow us to obtain a p-value which corresponds to an obtained t-statistic?
+
+
+
+## Overview & instructions for questions five through seven.
 
 Your main task is to choose the correct test for the given research context and report the following items.
 
@@ -36,26 +54,25 @@ b. Cohen’s d and briefly interpret its magnitude (small / medium / large).
 
 c. Confidence interval- Report the 95 % CI for the mean difference. Does the interval contain 0? What does that tell you?
 
-The code deliberately lets you run different statistical processes by setting logical flags and uncommenting code. Setting the flags incorrectly or choosing the wrong code produces a statistically legal but conceptually wrong analysis — exactly the kind of mistake that is easy to make when the design is not carefully considered.
+The code deliberately lets you run different statistical processes by setting logical flags and uncommenting code. Setting the flags incorrectly or choosing the wrong code produces a statistically legal but conceptually wrong analysis.
 
 - Read the research context carefully.
 - Decide which testing method to use.
-- Uncomment code and set the flag(s) (i.e., `paired_flag = T` or `F`) accordingly.
+- Uncomment code and set the flag(s) accordingly (i.e., `Welch_flag = T` if you believe the experiment requires a Welch's correction).
 - Render this script into a Word document, then produce the items listed above (a through c).
 
-You may also change the outcome variable (column name) if you want to explore but be sure to restore the original variable because that is what will be graded.
+You may also change the outcome variable (column name) if you want to explore but be sure to restore the original variable for analysis and your responses.
 
 
 ---
 
-### 4. Transmission type and fuel efficiency  
+Q5. Transmission type and fuel efficiency.
+
 Research context:
 A researcher wants to know whether cars with automatic transmissions (`am == 0`) and cars with manual transmissions (`am == 1`) differ in fuel efficiency. The data come from the `mtcars` data set; each row is a different car. We will examine the `mpg` column.
 
-If you wish to explore, you may change "mpg" to another continuous variable ("hp", "wt", "qsec", "disp",etc.). Remember though, the assignment is to examine mpg.
-
 ```{r}
-# Creating groups and making them equal sizes.
+# Creating groups and arbitrarily making them equal sizes (don't do it this way in the wild).
 group1 = mtcars[mtcars$am == 0, c("am","mpg")]   # automatic 
 group2 = mtcars[mtcars$am == 1, c("am","mpg")]   # manual    
 group1 = group1[7:19,]
@@ -90,18 +107,20 @@ d
 
 ---
 
-### 5. Two soporific drugs and extra sleep  
+Q6. Two soporific drugs and extra sleep.  
 
-The `sleep` data set records the extra hours of sleep obtained by subjects under two different drugs (`group`). Importantly, the same ten subjects each received both drugs (the rows are ordered by subject ID). The question is whether the two drugs produce different amounts of extra sleep.
+Research context:
+The `sleep` data set records the extra hours of sleep obtained by subjects under the effects of a drug during two nights (`group`from the data, night1 and night2 for us). Importantly, the same ten subjects participated each night. The label group1 is for the first night and group2 is for the second night.
+
 
 ```{r}
 # Explicit vectors (order follows subject ID, so pairing is preserved)
-group1 = sleep$extra[sleep$group == 1]
-group2 = sleep$extra[sleep$group == 2]
+night1 = sleep$extra[sleep$group == 1]
+night2 = sleep$extra[sleep$group == 2]
 
 # Descriptives
-describe(group1)
-describe(group2)
+describe(night1)
+describe(night2)
 ```
 
 ```{r}
@@ -117,21 +136,21 @@ paired_flag = F
 Welch_flag = F
 
 # Running and reporting the t-test you have chosen.
-tt = t.test(group1, group2, paired = paired_flag, var.equal = !Welch_flag)
+tt = t.test(night1, night2, paired = paired_flag, var.equal = !Welch_flag)
 tt
 
 # Cohen's d uses the same paired flag
-d = cohens_d(group1, group2, paired = paired_flag)
+d = cohens_d(night1, night2, paired = paired_flag)
 d
 ```
 
 
 ---
 
-### 6. Average fuel efficiency versus a benchmark  
-Research context
+Q7. Average fuel efficiency versus a benchmark.  
 
-Is the average fuel efficiency of the cars in `mtcars` different from a hypothesized value of 17 mpg? Use the code below to get your t and its p-value. Then, compare that p-value to an alpha of .05 to determine if you have found a significant difference.
+Research context:
+Is the average fuel efficiency of the cars in `mtcars` different from a hypothesized value of 21 mpg? Use the code below to get your t and its p-value. Then, compare that p-value to an alpha of .05 to determine if you have found a significant difference.
 
 ```{r}
 # Levene's test is not applicable to a one-sample design. (No action needed here.)
@@ -143,35 +162,41 @@ x   = mtcars$mpg
 
 # This will give you all the descriptives about your data
 describe(x)
+```
 
+t-score
+``` {r}
 # choose the functions below to get you the correct t-test formula. Comment them out so they don't appear in your Word document.
 # for simplicity, one of the first four will give you your n.
-n = 17
-n = 17 - 1
+n = 21
+n = 21 - 1
 n = length(mtcars$mpg)
 n = length(mtcars$mpg) - 1
-17 # Just the number 17
-mean(17)
+21 # Just the number 21
+mean(21)
 mean(mtcars$mpg)
-var(17)
+var(21)
 var(mtcars$mpg)
-sd(17)
+sd(21)
 sd(mtcars$mpg)
 mean(mtcars$mpg)
-sqrt(17)
+sqrt(21)
 sqrt(mtcars$mpg)
 sqrt(n)
 
-# Put your chosen functions, values, or variables into the correct form to calculate your observed t.
+# Put your chosen functions, values, or variables into the correct form to calculate your observed t. Replace 1 and 2 with the numerator and denomenator formulas.
 
-numerator = 1
+t_numerator = 1
 
-denominator = 2
+t_denominator = 2
 
-t_score = numerator /  denominator
+t_score = t_numerator /  t_denominator
 
 t_score
+```
 
+p-value
+``` {r} 
 # Uncomment the next few lines to get your p-value.
 # df = n - 1
 # Tails = 2
@@ -179,6 +204,10 @@ t_score
 # pt(abs(t_score), df, lower.tail = F) * Tails
 
 
+```
+
+Cohen's d
+``` {r} 
 # Again, choose the correct functions, values, or variables for your numerator and denominator to get your Cohen's d.
  
 d_numerator = 1
@@ -188,5 +217,24 @@ d_denominator = 2
 cohens_d = abs(d_numerator / d_denominator)
 
 cohens_d
+```
+
+CI
+```{r}
+# Build the 95% CI for the mean the same way you built t and d.
+# Hint: you have already calculated your data mean and SE above.
+mean_mpg = 1
+se = 2
+
+# This will give you your critical value. No need to change anything.
+t_crit = qt(0.975, n - 1)   # two-tailed critical value for 95%
+
+# Put together the pieces you just made to get the upper and lower limits of your CI.
+ci_lower = 1
+ci_upper = 2
+
+# These lines will print your answer.
+paste("LL =", round(ci_lower, 3))
+paste("UL =", round(ci_upper, 3))
 ```
 
