@@ -1,0 +1,73 @@
+---
+title: "Lab7"
+format: html
+execute:
+   echo: false
+   warning: false
+   message: false
+---
+
+```{r}
+library(knitr)
+library(car)
+library(emmeans)
+library(effectsize)
+library(psych)
+library(tidyverse)
+
+```
+
+
+```{r}
+# Load your data
+CaffeineData = read.table("Lab7_Caffeine.csv",
+                          sep = ",",
+                          header = T)
+```
+
+```{r}
+# Set the categoical variable to be a 'factor' for R to calculate properly.
+CaffeineData$caffeine = factor(CaffeineData$caffeine)
+```
+
+```{r}
+
+# "contr.sum" is the correct option for typle type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+# "contr.treatment" is a reference group type contrast closer to a type I or
+# type II SS.
+#options(contrasts = c("contr.treatment", "contr.poly"))
+
+leveneTest(accuracy_scores ~ caffeine, data = CaffeineData)
+
+model = lm(accuracy_scores ~ caffeine, CaffeineData )
+
+summary(model)
+
+a = Anova(model, type = 3)
+kable(a)
+
+# Bonferroni correct multple t-tests
+a = emmeans(model, pairwise ~ caffeine, adjust = "bonferroni")
+a$contrasts %>% kable()
+
+# Equivanlent to LSD
+a = emmeans(model, pairwise ~ caffeine, adjust = "none")
+a$contrasts %>% kable()
+
+# Tukey
+a = emmeans(model, pairwise ~ caffeine, adjust = "tukey")
+a$contrasts %>% kable()
+
+```
+
+
+
+
+
+
+
+
+
+
+
