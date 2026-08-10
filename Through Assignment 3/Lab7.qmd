@@ -63,9 +63,31 @@ a$contrasts %>% kable()
 
 
 
+```{r}
+CafDataUnequal = CaffeineData[c(1:9,10:14,19:25),]
 
+leveneTest(accuracy_scores ~ caffeine, data = CafDataUnequal)
 
+model = lm(accuracy_scores ~ caffeine, CafDataUnequal )
 
+summary(model)
+
+a = Anova(model, type = 3)
+kable(a)
+
+# Bonferroni correct multple t-tests
+a = emmeans(model, pairwise ~ caffeine, adjust = "bonferroni")
+a$contrasts %>% kable()
+
+# Equivanlent to LSD
+a = emmeans(model, pairwise ~ caffeine, adjust = "none")
+a$contrasts %>% kable()
+
+# Tukey
+a = emmeans(model, pairwise ~ caffeine, adjust = "tukey")
+a$contrasts %>% kable()
+
+```
 
 
 

@@ -249,6 +249,191 @@ F-statistic: 6.162 on 2 and 24 DF,  p-value: 0.006921</code></pre>
 </table>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Levene's Test for Homogeneity of Variance (center = median)
+      Df F value Pr(&gt;F)
+group  2  0.1478 0.8636
+      18               </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = accuracy_scores ~ caffeine, data = CafDataUnequal)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.8571 -4.8000 -0.6667  5.1429 11.3333 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   10.775      1.292   8.340 1.35e-07 ***
+caffeine1      5.892      1.701   3.463  0.00278 ** 
+caffeine2     -5.975      1.969  -3.035  0.00712 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.753 on 18 degrees of freedom
+Multiple R-squared:  0.438, Adjusted R-squared:  0.3755 
+F-statistic: 7.013 on 2 and 18 DF,  p-value: 0.005597</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Sum Sq</th>
+<th style="text-align: right;">Df</th>
+<th style="text-align: right;">F value</th>
+<th style="text-align: right;">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">(Intercept)</td>
+<td style="text-align: right;">2301.5457</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">69.549778</td>
+<td style="text-align: right;">0.0000001</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">caffeine</td>
+<td style="text-align: right;">464.1524</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">7.013047</td>
+<td style="text-align: right;">0.0055965</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Residuals</td>
+<td style="text-align: right;">595.6571</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">contrast</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">t.ratio</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">caffeine1 - caffeine2</td>
+<td style="text-align: right;">11.866667</td>
+<td style="text-align: right;">3.208630</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">3.698359</td>
+<td style="text-align: right;">0.0049340</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">caffeine1 - caffeine3</td>
+<td style="text-align: right;">5.809524</td>
+<td style="text-align: right;">2.899023</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">2.003959</td>
+<td style="text-align: right;">0.1810801</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">caffeine2 - caffeine3</td>
+<td style="text-align: right;">-6.057143</td>
+<td style="text-align: right;">3.368360</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">-1.798247</td>
+<td style="text-align: right;">0.2667932</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">contrast</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">t.ratio</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">caffeine1 - caffeine2</td>
+<td style="text-align: right;">11.866667</td>
+<td style="text-align: right;">3.208630</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">3.698359</td>
+<td style="text-align: right;">0.0016447</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">caffeine1 - caffeine3</td>
+<td style="text-align: right;">5.809524</td>
+<td style="text-align: right;">2.899023</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">2.003959</td>
+<td style="text-align: right;">0.0603600</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">caffeine2 - caffeine3</td>
+<td style="text-align: right;">-6.057143</td>
+<td style="text-align: right;">3.368360</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">-1.798247</td>
+<td style="text-align: right;">0.0889311</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">contrast</th>
+<th style="text-align: right;">estimate</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">df</th>
+<th style="text-align: right;">t.ratio</th>
+<th style="text-align: right;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">caffeine1 - caffeine2</td>
+<td style="text-align: right;">11.866667</td>
+<td style="text-align: right;">3.208630</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">3.698359</td>
+<td style="text-align: right;">0.0044563</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">caffeine1 - caffeine3</td>
+<td style="text-align: right;">5.809524</td>
+<td style="text-align: right;">2.899023</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">2.003959</td>
+<td style="text-align: right;">0.1399204</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">caffeine2 - caffeine3</td>
+<td style="text-align: right;">-6.057143</td>
+<td style="text-align: right;">3.368360</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">-1.798247</td>
+<td style="text-align: right;">0.1983904</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 
 </main>
 <!-- /main column -->
