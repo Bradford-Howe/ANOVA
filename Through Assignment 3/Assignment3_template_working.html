@@ -72,12 +72,14 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><p>Render this document into a word document, input your answers, and submit the finished word document together with this <code>.qmd</code> source.</p></li>
 <li><p>Do not put your name anywhere in the document (anonymous grading).</p></li>
-<li><p>All of your numerical results for questions 5-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and the short interpretations which are requested below.</p></li>
+<li><p>All of your numerical results for questions 3-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and the short interpretations which are requested below.</p></li>
 </ul>
-<ol start="2" type="1">
-<li>A researcher conducts a taste-study on how much people like three different cookies. Five participants are assigned to one of three conditions (vanilla cookie, chocolate cookie and peanut butter cookie). Each participant rates how much they like their cookie on a scale from 1 (not at all) to 8 (very much).</li>
-</ol>
-<p>A. Compute the ANOVA.</p>
+<p>Q1. Explain the core logic of the ANOVA that follows from the CLT: Why, if the CLT formula is true, should two different estimates of the variance of a sampling distribution give the same result under the null hypothesis?</p>
+<hr>
+<p>Q2. What role does Levene’s test play in allowing us to use MSerror as a legitimate estimate of the population-level variance that appears in the CLT formula?</p>
+<hr>
+<p>Q3. A researcher conducts a taste-study on how much people like three different cookies. Five participants are assigned to one of three conditions (vanilla cookie, chocolate cookie and peanut butter cookie). Each participant rates how much they like their cookie on a scale from 1 (not at all) to 8 (very much).</p>
+<p>A. Compute the ANOVA and report the finding of the omnibus in a single sentence.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -130,6 +132,11 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>B. Calculate eta squared. Describe what the effect size is measuring? (30 points)</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Eta squared: " "0.581"        </code></pre>
+</div>
+</div>
 <p>C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -140,7 +147,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 P value adjustment: bonferroni method for 2 tests </code></pre>
 </div>
 </div>
-<p>D. Using Tukey a test, analyze which groups differ significantly from each other.</p>
+<p>D. Using Tukey a test, analyze which groups differ significantly from each other. Manually calculate this as you did in lab. Show your work.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -171,6 +178,8 @@ P value adjustment: bonferroni method for 2 tests </code></pre>
 </table>
 </div>
 </div>
+<hr>
+<p>Q4. A researcher randomly assigned 20 people to one of two conditions. Analyze the data as both a t-test and an ANOVA. What is the relationship between F and t?</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -249,6 +258,8 @@ Residuals    134.2 18
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
+<hr>
+<p>Q5. A researcher conducted an analysis on three groups and computed two comparisons. Below are the coefficients for the individual comparisons. Are they orthogonal? Show your work.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
