@@ -30,6 +30,7 @@ CaffeineData = read.table("Lab7_Caffeine.csv",
 CaffeineData$caffeine = factor(CaffeineData$caffeine)
 ```
 
+## Equal n
 ```{r}
 
 # "contr.sum" is the correct option for typle type III SS
@@ -40,56 +41,117 @@ options(contrasts = c("contr.sum", "contr.poly"))
 
 leveneTest(accuracy_scores ~ caffeine, data = CaffeineData)
 
-model = lm(accuracy_scores ~ caffeine, CaffeineData )
+CaffeineANOVA = lm(accuracy_scores ~ caffeine, CaffeineData )
 
-summary(model)
+summary(CaffeineANOVA)
 
-a = Anova(model, type = 3)
+a = Anova(CaffeineANOVA, type = 3)
 kable(a)
+```
 
+Bonferroni
+```{r}
 # Bonferroni correct multple t-tests
-a = emmeans(model, pairwise ~ caffeine, adjust = "bonferroni")
+a = emmeans(CaffeineANOVA, pairwise ~ caffeine, adjust = "bonferroni")
 a$contrasts %>% kable()
+```
 
+LSD (equal to none)
+```{r}
 # Equivanlent to LSD
-a = emmeans(model, pairwise ~ caffeine, adjust = "none")
+a = emmeans(CaffeineANOVA, pairwise ~ caffeine, adjust = "none")
 a$contrasts %>% kable()
+```
 
+Tukey
+```{r}
 # Tukey
-a = emmeans(model, pairwise ~ caffeine, adjust = "tukey")
+a = emmeans(CaffeineANOVA, pairwise ~ caffeine, adjust = "tukey")
 a$contrasts %>% kable()
 
 ```
 
+---
 
-
+## Unequal n
 ```{r}
 CafDataUnequal = CaffeineData[c(1:9,10:14,19:25),]
 
 leveneTest(accuracy_scores ~ caffeine, data = CafDataUnequal)
 
-model = lm(accuracy_scores ~ caffeine, CafDataUnequal )
+CaffeineANOVAUnEq = lm(accuracy_scores ~ caffeine, CafDataUnequal )
 
-summary(model)
+summary(CaffeineANOVAUnEq)
 
-a = Anova(model, type = 3)
+a = Anova(CaffeineANOVAUnEq, type = 3)
 kable(a)
+```
 
+Bonferroni
+```{r}
 # Bonferroni correct multple t-tests
-a = emmeans(model, pairwise ~ caffeine, adjust = "bonferroni")
+a = emmeans(CaffeineANOVAUnEq, pairwise ~ caffeine, adjust = "bonferroni")
 a$contrasts %>% kable()
+```
 
+LSD (equal to none)
+```{r}
 # Equivanlent to LSD
-a = emmeans(model, pairwise ~ caffeine, adjust = "none")
+a = emmeans(CaffeineANOVAUnEq, pairwise ~ caffeine, adjust = "none")
 a$contrasts %>% kable()
+```
 
+Tukey
+```{r}
 # Tukey
-a = emmeans(model, pairwise ~ caffeine, adjust = "tukey")
+a = emmeans(CaffeineANOVAUnEq, pairwise ~ caffeine, adjust = "tukey")
 a$contrasts %>% kable()
 
 ```
 
+### Getting p and critical values for hand calculations
 
+Probability (p-value) of a t-score.
+```{r}
+t_score = .376
+df = 14
+Tails = 2
 
+pt(t_score,df, lower.tail = F) * Tails
+```
 
+Get a t-score (t-crit) from a probablity value (p-value or alpha)
+```{r}
+probability = .025
+df = 24
+
+qt(probability, df, lower.tail = F)
+```
+
+Probability (p-value) of an f-score.
+```{r}
+f_score = 7.946          
+df1 = 1                # numerator df
+df2 = 24               # denominator df
+pf(f_score, df1, df2, lower.tail = FALSE)
+```
+
+Get an f-score (f-crit) from a probablity value (p-value or alpha)
+```{r}
+probability = .05      
+df1 = 1                # numerator df
+df2 = 24               # denominator df
+qf(probability, df1, df2, lower.tail = FALSE)
+```
+Checking your contrast work.
+```{r}
+
+MyContrasts = list("Contrast1" = c(1, -0.5, -0.5),
+                   "Contrast2" = c(0,  0.5, -0.5)
+                   )
+
+contrast(emmeans(CaffeineANOVA, ~ caffeine),
+         MyContrasts,
+         adjust = "none")   # or "bonferroni", "holm", etc.
+```
 

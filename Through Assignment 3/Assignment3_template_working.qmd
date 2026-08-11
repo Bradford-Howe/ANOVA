@@ -1,0 +1,128 @@
+---
+title: "Assignment 3"
+format: html
+execute:
+   echo: false
+   warning: false
+   message: false
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(car)
+library(psych)
+library(emmeans)
+```
+
+
+### A.I. generation of responses is not permitted and will be considered academic dishonesty.
+
+### Submission notes
+
+- Render this document into a word document, input your answers, and submit the finished word document together with this `.qmd` source.
+
+- Do not put your name anywhere in the document (anonymous grading).
+
+- All of your numerical results for questions 5-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
+
+
+
+Q2. A researcher conducts a taste-study on how much people like three different cookies. Five participants are assigned to one of three conditions (vanilla cookie, chocolate cookie and peanut butter cookie). Each participant rates how much they like their cookie on a scale from 1 (not at all) to 8 (very much).
+
+A. Compute the ANOVA.
+```{r}
+cookies = read.table("A2_Q2_data.csv",sep = ",", header = T)
+
+kable(cookies, align = 'c')
+
+cookies_long = cookies %>% 
+  pivot_longer(cols = everything(),
+               names_to = "Group",
+               values_to = "Score")
+
+cookieANOVAmodel = lm(Score~Group,cookies_long)
+
+Anova(cookieANOVAmodel, type = 3)
+
+```
+
+B. Calculate eta squared. Describe what the effect size is measuring? (30 points)
+```{r}
+etaSq = 31.6/(31.6+22.8)
+
+
+```
+
+C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.
+```{r}
+
+MyContrasts = list("Contrast1" = c(1, -0.5, -0.5),
+                   "Contrast2" = c(0,  0.5, -0.5)
+                   )
+
+contrast(emmeans(cookieANOVAmodel, ~ Group),
+         MyContrasts,
+         adjust = "bonferroni")
+```
+
+
+D. Using Tukey a test, analyze which groups differ significantly from each other.
+```{r}
+describe(cookies)[2:3] %>% kable(align = 'c')
+
+
+
+```
+
+
+
+
+```{r}
+a = read.table("A2_Q3_data.csv", sep = ",", header = T)
+
+kable(a, align = 'c')
+
+t.test(a$Group1,a$Group2, var.equal = T)
+
+a_long = a %>% 
+  pivot_longer(cols = everything(),
+               names_to = "Group",
+               values_to = "Score")
+
+Q3ANOVAmodel = lm(Score~Group,a_long)
+
+Anova(Q3ANOVAmodel, type = 3)
+
+
+```
+
+
+
+
+
+
+```{r}
+
+ContrastCoefs = data.frame(Group1 = c("0", "+1"),
+                             Group2 = c("+1", "-1/2"),
+                           Group3 = c("-1","-1/2")
+                              )
+rownames(ContrastCoefs) = c("Contrast 1 : ","Contrast 2 : ")
+
+kable(ContrastCoefs, align = 'c')
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+

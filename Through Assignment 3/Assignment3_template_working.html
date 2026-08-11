@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab7</title>
+<title>Assignment 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,18 +23,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Lab7_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lab7_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Lab7_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Lab7_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="Lab7_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lab7_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Lab7_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Lab7_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lab7_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Lab7_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Lab7_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Lab7_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Assignment3_template_working_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Assignment3_template_working_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Assignment3_template_working_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Assignment3_template_working_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Assignment3_template_working_files/libs/quarto-html/popper.min.js"></script>
+<script src="Assignment3_template_working_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Assignment3_template_working_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Assignment3_template_working_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Assignment3_template_working_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Assignment3_template_working_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Assignment3_template_working_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Assignment3_template_working_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab7</h1>
+<h1 class="title">Assignment 3</h1>
 </div>
 
 
@@ -64,459 +64,219 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="equal-n" class="level2">
-<h2 class="anchored" data-anchor-id="equal-n">Equal n</h2>
+<section id="a.i.-generation-of-responses-is-not-permitted-and-will-be-considered-academic-dishonesty." class="level3">
+<h3 class="anchored" data-anchor-id="a.i.-generation-of-responses-is-not-permitted-and-will-be-considered-academic-dishonesty.">A.I. generation of responses is not permitted and will be considered academic dishonesty.</h3>
+</section>
+<section id="submission-notes" class="level3">
+<h3 class="anchored" data-anchor-id="submission-notes">Submission notes</h3>
+<ul>
+<li><p>Render this document into a word document, input your answers, and submit the finished word document together with this <code>.qmd</code> source.</p></li>
+<li><p>Do not put your name anywhere in the document (anonymous grading).</p></li>
+<li><p>All of your numerical results for questions 5-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and the short interpretations which are requested below.</p></li>
+</ul>
+<ol start="2" type="1">
+<li>A researcher conducts a taste-study on how much people like three different cookies. Five participants are assigned to one of three conditions (vanilla cookie, chocolate cookie and peanut butter cookie). Each participant rates how much they like their cookie on a scale from 1 (not at all) to 8 (very much).</li>
+</ol>
+<p>A. Compute the ANOVA.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Vanilla</th>
+<th style="text-align: center;">Chocolate</th>
+<th style="text-align: center;">PeanutButter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type III tests)
+
+Response: Score
+            Sum Sq Df F value    Pr(&gt;F)    
+(Intercept)   96.8  1 50.9474 1.184e-05 ***
+Group         31.6  2  8.3158   0.00542 ** 
+Residuals     22.8 12                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>B. Calculate eta squared. Describe what the effect size is measuring? (30 points)</p>
+<p>C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  2       0      1
-      24               </code></pre>
+<pre><code> contrast  estimate    SE df t.ratio p.value
+ Contrast1      0.9 0.755 12   1.192  0.5125
+ Contrast2      1.7 0.436 12   3.900  0.0042
+
+P value adjustment: bonferroni method for 2 tests </code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = accuracy_scores ~ caffeine, data = CaffeineData)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--6.6667 -6.6667 -0.6667  5.3333 11.3333 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  11.3333     1.1706   9.681 9.22e-10 ***
-caffeine1    -4.6667     1.6555  -2.819   0.0095 ** 
-caffeine2    -0.6667     1.6555  -0.403   0.6907    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.083 on 24 degrees of freedom
-Multiple R-squared:  0.3393,    Adjusted R-squared:  0.2842 
-F-statistic: 6.162 on 2 and 24 DF,  p-value: 0.006921</code></pre>
 </div>
+<p>D. Using Tukey a test, analyze which groups differ significantly from each other.</p>
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Sum Sq</th>
-<th style="text-align: right;">Df</th>
-<th style="text-align: right;">F value</th>
-<th style="text-align: right;">Pr(&gt;F)</th>
+<th style="text-align: center;">n</th>
+<th style="text-align: center;">mean</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">3468</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">93.729730</td>
-<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Vanilla</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">1.8</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">caffeine</td>
-<td style="text-align: right;">456</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6.162162</td>
-<td style="text-align: right;">0.0069209</td>
+<td style="text-align: left;">Chocolate</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">4.4</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Residuals</td>
-<td style="text-align: right;">888</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">PeanutButter</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">5.2</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Bonferroni</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">contrast</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">t.ratio</th>
-<th style="text-align: right;">p.value</th>
+<th style="text-align: center;">Group1</th>
+<th style="text-align: center;">Group2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">caffeine1 - caffeine2</td>
-<td style="text-align: right;">-4</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-1.394972</td>
-<td style="text-align: right;">0.5274045</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">12</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">caffeine1 - caffeine3</td>
-<td style="text-align: right;">-10</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-3.487429</td>
-<td style="text-align: right;">0.0057016</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">caffeine2 - caffeine3</td>
-<td style="text-align: right;">-6</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-2.092458</td>
-<td style="text-align: right;">0.1414489</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">11</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<p>LSD (equal to none)</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">contrast</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">t.ratio</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">caffeine1 - caffeine2</td>
-<td style="text-align: right;">-4</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-1.394972</td>
-<td style="text-align: right;">0.1758015</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">caffeine1 - caffeine3</td>
-<td style="text-align: right;">-10</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-3.487429</td>
-<td style="text-align: right;">0.0019005</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">caffeine2 - caffeine3</td>
-<td style="text-align: right;">-6</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-2.092458</td>
-<td style="text-align: right;">0.0471496</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Tukey</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">contrast</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">t.ratio</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">caffeine1 - caffeine2</td>
-<td style="text-align: right;">-4</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-1.394972</td>
-<td style="text-align: right;">0.3592803</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">caffeine1 - caffeine3</td>
-<td style="text-align: right;">-10</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-3.487429</td>
-<td style="text-align: right;">0.0052041</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">caffeine2 - caffeine3</td>
-<td style="text-align: right;">-6</td>
-<td style="text-align: right;">2.867442</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">-2.092458</td>
-<td style="text-align: right;">0.1126402</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<hr>
-</section>
-<section id="unequal-n" class="level2">
-<h2 class="anchored" data-anchor-id="unequal-n">Unequal n</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  2  0.0294 0.9711
-      18               </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-Call:
-lm(formula = accuracy_scores ~ caffeine, data = CafDataUnequal)
+    Two Sample t-test
 
-Residuals:
-    Min      1Q  Median      3Q     Max 
--6.8571 -6.0000 -0.6667  5.3333 11.3333 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   11.175      1.411   7.917 2.84e-07 ***
-caffeine1     -4.508      1.859  -2.425    0.026 *  
-caffeine2     -1.175      2.151  -0.546    0.592    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 6.284 on 18 degrees of freedom
-Multiple R-squared:  0.3679,    Adjusted R-squared:  0.2977 
-F-statistic: 5.238 on 2 and 18 DF,  p-value: 0.01611</code></pre>
+data:  a$Group1 and a$Group2
+t = -4.586, df = 18, p-value = 0.0002292
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -8.165458 -3.034542
+sample estimates:
+mean of x mean of y 
+      4.7      10.3 </code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Anova Table (Type III tests)
+
+Response: Score
+            Sum Sq Df F value    Pr(&gt;F)    
+(Intercept)  220.9  1  29.629 3.594e-05 ***
+Group        156.8  1  21.031 0.0002292 ***
+Residuals    134.2 18                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Sum Sq</th>
-<th style="text-align: right;">Df</th>
-<th style="text-align: right;">F value</th>
-<th style="text-align: right;">Pr(&gt;F)</th>
+<th style="text-align: center;">Group1</th>
+<th style="text-align: center;">Group2</th>
+<th style="text-align: center;">Group3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">2475.6044</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">62.686124</td>
-<td style="text-align: right;">0.0000003</td>
+<td style="text-align: left;">Contrast 1 :</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">+1</td>
+<td style="text-align: center;">-1</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">caffeine</td>
-<td style="text-align: right;">413.7143</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5.237942</td>
-<td style="text-align: right;">0.0161123</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Residuals</td>
-<td style="text-align: right;">710.8571</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">Contrast 2 :</td>
+<td style="text-align: center;">+1</td>
+<td style="text-align: center;">-1/2</td>
+<td style="text-align: center;">-1/2</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>Bonferroni</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 16%">
-<col style="width: 13%">
-<col style="width: 4%">
-<col style="width: 16%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">contrast</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">t.ratio</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">caffeine1 - caffeine2</td>
-<td style="text-align: right;">-3.333333</td>
-<td style="text-align: right;">3.505199</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-0.9509684</td>
-<td style="text-align: right;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">caffeine1 - caffeine3</td>
-<td style="text-align: right;">-10.190476</td>
-<td style="text-align: right;">3.166975</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-3.2177318</td>
-<td style="text-align: right;">0.0143181</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">caffeine2 - caffeine3</td>
-<td style="text-align: right;">-6.857143</td>
-<td style="text-align: right;">3.679692</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-1.8635098</td>
-<td style="text-align: right;">0.2363663</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>LSD (equal to none)</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 16%">
-<col style="width: 13%">
-<col style="width: 4%">
-<col style="width: 16%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">contrast</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">t.ratio</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">caffeine1 - caffeine2</td>
-<td style="text-align: right;">-3.333333</td>
-<td style="text-align: right;">3.505199</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-0.9509684</td>
-<td style="text-align: right;">0.3542159</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">caffeine1 - caffeine3</td>
-<td style="text-align: right;">-10.190476</td>
-<td style="text-align: right;">3.166975</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-3.2177318</td>
-<td style="text-align: right;">0.0047727</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">caffeine2 - caffeine3</td>
-<td style="text-align: right;">-6.857143</td>
-<td style="text-align: right;">3.679692</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-1.8635098</td>
-<td style="text-align: right;">0.0787888</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Tukey</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 16%">
-<col style="width: 13%">
-<col style="width: 4%">
-<col style="width: 16%">
-<col style="width: 15%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">contrast</th>
-<th style="text-align: right;">estimate</th>
-<th style="text-align: right;">SE</th>
-<th style="text-align: right;">df</th>
-<th style="text-align: right;">t.ratio</th>
-<th style="text-align: right;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">caffeine1 - caffeine2</td>
-<td style="text-align: right;">-3.333333</td>
-<td style="text-align: right;">3.505199</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-0.9509684</td>
-<td style="text-align: right;">0.6161098</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">caffeine1 - caffeine3</td>
-<td style="text-align: right;">-10.190476</td>
-<td style="text-align: right;">3.166975</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-3.2177318</td>
-<td style="text-align: right;">0.0126073</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">caffeine2 - caffeine3</td>
-<td style="text-align: right;">-6.857143</td>
-<td style="text-align: right;">3.679692</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">-1.8635098</td>
-<td style="text-align: right;">0.1780465</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<section id="getting-p-and-critical-values-for-hand-calculations" class="level3">
-<h3 class="anchored" data-anchor-id="getting-p-and-critical-values-for-hand-calculations">Getting p and critical values for hand calculations</h3>
-<p>Probability (p-value) of a t-score.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7125532</code></pre>
-</div>
-</div>
-<p>Get a t-score (t-crit) from a probablity value (p-value or alpha)</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.063899</code></pre>
-</div>
-</div>
-<p>Probability (p-value) of an f-score.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.009503027</code></pre>
-</div>
-</div>
-<p>Get an f-score (f-crit) from a probablity value (p-value or alpha)</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.259677</code></pre>
-</div>
-</div>
-<p>Checking your contrast work.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code> contrast  estimate   SE df t.ratio p.value
- Contrast1       -7 2.48 24  -2.819  0.0095
- Contrast2       -3 1.43 24  -2.092  0.0471</code></pre>
-</div>
-</div>
-</section>
 </section>
 
 </main>
