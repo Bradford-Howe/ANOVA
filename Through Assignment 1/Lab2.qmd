@@ -50,8 +50,8 @@ BoxTop = ThirdQuart
 BoxBottom = FirstQuart
 UpperWhisker = ThirdQuart + IQR * 1.5
 LowerWhisker = FirstQuart - IQR * 1.5
-# UpperWhisker = max(iris$Sepal.Length)
-# LowerWhisker = min(iris$Sepal.Length)
+UpperWhisker = max(iris$Sepal.Length)
+LowerWhisker = min(iris$Sepal.Length)
 
 abline(h = Midline)
 abline(h = BoxTop)

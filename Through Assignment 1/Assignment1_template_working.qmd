@@ -1,6 +1,6 @@
 ---
 title: "Assignment1_Template"
-format: html
+format: docx
 execute:
    echo: false
    warning: false
