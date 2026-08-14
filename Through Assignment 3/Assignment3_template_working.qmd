@@ -78,7 +78,7 @@ describe(cookies)[2:3] %>% kable(align = 'c')
 
 ---
 
-Q4. A researcher randomly assigned 20 people to one of two conditions. Analyze the data as both a t-test and an ANOVA. What is the relationship between F and t?
+Q4. A researcher randomly assigned 20 people to one of two conditions. Analyze the data as both a t-test and an ANOVA. What is the relationship between the F-statistic and the t-statistic?
 ```{r}
 a = read.table("A2_Q3_data.csv", sep = ",", header = T)
 
