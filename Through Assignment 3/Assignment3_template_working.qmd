@@ -36,7 +36,7 @@ Q2. What role does Levene’s test play in allowing us to use MSerror as a legit
 
 Q3. A researcher conducts a taste-study on how much people like three different cookies. Five participants are assigned to one of three conditions (vanilla cookie, chocolate cookie and peanut butter cookie). Each participant rates how much they like their cookie on a scale from 1 (not at all) to 8 (very much).
 
-A. Compute the ANOVA and report the finding of the omnibus in a single sentence.
+A. Compute the ANOVA and report the Levene test in one sentence and the finding of the omnibus in one additional sentence.
 ```{r}
 cookies = read.table("A2_Q2_data.csv",sep = ",", header = T)
 
@@ -47,7 +47,12 @@ cookies_long = cookies %>%
                names_to = "Group",
                values_to = "Score")
 
+cookies_long$Group = factor(cookies_long$Group,
+                            levels = c("Vanilla", "Chocolate", "PeanutButter"))
+
 cookieANOVAmodel = lm(Score~Group,cookies_long)
+
+leveneTest(Score~Group,cookies_long)
 
 Anova(cookieANOVAmodel, type = 3)
 ```
