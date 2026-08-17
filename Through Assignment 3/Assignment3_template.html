@@ -23,18 +23,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Assignment3_template_working_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Assignment3_template_working_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Assignment3_template_working_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Assignment3_template_working_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="Assignment3_template_working_files/libs/quarto-html/popper.min.js"></script>
-<script src="Assignment3_template_working_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Assignment3_template_working_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Assignment3_template_working_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Assignment3_template_working_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Assignment3_template_working_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Assignment3_template_working_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Assignment3_template_working_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Assignment3_template_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Assignment3_template_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Assignment3_template_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Assignment3_template_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Assignment3_template_files/libs/quarto-html/popper.min.js"></script>
+<script src="Assignment3_template_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Assignment3_template_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Assignment3_template_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Assignment3_template_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Assignment3_template_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Assignment3_template_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Assignment3_template_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -148,17 +148,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>B. Calculate eta squared. Describe what the effect size is measuring? (30 points)</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Eta squared: " "0.581"        </code></pre>
+<pre><code>[1] "Eta squared: " "0.5"          </code></pre>
 </div>
 </div>
 <p>C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> contrast  estimate    SE df t.ratio p.value
- Contrast1     -3.0 0.755 12  -3.974  0.0037
- Contrast2     -0.4 0.436 12  -0.918  0.7537
-
-P value adjustment: bonferroni method for 2 tests </code></pre>
+<pre><code> contrast  estimate SE df t.ratio p.value
+ Contrast1        0  0 12     NaN      NA
+ Contrast2        0  0 12     NaN      NA</code></pre>
 </div>
 </div>
 <p>D. Using Tukey a test, analyze which groups differ significantly from each other. Manually calculate this as you did in lab. Show your work. It would probably be easiest to do so in tables in Word.</p>
@@ -196,7 +194,7 @@ P value adjustment: bonferroni method for 2 tests </code></pre>
 </div>
 </div>
 <hr>
-<p>Q4. A researcher randomly assigned 20 people to one of two conditions.Examine the results of both a t-test and an ANOVA on the same data. What is the relationship between the F-statistic and the t-statistic?</p>
+<p>Q4. A researcher randomly assigned 20 people to one of two conditions. Examine the results of both a t-test and an ANOVA on the same data. What is the relationship between the F-statistic and the t-statistic?</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">

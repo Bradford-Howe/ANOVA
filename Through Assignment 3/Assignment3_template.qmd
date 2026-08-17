@@ -1,6 +1,6 @@
 ---
 title: "Assignment 3"
-format: html
+format: docx
 execute:
    echo: false
    warning: false
@@ -40,7 +40,6 @@ A. Compute the ANOVA and report the Levene test in one sentence and the finding 
 
 ### Your data
 ```{r}
-
 cookies = read.table("A2_Q2_data.csv",sep = ",", header = T)
 
 kable(cookies, align = 'c')
@@ -62,13 +61,15 @@ cookieANOVAmodel = lm(Score~Group,cookies_long)
 leveneTest(Score~Group,cookies_long)
 
 Anova(cookieANOVAmodel, type = 3)
+
 ```
 
 
 B. Calculate eta squared. Describe what the effect size is measuring? (30 points)
 ```{r}
-numerator = 31.6
-denominator = 31.6 + 22.8
+# Get the correct values from your output and put them into the correct variables
+numerator = 1
+denominator = 2
 
 # This calculate eta squared from the values you input above. No need to adjust.
 etaSq = numerator/denominator
@@ -77,18 +78,18 @@ etaSq = numerator/denominator
 paste(c("Eta squared: ", round(etaSq,3)))
 ```
 
-
 C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.
 ```{r}
 # Replace the zeros with your coefficients in order to calculate a set of
 # contrasts. If you wish to add aditional contrasts, you may.
-MyContrasts = list("Contrast1" = c(1, -0.5, -0.5),
-                   "Contrast2" = c(0,  0.5, -0.5)
+MyContrasts = list("Contrast1" = c(0, 0, 0),
+                   "Contrast2" = c(0, 0, 0)
                    )
+
 # Change "none" to "bonferroni" to adjust the p-values for the contrasts.
 contrast(emmeans(cookieANOVAmodel, ~ Group),
          MyContrasts,
-         adjust = "bonferroni")
+         adjust = "none")
 ```
 
 
@@ -101,7 +102,7 @@ describe(cookies)[2:3] %>% kable(align = 'c')
 
 ---
 
-Q4. A researcher randomly assigned 20 people to one of two conditions.Examine the results of both a t-test and an ANOVA on the same data. What is the relationship between the F-statistic and the t-statistic?
+Q4. A researcher randomly assigned 20 people to one of two conditions. Examine the results of both a t-test and an ANOVA on the same data. What is the relationship between the F-statistic and the t-statistic?
 ```{r}
 a = read.table("A2_Q3_data.csv", sep = ",", header = T)
 
