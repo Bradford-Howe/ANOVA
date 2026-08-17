@@ -1,0 +1,64 @@
+---
+title: "Lab 8"
+format: html
+execute:
+   echo: false
+   warning: false
+---
+```{r}
+library(tidyverse)
+library(knitr)
+library(car)
+library(psych)
+library(emmeans)
+```
+
+
+Get an f-score (f-crit) from a probablity value (p-value or alpha)
+```{r}
+probability = .05      
+df1 = 1                # numerator df
+df2 = 24               # denominator df
+qf(probability, df1, df2, lower.tail = FALSE)
+```
+
+Probability (p-value) of an f-score.
+```{r}
+f_score = 7.946          
+df1 = 1                # numerator df
+df2 = 24               # denominator df
+pf(f_score, df1, df2, lower.tail = FALSE)
+```
+
+```{r}
+DisplayData = read.table("Lab8_Displays.csv",
+                          sep = ",",
+                          header = T,
+                         colClasses  = c("factor", "factor", "integer"))
+kable(DisplayData)
+```
+
+```{r}
+# "contr.sum" is the correct option for typle type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+
+leveneTest(LivesLost ~ Resolution * LightLevel, DisplayData)
+
+DisplayLM = lm(LivesLost ~ Resolution * LightLevel, DisplayData)
+
+summary(DisplayLM)
+
+a = Anova(DisplayLM, type = 3)
+kable(a)
+```
+
+```{r}
+
+```
+
+
+
+
+
+
+
