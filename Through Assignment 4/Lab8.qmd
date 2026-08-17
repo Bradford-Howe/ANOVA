@@ -4,6 +4,7 @@ format: html
 execute:
    echo: false
    warning: false
+   fig-dpi: 300
 ---
 ```{r}
 library(tidyverse)
@@ -11,6 +12,8 @@ library(knitr)
 library(car)
 library(psych)
 library(emmeans)
+library(phia)
+library(interactions)
 ```
 
 
@@ -37,7 +40,7 @@ DisplayData = read.table("Lab8_Displays.csv",
                          colClasses  = c("factor", "factor", "integer"))
 kable(DisplayData)
 ```
-
+---
 ```{r}
 # "contr.sum" is the correct option for typle type III SS
 options(contrasts = c("contr.sum", "contr.poly"))
@@ -45,20 +48,36 @@ options(contrasts = c("contr.sum", "contr.poly"))
 leveneTest(LivesLost ~ Resolution * LightLevel, DisplayData)
 
 DisplayLM = lm(LivesLost ~ Resolution * LightLevel, DisplayData)
-
+```
+---
+```{r}
 summary(DisplayLM)
 
 a = Anova(DisplayLM, type = 3)
 kable(a)
 ```
-
+---
 ```{r}
-
+# Test the simple effect of Resolution at each level of LightLevel
+testInteractions(DisplayLM, 
+                 fixed  = "LightLevel", 
+                 across = "Resolution")
 ```
+---
+```{r}
+# Interaction plots
+cat_plot(DisplayLM, 
+         pred = Resolution, 
+         modx = LightLevel,
+         geom = "line",          # classic line plot 
+         interval = F)        # confidence intervals
 
-
-
-
+cat_plot(DisplayLM, 
+         pred = LightLevel, 
+         modx = Resolution,
+         geom = "line",
+         interval = F) 
+```
 
 
 

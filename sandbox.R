@@ -6,22 +6,33 @@ library(gtsummary)
 library(ggpubr)
 library(emmeans)
 library(psych)
+library(interactions)
+library(ggplot2)
 
-
-Q3df = data.frame( Group1 = c(6,4,5,3,6,2,4,5,7,5),
-                   Group2 = c(12,8,9,7,8,11,7,11,19,11)
-                  )
-	
-
-write.table(Q3df, "A2_Q3_data.csv",sep = ",",
-            row.names = F, quote = F)
-
-
-cookies = data.frame(
-   Vanilla = c(1, 3, 1, 3, 1),
-   Chocolate = c(5, 6, 2, 4, 5),
-   PeanutButter = c(7, 3, 5, 5, 6)
+# Simulate a realistic 2 × 2 × 3 design (easy for students to follow)
+set.seed(42)
+n <- 120
+ThreeWay <- data.frame(
+   Resolution  = factor(rep(c("QVGA", "VGA"), each = n/2)),
+   LightLevel  = factor(rep(c("Low", "High"), times = n/2)),
+   DisplayType = factor(rep(c("LCD", "OLED", "MiniLED"), length.out = n)),
+   LivesLost   = rnorm(n, mean = 12, sd = 4)
 )
 
-write.table(cookies, "A2_Q2_data.csv",sep = ",",
-            row.names = F, quote = F)
+# Add a clear three-way interaction pattern
+ThreeWay$LivesLost <- with(ThreeWay, LivesLost + 
+                              ifelse(Resolution == "VGA" & LightLevel == "High" & DisplayType == "OLED", 8, 0) -
+                              ifelse(Resolution == "QVGA" & LightLevel == "Low"  & DisplayType == "MiniLED", 6, 0))
+
+# Fit the model (using the same Type III / contr.sum approach you already teach)
+options(contrasts = c("contr.sum", "contr.poly"))
+ThreeLM <- lm(LivesLost ~ Resolution * LightLevel * DisplayType, data = ThreeWay)
+
+# Three-way interaction plot
+cat_plot(ThreeLM,
+         pred  = Resolution,      # x-axis
+         modx  = LightLevel,      # different lines
+         mod2  = DisplayType,     # different panels
+         geom  = "line",
+         interval = TRUE)
+
