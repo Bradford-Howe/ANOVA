@@ -1,0 +1,103 @@
+---
+title: "Lab 9"
+format: html
+execute:
+   echo: false
+   warning: false
+   fig-dpi: 300
+---
+
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(car)
+library(psych)
+library(emmeans)
+library(phia)
+library(interactions)
+```
+
+
+
+```{r}
+# Load your data
+ReportingExampleData = read.table("3-way ANOVA Lecture.csv",
+                          sep = ",",
+                          header = T,
+                          colClasses = c("factor",
+                                         "factor",
+                                         "factor",
+                                         "integer"))
+```
+### Your data
+```{r}
+# Set the categoical variable to be a 'factor' for R to calculate properly.
+kable (ReportingExampleData,align = 'c')
+```
+
+## Equal n
+```{r}
+
+# "contr.sum" is the correct option for typle type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+# "contr.treatment" is a reference group type contrast closer to a type I or
+# type II SS.
+#options(contrasts = c("contr.treatment", "contr.poly"))
+
+leveneTest(Score ~ Kids * Vote * Politics,ReportingExampleData)
+
+ReportingExANOVA = lm(Score ~ Kids * Vote * Politics, ReportingExampleData )
+
+summary(ReportingExANOVA)
+
+a = Anova(ReportingExANOVA, type = 3)
+kable(a,align = 'c')
+```
+
+Bonferroni
+```{r}
+# Compare levels of Vote at each level of Kids
+emmeans(ReportingExANOVA, pairwise ~ Vote | Kids, adjust = "bonferroni")$contrasts %>% 
+  kable(caption = "Pairwise Vote at each level of Kids", align = 'c')
+```
+
+```{r}
+# Compare levels of Kids at each level of Vote
+emmeans(ReportingExANOVA, pairwise ~ Vote | Politics, adjust = "bonferroni")$contrasts %>% 
+  kable(caption = "Pairwise Vote at each level of Politics", align = 'c')
+```
+
+```{r}
+# Compare levels of Kids at each level of Vote
+emmeans(ReportingExANOVA, pairwise ~ Kids | Politics, adjust = "bonferroni")$contrasts %>% 
+  kable(caption = "Pairwise Kids at each level of Politics", align = 'c')
+```
+
+
+LSD (equal to none)
+```{r}
+# Equivanlent to LSD
+a = emmeans(ReportingExANOVA, pairwise ~ Kids * Vote * Politics, adjust = "none")
+a$contrasts %>% kable(align = 'c')
+```
+
+Tukey
+```{r}
+# Tukey
+a = emmeans(ReportingExANOVA, pairwise ~ Kids * Vote * Politics, adjust = "tukey")
+a$contrasts %>% kable(align = 'c')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
