@@ -1,0 +1,9 @@
+---
+title: "Lab 9"
+format: html
+execute:
+   echo: false
+   warning: false
+   fig-dpi: 300
+---
+

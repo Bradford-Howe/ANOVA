@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lab 8</title>
+<title>Interaction_Practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,18 +23,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Lab8_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lab8_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Lab8_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Lab8_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="Lab8_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lab8_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Lab8_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Lab8_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lab8_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Lab8_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Lab8_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Lab8_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Interaction_Practice_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Interaction_Practice_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Interaction_Practice_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Interaction_Practice_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Interaction_Practice_files/libs/quarto-html/popper.min.js"></script>
+<script src="Interaction_Practice_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Interaction_Practice_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Interaction_Practice_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Interaction_Practice_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Interaction_Practice_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Interaction_Practice_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Interaction_Practice_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 8</h1>
+<h1 class="title">Interaction_Practice</h1>
 </div>
 
 
@@ -64,357 +64,54 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Get an f-score (f-crit) from a probablity value (p-value or alpha)</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.259677</code></pre>
-</div>
-</div>
-<p>Probability (p-value) of an f-score.</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.009503027</code></pre>
-</div>
-</div>
+<section id="make-your-own-two-variable-interaction-chart." class="level3">
+<h3 class="anchored" data-anchor-id="make-your-own-two-variable-interaction-chart.">Make your own two variable interaction chart.</h3>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Resolution</th>
-<th style="text-align: left;">LightLevel</th>
-<th style="text-align: right;">LivesLost</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">QVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">13</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">21</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">14</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">18</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">VGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">10</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SVGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">19</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">18</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">17</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">8</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">XGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">11</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">Low light</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">UXGA</td>
-<td style="text-align: left;">High light</td>
-<td style="text-align: right;">11</td>
-</tr>
-</tbody>
-</table>
+<div>
+<figure class="figure">
+<p><img src="Interaction_Practice_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
 </div>
-</div>
-<hr>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Levene's Test for Homogeneity of Variance (center = median)
-      Df F value Pr(&gt;F)
-group  9  0.2864 0.9733
-      30               </code></pre>
-</div>
-</div>
-<hr>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = LivesLost ~ Resolution * LightLevel, data = DisplayData)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--5.000 -2.000  0.375  2.000  4.000 
-
-Coefficients:
-                        Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)              11.3750     0.4635  24.544  &lt; 2e-16 ***
-Resolution1               0.1250     0.9269   0.135  0.89363    
-Resolution2               0.6250     0.9269   0.674  0.50530    
-Resolution3              -2.2500     0.9269  -2.427  0.02142 *  
-Resolution4               1.6250     0.9269   1.753  0.08979 .  
-LightLevel1               1.4250     0.4635   3.075  0.00446 ** 
-Resolution1:LightLevel1   2.0750     0.9269   2.239  0.03275 *  
-Resolution2:LightLevel1   2.5750     0.9269   2.778  0.00934 ** 
-Resolution3:LightLevel1  -2.5500     0.9269  -2.751  0.00997 ** 
-Resolution4:LightLevel1   2.5750     0.9269   2.778  0.00934 ** 
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 2.931 on 30 degrees of freedom
-Multiple R-squared:  0.6659,    Adjusted R-squared:  0.5656 
-F-statistic: 6.642 on 9 and 30 DF,  p-value: 3.549e-05</code></pre>
 </div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: right;">Sum Sq</th>
-<th style="text-align: right;">Df</th>
-<th style="text-align: right;">F value</th>
-<th style="text-align: right;">Pr(&gt;F)</th>
+<th style="text-align: center;">B1</th>
+<th style="text-align: center;">B2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">(Intercept)</td>
-<td style="text-align: right;">5175.625</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">602.400582</td>
-<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">A1</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">10</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Resolution</td>
-<td style="text-align: right;">65.000</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1.891368</td>
-<td style="text-align: right;">0.1378196</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">LightLevel</td>
-<td style="text-align: right;">81.225</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">9.453928</td>
-<td style="text-align: right;">0.0044623</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Resolution:LightLevel</td>
-<td style="text-align: right;">367.400</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">10.690592</td>
-<td style="text-align: right;">0.0000166</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Residuals</td>
-<td style="text-align: right;">257.750</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
+<td style="text-align: left;">A2</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <hr>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>F Test: 
-P-value adjustment method: holm
-           Resolution1 Resolution2 Resolution3 Resolution4    SE1    SE2    SE3
-High light         7.0         8.0        0.00         9.0 2.0726 2.0726 2.0726
- Low light        -6.5        -6.5       -4.25        -5.5 2.0726 2.0726 2.0726
-Residuals                                                                      
-              SE4 Df Sum of Sq      F    Pr(&gt;F)    
-High light 2.0726  4    315.20 9.1717 0.0001157 ***
- Low light 2.0726  4    117.20 3.4103 0.0205772 *  
-Residuals         30    257.75                     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-</div>
-</div>
-<hr>
+</section>
+<section id="make-your-own-three-vairable-interaction-chart." class="level3">
+<h3 class="anchored" data-anchor-id="make-your-own-three-vairable-interaction-chart.">Make your own three vairable interaction chart.</h3>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lab8_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2100"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lab8_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="2100"></p>
+<p><img src="Interaction_Practice_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2100"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
 
 </main>
 <!-- /main column -->
