@@ -441,10 +441,45 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">n</th>
+<th style="text-align: center;">mean</th>
+<th style="text-align: center;">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Kids*</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">0.5042195</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vote*</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">0.5042195</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Politics*</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;">0.8233870</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Score</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">26.0</td>
+<td style="text-align: center;">10.9296673</td>
+</tr>
+</tbody>
+</table>
 </div>
-</section>
-<section id="equal-n" class="level2">
-<h2 class="anchored" data-anchor-id="equal-n">Equal n</h2>
+</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Levene's Test for Homogeneity of Variance (center = median)
@@ -452,6 +487,11 @@ ul.task-list li input[type="checkbox"] {
 group 11  0.7305  0.704
       48               </code></pre>
 </div>
+</div>
+</section>
+<section id="linear-model" class="level3">
+<h3 class="anchored" data-anchor-id="linear-model">Linear Model</h3>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -482,6 +522,11 @@ Residual standard error: 5.93 on 48 degrees of freedom
 Multiple R-squared:  0.7605,    Adjusted R-squared:  0.7056 
 F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </div>
+</div>
+</section>
+<section id="omnibus" class="level1">
+<h1>Omnibus</h1>
+<div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -561,561 +606,9 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </table>
 </div>
 </div>
+<section id="two-way-comparisons" class="level3">
+<h3 class="anchored" data-anchor-id="two-way-comparisons">Two-way comparisons</h3>
 <p>Bonferroni</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 4%">
-<col style="width: 12%">
-<col style="width: 11%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">contrast</th>
-<th style="text-align: center;">estimate</th>
-<th style="text-align: center;">SE</th>
-<th style="text-align: center;">df</th>
-<th style="text-align: center;">t.ratio</th>
-<th style="text-align: center;">p.value</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics1</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics1</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.8657977</td>
-<td style="text-align: center;">0.0000265</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.0665087</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0010503</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.9323064</td>
-<td style="text-align: center;">0.0000006</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.2660347</td>
-<td style="text-align: center;">0.0061348</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.5991706</td>
-<td style="text-align: center;">0.0000674</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.0000000</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics1</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.3331358</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.0659162</td>
-<td style="text-align: center;">0.0004249</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0144158</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">23</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.1324249</td>
-<td style="text-align: center;">0.0000104</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.4661532</td>
-<td style="text-align: center;">0.0741054</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0010503</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.7998815</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.8663902</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.5991706</td>
-<td style="text-align: center;">0.0000674</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.0000000</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0025598</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.6656792</td>
-<td style="text-align: center;">0.0000016</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0144158</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.3325434</td>
-<td style="text-align: center;">0.0001700</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.7327804</td>
-<td style="text-align: center;">0.0331120</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-7</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.8663902</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.6662717</td>
-<td style="text-align: center;">0.6877825</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0010503</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.4661532</td>
-<td style="text-align: center;">0.0741054</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.1330174</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.5991706</td>
-<td style="text-align: center;">0.0000674</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.7992890</td>
-<td style="text-align: center;">0.0010503</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.0665087</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-6</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.5997630</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.8657977</td>
-<td style="text-align: center;">0.0000265</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0025598</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.6656792</td>
-<td style="text-align: center;">0.0000016</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0144158</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.3325434</td>
-<td style="text-align: center;">0.0001700</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.7327804</td>
-<td style="text-align: center;">0.0331120</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.8657977</td>
-<td style="text-align: center;">0.0000265</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.1995260</td>
-<td style="text-align: center;">0.1610679</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0025598</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.7992890</td>
-<td style="text-align: center;">0.0010503</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-10</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.6662717</td>
-<td style="text-align: center;">0.6877825</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">-5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.3331358</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-26</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-6.9323064</td>
-<td style="text-align: center;">0.0000006</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics3 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.3331358</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-16</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.2660347</td>
-<td style="text-align: center;">0.0061348</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.5991706</td>
-<td style="text-align: center;">0.0000674</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -1275,21 +768,23 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </table>
 </div>
 </div>
-<p>LSD (equal to none)</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
+<caption>Pairwise Kids at each level of Vote</caption>
 <colgroup>
-<col style="width: 50%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 4%">
-<col style="width: 12%">
-<col style="width: 11%">
+<col style="width: 22%">
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 5%">
+<col style="width: 16%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">contrast</th>
+<th style="text-align: center;">Vote</th>
 <th style="text-align: center;">estimate</th>
 <th style="text-align: center;">SE</th>
 <th style="text-align: center;">df</th>
@@ -1299,7 +794,227 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics1</td>
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">-9.333333</td>
+<td style="text-align: center;">2.165384</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">-4.310244</td>
+<td style="text-align: center;">8.05e-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">0.000000</td>
+<td style="text-align: center;">2.165384</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">0.000000</td>
+<td style="text-align: center;">1.00e+00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Pairwise Kids at each level of Politics</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 15%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">contrast</th>
+<th style="text-align: center;">Kids</th>
+<th style="text-align: center;">estimate</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">t.ratio</th>
+<th style="text-align: center;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">12.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">4.7133470</td>
+<td style="text-align: center;">0.0000212</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">23.0</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">8.6725585</td>
+<td style="text-align: center;">0.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">3.9592115</td>
+<td style="text-align: center;">0.0002480</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4.0</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">1.5082710</td>
+<td style="text-align: center;">0.1380396</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">0.9426694</td>
+<td style="text-align: center;">0.3505706</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-1.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">-0.5656016</td>
+<td style="text-align: center;">0.5742992</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Pairwise Politics at each level of Vote</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 15%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">contrast</th>
+<th style="text-align: center;">Vote</th>
+<th style="text-align: center;">estimate</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">t.ratio</th>
+<th style="text-align: center;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">10.0</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">3.7706776</td>
+<td style="text-align: center;">0.0004464</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">19.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">7.3528213</td>
+<td style="text-align: center;">0.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">9.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">3.5821437</td>
+<td style="text-align: center;">0.0007936</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">2.4509404</td>
+<td style="text-align: center;">0.0179417</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6.0</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">2.2624066</td>
+<td style="text-align: center;">0.0282363</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-0.5</td>
+<td style="text-align: center;">2.652043</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">-0.1885339</td>
+<td style="text-align: center;">0.8512530</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="three-way-comparisons" class="level3">
+<h3 class="anchored" data-anchor-id="three-way-comparisons">Three-way comparisons</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Pairwise Kids at each Vote × Politics combination</caption>
+<colgroup>
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 15%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">contrast</th>
+<th style="text-align: center;">Vote</th>
+<th style="text-align: center;">Politics</th>
+<th style="text-align: center;">estimate</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">t.ratio</th>
+<th style="text-align: center;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
@@ -1307,167 +1022,9 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">0.4277204</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics1</td>
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">0.7908983</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">0.0380640</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.8657977</td>
-<td style="text-align: center;">0.0000004</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">0.7908983</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.0665087</td>
-<td style="text-align: center;">0.2915289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0000159</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.9323064</td>
-<td style="text-align: center;">0.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.2660347</td>
-<td style="text-align: center;">0.0000930</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.5991706</td>
-<td style="text-align: center;">0.0000010</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.0000000</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics1</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">0.5963181</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.3331358</td>
-<td style="text-align: center;">0.1887802</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.0659162</td>
-<td style="text-align: center;">0.0000064</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">0.5963181</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">0.7908983</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0002184</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">23</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.1324249</td>
-<td style="text-align: center;">0.0000002</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.4661532</td>
-<td style="text-align: center;">0.0011228</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0000159</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.7998815</td>
-<td style="text-align: center;">0.4277204</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics1</td>
 <td style="text-align: center;">7</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
@@ -1475,135 +1032,9 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">0.0681024</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.5991706</td>
-<td style="text-align: center;">0.0000010</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.0000000</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.4277204</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0000388</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.6656792</td>
-<td style="text-align: center;">0.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0002184</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.3325434</td>
-<td style="text-align: center;">0.0000026</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">0.7908983</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.7327804</td>
-<td style="text-align: center;">0.0005017</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-7</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.8663902</td>
-<td style="text-align: center;">0.0681024</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">0.2915289</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.6662717</td>
-<td style="text-align: center;">0.0104209</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0000159</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">0.0380640</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.4661532</td>
-<td style="text-align: center;">0.0011228</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.1330174</td>
-<td style="text-align: center;">0.0380640</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote1 Politics2</td>
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">-21</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
@@ -1611,103 +1042,9 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">0.0000010</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.7992890</td>
-<td style="text-align: center;">0.0000159</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">0.2915289</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.0665087</td>
-<td style="text-align: center;">0.2915289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-6</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.5997630</td>
-<td style="text-align: center;">0.1162135</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">0.7908983</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.8657977</td>
-<td style="text-align: center;">0.0000004</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.4277204</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0000388</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.6656792</td>
-<td style="text-align: center;">0.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0002184</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.3325434</td>
-<td style="text-align: center;">0.0000026</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">0.7908983</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote2 Politics2</td>
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">14</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
@@ -1715,71 +1052,9 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">0.0005017</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.8657977</td>
-<td style="text-align: center;">0.0000004</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.1995260</td>
-<td style="text-align: center;">0.0024404</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0000388</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">0.2915289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">0.0380640</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">0.5963181</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids1 Vote2 Politics3</td>
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.4277204</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.7992890</td>
-<td style="text-align: center;">0.0000159</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids2 Vote1 Politics3</td>
 <td style="text-align: center;">-10</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
@@ -1787,39 +1062,9 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">0.0104209</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">-5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.3331358</td>
-<td style="text-align: center;">0.1887802</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-26</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-6.9323064</td>
-<td style="text-align: center;">0.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics3 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.3331358</td>
-<td style="text-align: center;">0.1887802</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-16</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.2660347</td>
-<td style="text-align: center;">0.0000930</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics3 - Kids2 Vote2 Politics3</td>
+<td style="text-align: center;">Kids1 - Kids2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
 <td style="text-align: center;">-21</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
@@ -1830,21 +1075,25 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </table>
 </div>
 </div>
-<p>Tukey</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
+<caption>Pairwise Vote at each Kids × Politics combination</caption>
 <colgroup>
-<col style="width: 50%">
-<col style="width: 10%">
-<col style="width: 10%">
-<col style="width: 4%">
+<col style="width: 19%">
+<col style="width: 7%">
 <col style="width: 12%">
-<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 5%">
+<col style="width: 15%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">contrast</th>
+<th style="text-align: center;">Kids</th>
+<th style="text-align: center;">Politics</th>
 <th style="text-align: center;">estimate</th>
 <th style="text-align: center;">SE</th>
 <th style="text-align: center;">df</th>
@@ -1854,537 +1103,221 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics1</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.9996045</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics1</td>
+<td style="text-align: center;">Vote1 - Vote2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">0.6029206</td>
+<td style="text-align: center;">0.7908983</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.8657977</td>
-<td style="text-align: center;">0.0000243</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics2</td>
+<td style="text-align: center;">Vote1 - Vote2</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.0665087</td>
-<td style="text-align: center;">0.9947984</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0008832</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">26</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.9323064</td>
-<td style="text-align: center;">0.0000006</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.2660347</td>
-<td style="text-align: center;">0.0047516</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.5991706</td>
-<td style="text-align: center;">0.0000609</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.0000000</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics1</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">0.9999929</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics1</td>
 <td style="text-align: center;">5</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">1.3331358</td>
-<td style="text-align: center;">0.9701928</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.0659162</td>
-<td style="text-align: center;">0.0003680</td>
+<td style="text-align: center;">0.1887802</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">0.9999929</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics2</td>
+<td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0105416</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">23</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.1324249</td>
-<td style="text-align: center;">0.0000097</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.4661532</td>
-<td style="text-align: center;">0.0459996</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0008832</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.7998815</td>
-<td style="text-align: center;">0.9996045</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics1</td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.8663902</td>
-<td style="text-align: center;">0.7730452</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.5991706</td>
-<td style="text-align: center;">0.0000609</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.0000000</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.9996045</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0020754</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.6656792</td>
-<td style="text-align: center;">0.0000015</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0105416</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.3325434</td>
-<td style="text-align: center;">0.0001507</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote1 Politics2</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.7327804</td>
-<td style="text-align: center;">0.0225212</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-7</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.8663902</td>
-<td style="text-align: center;">0.7730452</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">0.9947984</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.6662717</td>
-<td style="text-align: center;">0.2739358</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.7992890</td>
-<td style="text-align: center;">0.0008832</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">0.6029206</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.4661532</td>
-<td style="text-align: center;">0.0459996</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics1 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.1330174</td>
-<td style="text-align: center;">0.6029206</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote1 Politics2</td>
-<td style="text-align: center;">-21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.5991706</td>
-<td style="text-align: center;">0.0000609</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote2 Politics2</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">-18</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">-4.7992890</td>
-<td style="text-align: center;">0.0008832</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">0.9947984</td>
+<td style="text-align: center;">0.0000159</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.0665087</td>
-<td style="text-align: center;">0.9947984</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-6</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.5997630</td>
-<td style="text-align: center;">0.9007264</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.8657977</td>
-<td style="text-align: center;">0.0000243</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote2 Politics2</td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.9996045</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote2 Politics2</td>
+<td style="text-align: center;">Vote1 - Vote2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">17</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0020754</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">25</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">6.6656792</td>
-<td style="text-align: center;">0.0000015</td>
+<td style="text-align: center;">0.0000388</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">15</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.9994075</td>
-<td style="text-align: center;">0.0105416</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.3325434</td>
-<td style="text-align: center;">0.0001507</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-1</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.2666272</td>
-<td style="text-align: center;">1.0000000</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote2 Politics2</td>
-<td style="text-align: center;">14</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.7327804</td>
-<td style="text-align: center;">0.0225212</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">22</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">5.8657977</td>
-<td style="text-align: center;">0.0000243</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">3.1995260</td>
-<td style="text-align: center;">0.0890813</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">4.5326619</td>
-<td style="text-align: center;">0.0020754</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-4</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.0665087</td>
-<td style="text-align: center;">0.9947984</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids1 Vote1 Politics3</td>
-<td style="text-align: center;">8</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">2.1330174</td>
-<td style="text-align: center;">0.6029206</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.5332543</td>
-<td style="text-align: center;">0.9999929</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids1 Vote2 Politics3</td>
+<td style="text-align: center;">Vote1 - Vote2</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">0.7998815</td>
-<td style="text-align: center;">0.9996045</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids2 Vote2 Politics2 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.7992890</td>
-<td style="text-align: center;">0.0008832</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids2 Vote1 Politics3</td>
-<td style="text-align: center;">-10</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.6662717</td>
-<td style="text-align: center;">0.2739358</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids1 Vote2 Politics3</td>
 <td style="text-align: center;">-5</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">-1.3331358</td>
-<td style="text-align: center;">0.9701928</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids1 Vote1 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-26</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-6.9323064</td>
-<td style="text-align: center;">0.0000006</td>
+<td style="text-align: center;">0.1887802</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Kids2 Vote1 Politics3 - Kids1 Vote2 Politics3</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1.3331358</td>
-<td style="text-align: center;">0.9701928</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Kids2 Vote1 Politics3 - Kids2 Vote2 Politics3</td>
+<td style="text-align: center;">Vote1 - Vote2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
 <td style="text-align: center;">-16</td>
 <td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
 <td style="text-align: center;">-4.2660347</td>
-<td style="text-align: center;">0.0047516</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Kids1 Vote2 Politics3 - Kids2 Vote2 Politics3</td>
-<td style="text-align: center;">-21</td>
-<td style="text-align: center;">3.750555</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.5991706</td>
-<td style="text-align: center;">0.0000609</td>
+<td style="text-align: center;">0.0000930</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Pairwise Politics at each Kids × Vote combination</caption>
+<colgroup>
+<col style="width: 28%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 4%">
+<col style="width: 14%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">contrast</th>
+<th style="text-align: center;">Kids</th>
+<th style="text-align: center;">Vote</th>
+<th style="text-align: center;">estimate</th>
+<th style="text-align: center;">SE</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">t.ratio</th>
+<th style="text-align: center;">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">5.8657977</td>
+<td style="text-align: center;">0.0000004</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">6.9323064</td>
+<td style="text-align: center;">0.0000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">1.0665087</td>
+<td style="text-align: center;">0.2915289</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">-0.5332543</td>
+<td style="text-align: center;">0.5963181</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">3.4661532</td>
+<td style="text-align: center;">0.0011228</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">3.9994075</td>
+<td style="text-align: center;">0.0002184</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">0.7998815</td>
+<td style="text-align: center;">0.4277204</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">5.3325434</td>
+<td style="text-align: center;">0.0000026</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">4.5326619</td>
+<td style="text-align: center;">0.0000388</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics1 - Politics2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">2.6662717</td>
+<td style="text-align: center;">0.0104209</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Politics1 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-8</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">-2.1330174</td>
+<td style="text-align: center;">0.0380640</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Politics2 - Politics3</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">-18</td>
+<td style="text-align: center;">3.750555</td>
+<td style="text-align: center;">48</td>
+<td style="text-align: center;">-4.7992890</td>
+<td style="text-align: center;">0.0000159</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
 </section>
 
 </main>

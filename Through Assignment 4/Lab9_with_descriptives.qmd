@@ -72,9 +72,22 @@ AdjustmentChoice = "none" # Least significant difference
 
 ### Two-way comparisons
 Bonferroni
+
+```{r}
+# Cell means for Vote at each level of Kids
+describeBy(Score ~ Kids + Vote, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Vote at each level of Kids", align = 'c')
+```
+
 ```{r}
 emmeans(ReportingExANOVA, pairwise ~ Vote | Kids, adjust = AdjustmentChoice)$contrasts %>% 
   kable(caption = "Pairwise Vote at each level of Kids", align = 'c')
+```
+
+```{r}
+# Cell means for Vote at each level of Politics
+describeBy(Score ~ Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Vote at each level of Politics", align = 'c')
 ```
 
 ```{r}
@@ -83,8 +96,20 @@ emmeans(ReportingExANOVA, pairwise ~ Vote | Politics, adjust = AdjustmentChoice)
 ```
 
 ```{r}
+# Cell means for Kids at each level of Politics
+describeBy(Score ~ Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Kids at each level of Politics", align = 'c')
+```
+
+```{r}
 emmeans(ReportingExANOVA, pairwise ~ Kids | Politics, adjust = AdjustmentChoice)$contrasts %>% 
   kable(caption = "Pairwise Kids at each level of Politics", align = 'c')
+```
+
+```{r}
+# Cell means for Kids at each level of Vote
+describeBy(Score ~ Vote + Kids, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Kids at each level of Vote", align = 'c')
 ```
 
 ```{r}
@@ -93,8 +118,20 @@ emmeans(ReportingExANOVA, pairwise ~ Kids | Vote, adjust = AdjustmentChoice)$con
 ```
 
 ```{r}
+# Cell means for Politics at each level of Kids
+describeBy(Score ~ Kids + Politics, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Politics at each level of Kids", align = 'c')
+```
+
+```{r}
 emmeans(ReportingExANOVA, pairwise ~ Politics | Kids, adjust = AdjustmentChoice)$contrasts %>% 
   kable(caption = "Pairwise Kids at each level of Politics", align = 'c')
+```
+
+```{r}
+# Cell means for Politics at each level of Vote
+describeBy(Score ~ Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Politics at each level of Vote", align = 'c')
 ```
 
 ```{r}
@@ -104,9 +141,22 @@ emmeans(ReportingExANOVA, pairwise ~ Politics | Vote, adjust = AdjustmentChoice)
 
 
 ### Three-way comparisons
+
+```{r}
+# Cell means for Kids at each Vote × Politics combination
+describeBy(Score ~ Vote + Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Kids at each Vote × Politics combination", align = 'c')
+```
+
 ```{r}
 emmeans(ReportingExANOVA, pairwise ~ Kids | Vote * Politics, adjust = AdjustmentChoice)$contrasts %>%
   kable(caption = "Pairwise Kids at each Vote × Politics combination", align = 'c')
+```
+
+```{r}
+# Cell means for Vote at each Kids × Politics combination
+describeBy(Score ~ Kids + Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Vote at each Kids × Politics combination", align = 'c')
 ```
 
 ```{r}
@@ -115,12 +165,12 @@ emmeans(ReportingExANOVA, pairwise ~ Vote | Kids * Politics, adjust = "none")$co
 ```
 
 ```{r}
+# Cell means for Politics at each Kids × Vote combination
+describeBy(Score ~ Kids + Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+  kable(caption = "Descriptives: Politics at each Kids × Vote combination", align = 'c')
+```
+
+```{r}
 emmeans(ReportingExANOVA, pairwise ~ Politics | Kids * Vote, adjust = "none")$contrasts %>%
   kable(caption = "Pairwise Politics at each Kids × Vote combination", align = 'c')
 ```
-
-
-
-
-
-
