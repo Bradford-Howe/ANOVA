@@ -23,18 +23,18 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Lab9_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lab9_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Lab9_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Lab9_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="Lab9_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lab9_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Lab9_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Lab9_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lab9_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Lab9_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Lab9_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Lab9_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="Lab9_integrated_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lab9_integrated_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Lab9_integrated_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Lab9_integrated_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="Lab9_integrated_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lab9_integrated_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Lab9_integrated_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Lab9_integrated_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lab9_integrated_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Lab9_integrated_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Lab9_integrated_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Lab9_integrated_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -66,7 +66,6 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="your-data" class="level3">
 <h3 class="anchored" data-anchor-id="your-data">Your data</h3>
-<p>Participants reported whether they had children (Kids: 1 = no, 2 = yes), whether they had voted in the most recent election (Vote: 1 = no, 2 = yes), and their political orientation (Politics: 1 = liberal, 2 = moderate, 3 = conservative). The outcome variable, Score, was a continuous measure of participants’ attitudes toward a proposed education policy.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -454,46 +453,28 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Kids1</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">23.667</td>
-<td style="text-align: center;">12.243</td>
+<td style="text-align: left;">Kids*</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">0.5042195</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Kids2</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">28.333</td>
-<td style="text-align: center;">9.049</td>
+<td style="text-align: left;">Vote*</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">1.5</td>
+<td style="text-align: center;">0.5042195</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Vote1</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">24.667</td>
-<td style="text-align: center;">11.923</td>
+<td style="text-align: left;">Politics*</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">2.0</td>
+<td style="text-align: center;">0.8233870</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Vote2</td>
-<td style="text-align: center;">30</td>
-<td style="text-align: center;">27.333</td>
-<td style="text-align: center;">9.859</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Politics1</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">33.000</td>
-<td style="text-align: center;">6.258</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Politics2</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">24.750</td>
-<td style="text-align: center;">10.627</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Politics3</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">20.250</td>
-<td style="text-align: center;">11.438</td>
+<td style="text-align: left;">Score</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">26.0</td>
+<td style="text-align: center;">10.9296673</td>
 </tr>
 </tbody>
 </table>
@@ -555,79 +536,69 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <th style="text-align: center;">Df</th>
 <th style="text-align: center;">F value</th>
 <th style="text-align: center;">Pr(&gt;F)</th>
-<th style="text-align: center;">pes</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">(Intercept)</td>
-<td style="text-align: center;">40560.000</td>
+<td style="text-align: center;">40560.0000</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">1153.365</td>
-<td style="text-align: center;">0.000</td>
-<td style="text-align: center;">NA</td>
+<td style="text-align: center;">1153.364929</td>
+<td style="text-align: center;">0.0000000</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Kids</td>
-<td style="text-align: center;">326.667</td>
+<td style="text-align: center;">326.6667</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">9.289</td>
-<td style="text-align: center;">0.004</td>
-<td style="text-align: center;">0.162</td>
+<td style="text-align: center;">9.289100</td>
+<td style="text-align: center;">0.0037420</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Vote</td>
-<td style="text-align: center;">106.667</td>
+<td style="text-align: center;">106.6667</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">3.033</td>
-<td style="text-align: center;">0.088</td>
-<td style="text-align: center;">0.059</td>
+<td style="text-align: center;">3.033175</td>
+<td style="text-align: center;">0.0879841</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Politics</td>
-<td style="text-align: center;">1672.500</td>
+<td style="text-align: center;">1672.5000</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">23.780</td>
-<td style="text-align: center;">0.000</td>
-<td style="text-align: center;">0.498</td>
+<td style="text-align: center;">23.779621</td>
+<td style="text-align: center;">0.0000001</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Kids:Vote</td>
-<td style="text-align: center;">326.667</td>
+<td style="text-align: center;">326.6667</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">9.289</td>
-<td style="text-align: center;">0.004</td>
-<td style="text-align: center;">0.162</td>
+<td style="text-align: center;">9.289100</td>
+<td style="text-align: center;">0.0037420</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Kids:Politics</td>
-<td style="text-align: center;">1060.833</td>
+<td style="text-align: center;">1060.8333</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">15.083</td>
-<td style="text-align: center;">0.000</td>
-<td style="text-align: center;">0.386</td>
+<td style="text-align: center;">15.082938</td>
+<td style="text-align: center;">0.0000083</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Vote:Politics</td>
-<td style="text-align: center;">490.833</td>
+<td style="text-align: center;">490.8333</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">6.979</td>
-<td style="text-align: center;">0.002</td>
-<td style="text-align: center;">0.225</td>
+<td style="text-align: center;">6.978673</td>
+<td style="text-align: center;">0.0021856</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Kids:Vote:Politics</td>
-<td style="text-align: center;">1375.833</td>
+<td style="text-align: center;">1375.8333</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">19.562</td>
-<td style="text-align: center;">0.000</td>
-<td style="text-align: center;">0.449</td>
+<td style="text-align: center;">19.561611</td>
+<td style="text-align: center;">0.0000006</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Residuals</td>
-<td style="text-align: center;">1688.000</td>
+<td style="text-align: center;">1688.0000</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">NA</td>
 <td style="text-align: center;">NA</td>
 <td style="text-align: center;">NA</td>
 </tr>
@@ -637,6 +608,7 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </div>
 <section id="two-way-comparisons" class="level3">
 <h3 class="anchored" data-anchor-id="two-way-comparisons">Two-way comparisons</h3>
+<p>Bonferroni</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -692,6 +664,15 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Vote at each level of Kids</caption>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 8%">
+<col style="width: 15%">
+<col style="width: 14%">
+<col style="width: 5%">
+<col style="width: 17%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">contrast</th>
@@ -707,20 +688,20 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <tr class="odd">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">-7.333</td>
-<td style="text-align: center;">2.165</td>
+<td style="text-align: center;">-7.333333</td>
+<td style="text-align: center;">2.165384</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-3.387</td>
-<td style="text-align: center;">0.001</td>
+<td style="text-align: center;">-3.3866199</td>
+<td style="text-align: center;">0.0014200</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">2.000</td>
-<td style="text-align: center;">2.165</td>
+<td style="text-align: center;">2.000000</td>
+<td style="text-align: center;">2.165384</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">0.924</td>
-<td style="text-align: center;">0.360</td>
+<td style="text-align: center;">0.9236236</td>
+<td style="text-align: center;">0.3603022</td>
 </tr>
 </tbody>
 </table>
@@ -797,6 +778,15 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Vote at each level of Politics</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 5%">
+<col style="width: 16%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">contrast</th>
@@ -813,28 +803,28 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">3.0</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">1.131</td>
-<td style="text-align: center;">0.264</td>
+<td style="text-align: center;">1.1312033</td>
+<td style="text-align: center;">0.2635898</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-0.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.189</td>
-<td style="text-align: center;">0.851</td>
+<td style="text-align: center;">-0.1885339</td>
+<td style="text-align: center;">0.8512530</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">-10.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-3.959</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-3.9592115</td>
+<td style="text-align: center;">0.0002480</td>
 </tr>
 </tbody>
 </table>
@@ -911,6 +901,15 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Kids at each level of Politics</caption>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 5%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">contrast</th>
@@ -927,28 +926,28 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">5.0</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">1.885</td>
-<td style="text-align: center;">0.065</td>
+<td style="text-align: center;">1.885339</td>
+<td style="text-align: center;">0.0654447</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-3.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.320</td>
-<td style="text-align: center;">0.193</td>
+<td style="text-align: center;">-1.319737</td>
+<td style="text-align: center;">0.1931828</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">-15.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.845</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-5.844550</td>
+<td style="text-align: center;">0.0000004</td>
 </tr>
 </tbody>
 </table>
@@ -1009,6 +1008,15 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Kids at each level of Vote</caption>
+<colgroup>
+<col style="width: 22%">
+<col style="width: 8%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 5%">
+<col style="width: 16%">
+<col style="width: 14%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">contrast</th>
@@ -1024,20 +1032,20 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <tr class="odd">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">-9.333</td>
-<td style="text-align: center;">2.165</td>
+<td style="text-align: center;">-9.333333</td>
+<td style="text-align: center;">2.165384</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.31</td>
-<td style="text-align: center;">0</td>
+<td style="text-align: center;">-4.310244</td>
+<td style="text-align: center;">8.05e-05</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">0.000</td>
-<td style="text-align: center;">2.165</td>
+<td style="text-align: center;">0.000000</td>
+<td style="text-align: center;">2.165384</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">0.00</td>
-<td style="text-align: center;">1</td>
+<td style="text-align: center;">0.000000</td>
+<td style="text-align: center;">1.00e+00</td>
 </tr>
 </tbody>
 </table>
@@ -1110,89 +1118,18 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 </table>
 </div>
 </div>
-</section>
-<section id="to-justify-t-tests-within-variables-which-have-3-or-more-levels-you-need-a-successful-f-test." class="level3">
-<h3 class="anchored" data-anchor-id="to-justify-t-tests-within-variables-which-have-3-or-more-levels-you-need-a-successful-f-test.">To justify t-tests within variables which have 3 or more levels you need a successful f-test.</h3>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 9%">
-<col style="width: 9%">
-<col style="width: 5%">
-<col style="width: 14%">
-<col style="width: 10%">
-<col style="width: 10%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: center;">Politics1</th>
-<th style="text-align: center;">Politics2</th>
-<th style="text-align: center;">SE1</th>
-<th style="text-align: center;">SE2</th>
-<th style="text-align: center;">Df</th>
-<th style="text-align: center;">Sum of Sq</th>
-<th style="text-align: center;">F</th>
-<th style="text-align: center;">Pr(&gt;F)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: center;">23.0</td>
-<td style="text-align: center;">10.5</td>
-<td style="text-align: center;">2.652</td>
-<td style="text-align: center;">2.652</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">2651.667</td>
-<td style="text-align: center;">37.701</td>
-<td style="text-align: center;">0.000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: center;">2.5</td>
-<td style="text-align: center;">-1.5</td>
-<td style="text-align: center;">2.652</td>
-<td style="text-align: center;">2.652</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">81.667</td>
-<td style="text-align: center;">1.161</td>
-<td style="text-align: center;">0.322</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Residuals</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">1688.000</td>
-<td style="text-align: center;">NA</td>
-<td style="text-align: center;">NA</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="the-first-level-of-kids-was-successful-so-you-are-justified-in-doing-deeper-testng.-you-can-use-the-t-tests-for-the-different-levels-of-politics-within-level-1-of-kids-but-not-level-2." class="level3">
-<h3 class="anchored" data-anchor-id="the-first-level-of-kids-was-successful-so-you-are-justified-in-doing-deeper-testng.-you-can-use-the-t-tests-for-the-different-levels-of-politics-within-level-1-of-kids-but-not-level-2.">The first level of kids was successful, so you are justified in doing deeper testng. You can use the t-tests for the different levels of politics within level 1 of kids, but not level 2.</h3>
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Kids at each level of Politics</caption>
 <colgroup>
-<col style="width: 33%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 13%">
 <col style="width: 5%">
-<col style="width: 13%">
-<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1210,55 +1147,55 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">12.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">4.713</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">4.7133470</td>
+<td style="text-align: center;">0.0000212</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">23.0</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">8.673</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">8.6725585</td>
+<td style="text-align: center;">0.0000000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">10.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">3.959</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">3.9592115</td>
+<td style="text-align: center;">0.0002480</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">4.0</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">1.508</td>
-<td style="text-align: center;">0.138</td>
+<td style="text-align: center;">1.5082710</td>
+<td style="text-align: center;">0.1380396</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">2.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">0.943</td>
-<td style="text-align: center;">0.351</td>
+<td style="text-align: center;">0.9426694</td>
+<td style="text-align: center;">0.3505706</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-1.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.566</td>
-<td style="text-align: center;">0.574</td>
+<td style="text-align: center;">-0.5656016</td>
+<td style="text-align: center;">0.5742992</td>
 </tr>
 </tbody>
 </table>
@@ -1336,13 +1273,13 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Politics at each level of Vote</caption>
 <colgroup>
-<col style="width: 33%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 10%">
+<col style="width: 30%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 13%">
 <col style="width: 5%">
-<col style="width: 13%">
-<col style="width: 13%">
+<col style="width: 15%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1360,55 +1297,55 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">10.0</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">3.771</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">3.7706776</td>
+<td style="text-align: center;">0.0004464</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">19.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">7.353</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">7.3528213</td>
+<td style="text-align: center;">0.0000000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">9.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">3.582</td>
-<td style="text-align: center;">0.001</td>
+<td style="text-align: center;">3.5821437</td>
+<td style="text-align: center;">0.0007936</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">6.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">2.451</td>
-<td style="text-align: center;">0.018</td>
+<td style="text-align: center;">2.4509404</td>
+<td style="text-align: center;">0.0179417</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">6.0</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">2.262</td>
-<td style="text-align: center;">0.028</td>
+<td style="text-align: center;">2.2624066</td>
+<td style="text-align: center;">0.0282363</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-0.5</td>
-<td style="text-align: center;">2.652</td>
+<td style="text-align: center;">2.652043</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.189</td>
-<td style="text-align: center;">0.851</td>
+<td style="text-align: center;">-0.1885339</td>
+<td style="text-align: center;">0.8512530</td>
 </tr>
 </tbody>
 </table>
@@ -1550,14 +1487,14 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Kids at each Vote × Politics combination</caption>
 <colgroup>
-<col style="width: 21%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
 <col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1577,60 +1514,60 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">0.800</td>
-<td style="text-align: center;">0.428</td>
+<td style="text-align: center;">0.7998815</td>
+<td style="text-align: center;">0.4277204</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">7</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">1.866</td>
-<td style="text-align: center;">0.068</td>
+<td style="text-align: center;">1.8663902</td>
+<td style="text-align: center;">0.0681024</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-21</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.599</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-5.5991706</td>
+<td style="text-align: center;">0.0000010</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">14</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">3.733</td>
-<td style="text-align: center;">0.001</td>
+<td style="text-align: center;">3.7327804</td>
+<td style="text-align: center;">0.0005017</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">-10</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.666</td>
-<td style="text-align: center;">0.010</td>
+<td style="text-align: center;">-2.6662717</td>
+<td style="text-align: center;">0.0104209</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Kids1 - Kids2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">-21</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-5.599</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-5.5991706</td>
+<td style="text-align: center;">0.0000010</td>
 </tr>
 </tbody>
 </table>
@@ -1769,14 +1706,14 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Vote at each Kids × Politics combination</caption>
 <colgroup>
-<col style="width: 21%">
-<col style="width: 8%">
-<col style="width: 14%">
-<col style="width: 14%">
-<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
 <col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1796,60 +1733,60 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">0.267</td>
-<td style="text-align: center;">0.791</td>
+<td style="text-align: center;">0.2666272</td>
+<td style="text-align: center;">0.7908983</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">5</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">1.333</td>
-<td style="text-align: center;">0.189</td>
+<td style="text-align: center;">1.3331358</td>
+<td style="text-align: center;">0.1887802</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.799</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-4.7992890</td>
+<td style="text-align: center;">0.0000159</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">17</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">4.533</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">4.5326619</td>
+<td style="text-align: center;">0.0000388</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">-5</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-1.333</td>
-<td style="text-align: center;">0.189</td>
+<td style="text-align: center;">-1.3331358</td>
+<td style="text-align: center;">0.1887802</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Vote1 - Vote2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">-16</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.266</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-4.2660347</td>
+<td style="text-align: center;">0.0000930</td>
 </tr>
 </tbody>
 </table>
@@ -1988,14 +1925,14 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <table class="caption-top table table-sm table-striped small">
 <caption>Pairwise Politics at each Kids × Vote combination</caption>
 <colgroup>
-<col style="width: 31%">
-<col style="width: 8%">
-<col style="width: 8%">
+<col style="width: 28%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 4%">
+<col style="width: 14%">
 <col style="width: 13%">
-<col style="width: 9%">
-<col style="width: 5%">
-<col style="width: 12%">
-<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -2015,120 +1952,120 @@ F-statistic: 13.86 on 11 and 48 DF,  p-value: 1.973e-11</code></pre>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">22</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">5.866</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">5.8657977</td>
+<td style="text-align: center;">0.0000004</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">26</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">6.932</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">6.9323064</td>
+<td style="text-align: center;">0.0000000</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">4</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">1.067</td>
-<td style="text-align: center;">0.292</td>
+<td style="text-align: center;">1.0665087</td>
+<td style="text-align: center;">0.2915289</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">-2</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-0.533</td>
-<td style="text-align: center;">0.596</td>
+<td style="text-align: center;">-0.5332543</td>
+<td style="text-align: center;">0.5963181</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">13</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">3.466</td>
-<td style="text-align: center;">0.001</td>
+<td style="text-align: center;">3.4661532</td>
+<td style="text-align: center;">0.0011228</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">15</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">3.999</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">3.9994075</td>
+<td style="text-align: center;">0.0002184</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">0.800</td>
-<td style="text-align: center;">0.428</td>
+<td style="text-align: center;">0.7998815</td>
+<td style="text-align: center;">0.4277204</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">20</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">5.333</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">5.3325434</td>
+<td style="text-align: center;">0.0000026</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">1</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">17</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">4.533</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">4.5326619</td>
+<td style="text-align: center;">0.0000388</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics1 - Politics2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">10</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">2.666</td>
-<td style="text-align: center;">0.010</td>
+<td style="text-align: center;">2.6662717</td>
+<td style="text-align: center;">0.0104209</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Politics1 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-8</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-2.133</td>
-<td style="text-align: center;">0.038</td>
+<td style="text-align: center;">-2.1330174</td>
+<td style="text-align: center;">0.0380640</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Politics2 - Politics3</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">-18</td>
-<td style="text-align: center;">3.751</td>
+<td style="text-align: center;">3.750555</td>
 <td style="text-align: center;">48</td>
-<td style="text-align: center;">-4.799</td>
-<td style="text-align: center;">0.000</td>
+<td style="text-align: center;">-4.7992890</td>
+<td style="text-align: center;">0.0000159</td>
 </tr>
 </tbody>
 </table>

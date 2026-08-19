@@ -32,7 +32,6 @@ ReportingExampleData = read.table("3-way ANOVA Lecture.csv",
 
 ### Your data
 ```{r}
-# Set the categoical variable to be a 'factor' for R to calculate properly.
 kable (ReportingExampleData,align = 'c')
 kable (describe(ReportingExampleData)[2:4], align = 'c')
 ```
@@ -64,18 +63,21 @@ kable(a,align = 'c')
 ```
 
 ```{r}
-# Post hoc adjustment type
-AdjustmentChoice = "bonferrroni"
-AdjustmentChoice = "tukey"
+# Post hoc adjustment type. Uncomment only one choice.
 AdjustmentChoice = "none" # Least significant difference
+# AdjustmentChoice = "bonferrroni"
+# AdjustmentChoice = "tukey"
 ```
 
 ### Two-way comparisons
-Bonferroni
 
 ```{r}
 # Cell means for Vote at each level of Kids
-describeBy(Score ~ Kids + Vote, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Kids + Vote, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Kids"
+names(d)[names(d) == "group2"] <- "Vote"
+rownames(d) <- NULL
+d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Vote at each level of Kids", align = 'c')
 ```
 
@@ -86,7 +88,11 @@ emmeans(ReportingExANOVA, pairwise ~ Vote | Kids, adjust = AdjustmentChoice)$con
 
 ```{r}
 # Cell means for Vote at each level of Politics
-describeBy(Score ~ Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Politics"
+names(d)[names(d) == "group2"] <- "Vote"
+rownames(d) <- NULL
+d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Vote at each level of Politics", align = 'c')
 ```
 
@@ -97,7 +103,11 @@ emmeans(ReportingExANOVA, pairwise ~ Vote | Politics, adjust = AdjustmentChoice)
 
 ```{r}
 # Cell means for Kids at each level of Politics
-describeBy(Score ~ Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Politics"
+names(d)[names(d) == "group2"] <- "Kids"
+rownames(d) <- NULL
+d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Kids at each level of Politics", align = 'c')
 ```
 
@@ -108,7 +118,11 @@ emmeans(ReportingExANOVA, pairwise ~ Kids | Politics, adjust = AdjustmentChoice)
 
 ```{r}
 # Cell means for Kids at each level of Vote
-describeBy(Score ~ Vote + Kids, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Vote + Kids, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Vote"
+names(d)[names(d) == "group2"] <- "Kids"
+rownames(d) <- NULL
+d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Kids at each level of Vote", align = 'c')
 ```
 
@@ -119,7 +133,11 @@ emmeans(ReportingExANOVA, pairwise ~ Kids | Vote, adjust = AdjustmentChoice)$con
 
 ```{r}
 # Cell means for Politics at each level of Kids
-describeBy(Score ~ Kids + Politics, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Kids + Politics, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Kids"
+names(d)[names(d) == "group2"] <- "Politics"
+rownames(d) <- NULL
+d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Politics at each level of Kids", align = 'c')
 ```
 
@@ -130,7 +148,11 @@ emmeans(ReportingExANOVA, pairwise ~ Politics | Kids, adjust = AdjustmentChoice)
 
 ```{r}
 # Cell means for Politics at each level of Vote
-describeBy(Score ~ Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Vote"
+names(d)[names(d) == "group2"] <- "Politics"
+rownames(d) <- NULL
+d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Politics at each level of Vote", align = 'c')
 ```
 
@@ -144,7 +166,12 @@ emmeans(ReportingExANOVA, pairwise ~ Politics | Vote, adjust = AdjustmentChoice)
 
 ```{r}
 # Cell means for Kids at each Vote × Politics combination
-describeBy(Score ~ Vote + Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Vote + Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Vote"
+names(d)[names(d) == "group2"] <- "Politics"
+names(d)[names(d) == "group3"] <- "Kids"
+rownames(d) <- NULL
+d[c(2,3,4,6:8,17)] %>%
   kable(caption = "Descriptives: Kids at each Vote × Politics combination", align = 'c')
 ```
 
@@ -155,7 +182,12 @@ emmeans(ReportingExANOVA, pairwise ~ Kids | Vote * Politics, adjust = Adjustment
 
 ```{r}
 # Cell means for Vote at each Kids × Politics combination
-describeBy(Score ~ Kids + Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Kids + Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Kids"
+names(d)[names(d) == "group2"] <- "Politics"
+names(d)[names(d) == "group3"] <- "Vote"
+rownames(d) <- NULL
+d[c(2,3,4,6:8,17)] %>%
   kable(caption = "Descriptives: Vote at each Kids × Politics combination", align = 'c')
 ```
 
@@ -166,7 +198,12 @@ emmeans(ReportingExANOVA, pairwise ~ Vote | Kids * Politics, adjust = "none")$co
 
 ```{r}
 # Cell means for Politics at each Kids × Vote combination
-describeBy(Score ~ Kids + Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2) %>%
+d <- describeBy(Score ~ Kids + Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] <- "Kids"
+names(d)[names(d) == "group2"] <- "Vote"
+names(d)[names(d) == "group3"] <- "Politics"
+rownames(d) <- NULL
+d[c(2,3,4,6:8,17)] %>%
   kable(caption = "Descriptives: Politics at each Kids × Vote combination", align = 'c')
 ```
 

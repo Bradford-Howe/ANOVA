@@ -31,10 +31,26 @@ ReportingExampleData = read.table("3-way ANOVA Lecture.csv",
 ```
 
 ### Your data
+Participants reported whether they had children (Kids: 1 = no, 2 = yes), whether they had voted in the most recent election (Vote: 1 = no, 2 = yes), and their political orientation (Politics: 1 = liberal, 2 = moderate, 3 = conservative). The outcome variable, Score, was a continuous measure of participants’ attitudes toward a proposed education policy.
 ```{r}
-# Set the categoical variable to be a 'factor' for R to calculate properly.
-kable (ReportingExampleData,align = 'c')
-kable (describe(ReportingExampleData)[2:4], align = 'c')
+kable (ReportingExampleData,align = 'c', digits = 3)
+
+vars = c("Kids", "Vote", "Politics")
+a = NULL
+for (v in vars) {
+   for (lev in levels(ReportingExampleData[[v]])) {
+      desc = describe(ReportingExampleData[ReportingExampleData[[v]] == lev, "Score"])[c(2:4)]
+      a = rbind(a, desc)
+   }
+}
+rownames(a) = c(
+   paste0("Kids", levels(ReportingExampleData$Kids)),
+   paste0("Vote", levels(ReportingExampleData$Vote)),
+   paste0("Politics", levels(ReportingExampleData$Politics))
+)
+
+kable(a, align = 'c', digits = 3)
+
 ```
 
 
@@ -51,76 +67,180 @@ leveneTest(Score ~ Kids * Vote * Politics,ReportingExampleData)
 
 ### Linear Model
 ```{r}
-ReportingExANOVA = lm(Score ~ Kids * Vote * Politics, ReportingExampleData )
+ReportingExLM = lm(Score ~ Kids * Vote * Politics, ReportingExampleData )
 
-summary(ReportingExANOVA)
+summary(ReportingExLM)
 
 ```
 
 # Omnibus
 ```{r}
-a = Anova(ReportingExANOVA, type = 3)
-kable(a,align = 'c')
+a = Anova(ReportingExLM, type = 3)
+
+SS_error = a["Residuals", "Sum Sq"]
+
+a$pes = a$`Sum Sq` / (a$`Sum Sq` + SS_error)
+a["Residuals", "pes"] = NA          
+a["(Intercept)", "pes"] = NA 
+kable(a, align = 'c', digits = 3)
 ```
 
 ```{r}
-# Post hoc adjustment type
-AdjustmentChoice = "bonferrroni"
-AdjustmentChoice = "tukey"
+# Post hoc adjustment type. Uncomment only one choice.
 AdjustmentChoice = "none" # Least significant difference
+# AdjustmentChoice = "bonferrroni"
+# AdjustmentChoice = "tukey"
 ```
 
 ### Two-way comparisons
-Bonferroni
+
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Vote | Kids, adjust = AdjustmentChoice)$contrasts %>% 
-  kable(caption = "Pairwise Vote at each level of Kids", align = 'c')
+# Cell means for Vote at each level of Kids
+d = describeBy(Score ~ Kids + Vote, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Kids"
+names(d)[names(d) == "group2"] = "Vote"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Vote at each level of Kids", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Vote | Politics, adjust = AdjustmentChoice)$contrasts %>% 
-  kable(caption = "Pairwise Vote at each level of Politics", align = 'c')
+emmeans(ReportingExLM, pairwise ~ Vote | Kids, adjust = AdjustmentChoice)$contrasts %>% 
+  kable(caption = "Pairwise Vote at each level of Kids", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Kids | Politics, adjust = AdjustmentChoice)$contrasts %>% 
-  kable(caption = "Pairwise Kids at each level of Politics", align = 'c')
+# Cell means for Vote at each level of Politics
+d = describeBy(Score ~ Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Politics"
+names(d)[names(d) == "group2"] = "Vote"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Vote at each level of Politics", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Kids | Vote, adjust = AdjustmentChoice)$contrasts %>% 
-  kable(caption = "Pairwise Kids at each level of Vote", align = 'c')
+emmeans(ReportingExLM, pairwise ~ Vote | Politics, adjust = AdjustmentChoice)$contrasts %>% 
+  kable(caption = "Pairwise Vote at each level of Politics", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Politics | Kids, adjust = AdjustmentChoice)$contrasts %>% 
-  kable(caption = "Pairwise Kids at each level of Politics", align = 'c')
+# Cell means for Kids at each level of Politics
+d = describeBy(Score ~ Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Politics"
+names(d)[names(d) == "group2"] = "Kids"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Kids at each level of Politics", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Politics | Vote, adjust = AdjustmentChoice)$contrasts %>% 
-  kable(caption = "Pairwise Politics at each level of Vote", align = 'c')
+emmeans(ReportingExLM, pairwise ~ Kids | Politics, adjust = AdjustmentChoice)$contrasts %>% 
+  kable(caption = "Pairwise Kids at each level of Politics", align = 'c', digits = 3)
+```
+
+```{r}
+# Cell means for Kids at each level of Vote
+d = describeBy(Score ~ Vote + Kids, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Vote"
+names(d)[names(d) == "group2"] = "Kids"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Kids at each level of Vote", align = 'c', digits = 3)
+```
+
+```{r}
+emmeans(ReportingExLM, pairwise ~ Kids | Vote, adjust = AdjustmentChoice)$contrasts %>% 
+  kable(caption = "Pairwise Kids at each level of Vote", align = 'c', digits = 3)
+```
+
+```{r}
+# Cell means for Politics at each level of Kids
+d = describeBy(Score ~ Kids + Politics, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Kids"
+names(d)[names(d) == "group2"] = "Politics"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Politics at each level of Kids", align = 'c', digits = 3)
+```
+
+### To justify t-tests within variables which have 3 or more levels you need a successful f-test.
+
+```{r}
+testInteractions(ReportingExLM, 
+                 fixed  = "Kids", 
+                 across = "Politics") %>% kable(align = 'c', digits = 3)
+```
+
+### The first level of kids was successful, so you are justified in doing deeper testng. You can use the t-tests for the different levels of politics within level 1 of kids, but not level 2.
+
+```{r}
+emmeans(ReportingExLM, pairwise ~ Politics | Kids, adjust = AdjustmentChoice)$contrasts %>% 
+  kable(caption = "Pairwise Kids at each level of Politics", align = 'c', digits = 3)
+```
+
+```{r}
+# Cell means for Politics at each level of Vote
+d = describeBy(Score ~ Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Vote"
+names(d)[names(d) == "group2"] = "Politics"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Politics at each level of Vote", align = 'c', digits = 3)
+```
+
+```{r}
+emmeans(ReportingExLM, pairwise ~ Politics | Vote, adjust = AdjustmentChoice)$contrasts %>% 
+  kable(caption = "Pairwise Politics at each level of Vote", align = 'c', digits = 3)
 ```
 
 
 ### Three-way comparisons
+
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Kids | Vote * Politics, adjust = AdjustmentChoice)$contrasts %>%
-  kable(caption = "Pairwise Kids at each Vote × Politics combination", align = 'c')
+# Cell means for Kids at each Vote × Politics combination
+d = describeBy(Score ~ Vote + Politics + Kids, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Vote"
+names(d)[names(d) == "group2"] = "Politics"
+names(d)[names(d) == "group3"] = "Kids"
+rownames(d) = NULL
+d[c(2,3,4,6:8,17)] %>%
+  kable(caption = "Descriptives: Kids at each Vote × Politics combination", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Vote | Kids * Politics, adjust = "none")$contrasts %>%
-  kable(caption = "Pairwise Vote at each Kids × Politics combination", align = 'c')
+emmeans(ReportingExLM, pairwise ~ Kids | Vote * Politics, adjust = AdjustmentChoice)$contrasts %>%
+  kable(caption = "Pairwise Kids at each Vote × Politics combination", align = 'c', digits = 3)
 ```
 
 ```{r}
-emmeans(ReportingExANOVA, pairwise ~ Politics | Kids * Vote, adjust = "none")$contrasts %>%
-  kable(caption = "Pairwise Politics at each Kids × Vote combination", align = 'c')
+# Cell means for Vote at each Kids × Politics combination
+d = describeBy(Score ~ Kids + Politics + Vote, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Kids"
+names(d)[names(d) == "group2"] = "Politics"
+names(d)[names(d) == "group3"] = "Vote"
+rownames(d) = NULL
+d[c(2,3,4,6:8,17)] %>%
+  kable(caption = "Descriptives: Vote at each Kids × Politics combination", align = 'c', digits = 3)
 ```
 
+```{r}
+emmeans(ReportingExLM, pairwise ~ Vote | Kids * Politics, adjust = "none")$contrasts %>%
+  kable(caption = "Pairwise Vote at each Kids × Politics combination", align = 'c', digits = 3)
+```
 
+```{r}
+# Cell means for Politics at each Kids × Vote combination
+d = describeBy(Score ~ Kids + Vote + Politics, data = ReportingExampleData, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Kids"
+names(d)[names(d) == "group2"] = "Vote"
+names(d)[names(d) == "group3"] = "Politics"
+rownames(d) = NULL
+d[c(2,3,4,6:8,17)] %>%
+  kable(caption = "Descriptives: Politics at each Kids × Vote combination", align = 'c', digits = 3)
+```
 
-
-
-
+```{r}
+emmeans(ReportingExLM, pairwise ~ Politics | Kids * Vote, adjust = "none")$contrasts %>%
+  kable(caption = "Pairwise Politics at each Kids × Vote combination", align = 'c', digits = 3)
+```
