@@ -189,6 +189,16 @@ d[c(2,3,5:7,16)] %>%
   kable(caption = "Descriptives: Politics at each level of Vote", align = 'c', digits = 3)
 ```
 
+### Again, to justify t-tests within variables which have 3 or more levels you need a successful f-test.
+
+```{r}
+testInteractions(ReportingExLM, 
+                 fixed  = "Vote", 
+                 across = "Politics") %>% kable(align = 'c', digits = 3)
+```
+
+### Here, both levels of vote have significant findings so you should report all the signifiant t-tests below.
+
 ```{r}
 emmeans(ReportingExLM, pairwise ~ Politics | Vote, adjust = AdjustmentChoice)$contrasts %>% 
   kable(caption = "Pairwise Politics at each level of Vote", align = 'c', digits = 3)
@@ -239,6 +249,17 @@ rownames(d) = NULL
 d[c(2,3,4,6:8,17)] %>%
   kable(caption = "Descriptives: Politics at each Kids × Vote combination", align = 'c', digits = 3)
 ```
+
+### Again, to justify t-tests within variables which have 3 or more levels you need a successful f-test. In the first column, the first number is the Kids level the second is the Vote level.
+
+```{r}
+testInteractions(ReportingExLM,
+                 fixed = c("Kids", "Vote"),
+                 across = "Politics") %>% 
+  kable(align = 'c', digits = 3)
+```
+
+### All the tests were significant. So, if you choose to report this section, you should report all of the t-tests.
 
 ```{r}
 emmeans(ReportingExLM, pairwise ~ Politics | Kids * Vote, adjust = "none")$contrasts %>%
