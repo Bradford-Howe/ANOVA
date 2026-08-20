@@ -9,30 +9,48 @@ library(psych)
 library(interactions)
 library(ggplot2)
 
-# Simulate a realistic 2 × 2 × 3 design (easy for students to follow)
-set.seed(42)
-n <- 120
-ThreeWay <- data.frame(
-   Resolution  = factor(rep(c("QVGA", "VGA"), each = n/2)),
-   LightLevel  = factor(rep(c("Low", "High"), times = n/2)),
-   DisplayType = factor(rep(c("LCD", "OLED", "MiniLED"), length.out = n)),
-   LivesLost   = rnorm(n, mean = 12, sd = 4)
+
+MeansVector = vector()
+SDVecotor = vector()
+NVector = vector()
+
+
+vars <- c("Kids", "Vote", "Politics")
+a <- NULL
+for (v in vars) {
+   for (lev in levels(ReportingExampleData[[v]])) {
+      desc <- describe(ReportingExampleData[ReportingExampleData[[v]] == lev, "Score"])[c(2:4)]
+      a <- rbind(a, desc)
+   }
+}
+rownames(a) <- c(
+   paste0("Kids", levels(ReportingExampleData$Kids)),
+   paste0("Vote", levels(ReportingExampleData$Vote)),
+   paste0("Politics", levels(ReportingExampleData$Politics))
 )
+kable(a)
 
-# Add a clear three-way interaction pattern
-ThreeWay$LivesLost <- with(ThreeWay, LivesLost + 
-                              ifelse(Resolution == "VGA" & LightLevel == "High" & DisplayType == "OLED", 8, 0) -
-                              ifelse(Resolution == "QVGA" & LightLevel == "Low"  & DisplayType == "MiniLED", 6, 0))
+   
+a = describe(ReportingExampleData[ReportingExampleData$Kids == 1,"Score"])[c(2:4)]
 
-# Fit the model (using the same Type III / contr.sum approach you already teach)
-options(contrasts = c("contr.sum", "contr.poly"))
-ThreeLM <- lm(LivesLost ~ Resolution * LightLevel * DisplayType, data = ThreeWay)
+a = rbind(a,
+      describe(ReportingExampleData[ReportingExampleData$Kids == 2,"Score"])[c(2:4)])
 
-# Three-way interaction plot
-cat_plot(ThreeLM,
-         pred  = Resolution,      # x-axis
-         modx  = LightLevel,      # different lines
-         mod2  = DisplayType,     # different panels
-         geom  = "line",
-         interval = TRUE)
+a = rbind(a,
+          describe(ReportingExampleData[ReportingExampleData$Vote == 1,"Score"])[c(2:4)])
 
+a = rbind(a,
+          describe(ReportingExampleData[ReportingExampleData$Vote == 2,"Score"])[c(2:4)])
+
+a = rbind(a,
+          describe(ReportingExampleData[ReportingExampleData$Politics == 1,"Score"])[c(2:4)])
+
+a = rbind(a,
+          describe(ReportingExampleData[ReportingExampleData$Politics == 2,"Score"])[c(2:4)])
+a = rbind(a,
+          describe(ReportingExampleData[ReportingExampleData$Politics == 3,"Score"])[c(2:4)])
+
+
+rownames(a) = c(paste0("Kids",levels(ReportingExampleData$Kids)),
+             paste0("Vote",levels(ReportingExampleData$Vote)),
+             paste0("Politics",levels(ReportingExampleData$Politics)))
