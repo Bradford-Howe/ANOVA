@@ -19,20 +19,75 @@ library(interactions)
 ```
 
 
+### Your data and analysis
+If you correctly import your data you will see the output for a hypothetical factorial experiment assessing hypertension using mean arterial pressure (MAP), measured in mmHg, as a dependent variable. It is a 2 (dieting) X 2 (biofeedback) x 3 (drugs) between groups design (i.e., each participant provided one data point). Participants were assigned to a dieting condition (Diet: 1 = no, 2 = yes), a biofeedback condition (Bio: 1 = no, 2 = yes), and a drug condition (Drug: 1 = placebo, 2 = low dose, 3 = high dose).
 ```{r}
 # Load your data
-A4Data = read.table("A4Data.csv",
-                    sep = ",",
-                    header = T,
-                    colClasses = c("factor",
-                                   "factor",
-                                   "factor",
-                                   "integer"))
+
+# Put the full name of your data file in here, between the quotation marks, including the file extention.
+NAMEOFYOURDATA = "A4Data.csv"
+
+# As listed in the description you have four variables. You need to tell the computer whether these are categorical or continuous. Your data is organized thusly:
+# Column1- Drug
+# Column2- Bio
+# Column3- Diet
+# Column4- MAP
+
+# You can tell the computer your variable is categorical by puting the word factor between the quotation marks and continuous by putting the word integer (later this will be numeric).
+Column1 = "factor"
+Column2 = "factor"
+Column3 = "factor"
+Column4 = "integer"
+
+###########################
+### Your analysis choices.
+
+### If you would like a test of homogeneity of variance for your data, set this variable to TRUE.
+HOVTest = FALSE
+
+# Choose the type of follow-up tests that you will use and set the comment marks correctly. Your choices are as follows.
+
+# none - This will perform the 'Multiple t-test' method without correction.
+# bonferroni - This will adjust the p-value in your 'Multiple t-test' follow-ups with a BF correction.
+# tukey - This will perform a Tukey post hoc test instead of the 'Multiple tets' method.
+
+AdjustmentChoice = "none"
+# AdjustmentChoice = "bonferroni"
+# AdjustmentChoice = "tukey"
+
+
 ```
 
-### Your data
-Below is the data for a hypothetical factorial experiment assessing hypertension using mean arterial pressure (MAP) as a dependent variable. It is a 2 (dieting) X 2 (biofeedback) x 3 (drugs) between groups design (i.e., each participant provided one data point). Participants were assigned to a dieting condition (Diet: 1 = no, 2 = yes), a biofeedback condition (Bio: 1 = no, 2 = yes), and a drug condition (Drug: 1 = placebo, 2 = low dose, 3 = high dose). The outcome variable, MAP, was mean arterial pressure measured in mmHg.
+### A) Render this mark down file and look at the omnibus output. Use it to manually calculate the effect size for each of your main effects and interactions.
+
 ```{r}
+# Replace each 1 below with the partial eta-squared values you calculate from the Omnibus table. Don't change the names of the variables.
+# Main effects
+Diet_Peta = 5940.5 / (5940.5 + 9686)
+Bio_Peta = 1624.5 / (1624.5 + 9686)
+Drug_Peta = 3409 / (3409 + 9686)
+
+# Two-way interactions
+Diet_Bio_Peta = 112.5 / (112.5 + 9686)
+Diet_Drug_Peta = 1141 / (1141 + 9686)
+Bio_Drug_Peta = 147 / (147 + 9686)
+
+# Three-way interaction
+Diet_Bio_Drug_Peta = 1299 / (1299 + 9686)
+
+```
+
+### B) Write a results section (100 points). Note there is a results section example in your textbook (page 443).
+```{r}
+A4Data = read.table(NAMEOFYOURDATA,
+                    sep = ",",
+                    header = T,
+                    colClasses = c(Column1,
+                                   Column2,
+                                   Column3,
+                                   Column4))
+
+
 kable (A4Data,align = 'c', digits = 3)
 
 vars = c("Diet", "Bio", "Drug")
@@ -53,6 +108,7 @@ kable(a, align = 'c', digits = 3)
 
 ```
 
+---
 
 ```{r}
 
@@ -62,7 +118,11 @@ options(contrasts = c("contr.sum", "contr.poly"))
 # type II SS.
 #options(contrasts = c("contr.treatment", "contr.poly"))
 
+if (HOVTest == T)
+{
 leveneTest(MAP ~ Diet * Bio * Drug, A4Data)
+}
+   
 ```
 
 ### Linear Model
@@ -74,22 +134,31 @@ summary(A4LM)
 ```
 
 # Omnibus
+
 ```{r}
 a = Anova(A4LM, type = 3)
 
-SS_error = a["Residuals", "Sum Sq"]
-
-a$pes = a$`Sum Sq` / (a$`Sum Sq` + SS_error)
-a["Residuals", "pes"] = NA          
-a["(Intercept)", "pes"] = NA 
+# SS_error = a["Residuals", "Sum Sq"]
+# 
+# a$pes = a$`Sum Sq` / (a$`Sum Sq` + SS_error)
+# a["Residuals", "pes"] = NA
+# a["(Intercept)", "pes"] = NA
 kable(a, align = 'c', digits = 3)
 ```
 
+### Effect sizes 
+
 ```{r}
-# Post hoc adjustment type. Uncomment only one choice.
-AdjustmentChoice = "none" # Least significant difference
-# AdjustmentChoice = "bonferrroni"
-# AdjustmentChoice = "tukey"
+EffectSizes = data.frame(
+  Term = c("Diet", "Bio", "Drug", 
+           "Diet:Bio", "Diet:Drug", "Bio:Drug", 
+           "Diet:Bio:Drug"),
+  Partial_Eta_Squared = c(Diet_Peta, Bio_Peta, Drug_Peta, 
+                          Diet_Bio_Peta, Diet_Drug_Peta, Bio_Drug_Peta, 
+                          Diet_Bio_Drug_Peta)
+)
+
+kable(EffectSizes, align = 'c', digits = 3, caption = "Partial Eta-Squared Effect Sizes")
 ```
 
 ### Two-way comparisons
@@ -231,7 +300,7 @@ d[c(2,3,4,6:8,17)] %>%
 ```
 
 ```{r}
-emmeans(A4LM, pairwise ~ Bio | Diet * Drug, adjust = "none")$contrasts %>%
+emmeans(A4LM, pairwise ~ Bio | Diet * Drug, adjust = AdjustmentChoice)$contrasts %>%
   kable(caption = "Pairwise Bio at each Diet × Drug combination", align = 'c', digits = 3)
 ```
 
@@ -256,6 +325,6 @@ testInteractions(A4LM,
 ```
 
 ```{r}
-emmeans(A4LM, pairwise ~ Drug | Diet * Bio, adjust = "none")$contrasts %>%
+emmeans(A4LM, pairwise ~ Drug | Diet * Bio, adjust = AdjustmentChoice)$contrasts %>%
   kable(caption = "Pairwise Drug at each Diet × Bio combination", align = 'c', digits = 3)
 ```
