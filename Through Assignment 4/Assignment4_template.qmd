@@ -1,6 +1,6 @@
 ---
 title: "Assignment4"
-format: docx
+format: html
 execute:
    echo: false
    warning: false
@@ -26,7 +26,7 @@ If you correctly import your data you will see the output for a hypothetical fac
 # Load your data and make some analysis choices in this code block.
 
 # Put the full name of your data file in here, between the quotation marks, including the file extention.
-NAMEOFYOURDATA = "A4Data.csv"
+NAMEOFYOURDATA = ""
 
 # As listed in the description you have four variables. You need to tell the computer whether these are categorical or continuous. Your data is organized thusly:
 # Column1- Drug
@@ -35,10 +35,11 @@ NAMEOFYOURDATA = "A4Data.csv"
 # Column4- MAP
 
 # You can tell the computer your variable is categorical by puting the word factor between the quotation marks and continuous by putting the word integer (later this will be numeric).
-Column1 = "factor"
-Column2 = "factor"
-Column3 = "factor"
-Column4 = "integer"
+Column1 = ""
+Column2 = ""
+Column3 = ""
+Column4 = ""
+
 
 ###########################
 ### Your analysis choices.
@@ -62,23 +63,23 @@ AdjustmentChoice = "none"
 ### A) Render this mark down file and look at the omnibus output. Use it to manually calculate the effect size for each of your main effects and interactions. The 'Effect Sizes' table below the omnibus will count as your response.
 
 ```{r}
-# Replace each 1 below with the partial eta-squared values you calculate from the Omnibus table. Don't change the names of the variables. 
+# Replace each 1 below with the partial eta-squared values you calculate from the Omnibus table. Don't change the names of the variables.
 # Main effects
-Diet_Peta = 5940.5 / (5940.5 + 9686)
-Bio_Peta = 1624.5 / (1624.5 + 9686)
-Drug_Peta = 3409 / (3409 + 9686)
+Diet_Peta = 1
+Bio_Peta = 1
+Drug_Peta = 1
 
 # Two-way interactions
-Diet_Bio_Peta = 112.5 / (112.5 + 9686)
-Diet_Drug_Peta = 1141 / (1141 + 9686)
-Bio_Drug_Peta = 147 / (147 + 9686)
+Diet_Bio_Peta = 1
+Diet_Drug_Peta = 1
+Bio_Drug_Peta = 1
 
 # Three-way interaction
-Diet_Bio_Drug_Peta = 1299 / (1299 + 9686)
+Diet_Bio_Drug_Peta = 1
 
 ```
 
-### B) Write a results section. Note there is a results section example in your textbook (page 443).
+### B) Write a results section (100 points). Note there is a results section example in your textbook (page 443).
 
 
 ---
@@ -87,6 +88,8 @@ Diet_Bio_Drug_Peta = 1299 / (1299 + 9686)
 
 ### Raw data
 ```{r}
+
+
 A4Data = read.table(NAMEOFYOURDATA,
                     sep = ",",
                     header = T,
@@ -101,7 +104,6 @@ kable (A4Data,align = 'c', digits = 3)
 
 ---
 
-
 ### Descriptives
 ```{r}
 vars = c("Diet", "Bio", "Drug")
@@ -112,16 +114,12 @@ for (v in vars) {
       a = rbind(a, desc)
    }
 }
-# Add overall (Total) row
-total_desc = describe(A4Data$MAP)[c(2:4)]
-a = rbind(a, total_desc)
-
 rownames(a) = c(
    paste0("Diet", levels(A4Data$Diet)),
    paste0("Bio", levels(A4Data$Bio)),
-   paste0("Drug", levels(A4Data$Drug)),
-   "Total"
+   paste0("Drug", levels(A4Data$Drug))
 )
+
 kable(a, align = 'c', digits = 3)
 
 ```
