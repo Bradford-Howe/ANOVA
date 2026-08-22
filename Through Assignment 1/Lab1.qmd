@@ -4,11 +4,12 @@ format: html
 execute:
   echo: false
   warning: false
-  message: false
+  fig-dpi: 300
 ---
 ```{r}
 library(knitr)
 ```
+
 
 ```{r}
 # Create frequency table for carburetors 0–9, even though some of those numbers
@@ -55,7 +56,7 @@ tab = rbind(tab, data.frame(
 ))
 
 # Print the table
-kable(tab, row.names = FALSE)
+kable(tab)
 ```
 
 
@@ -121,8 +122,6 @@ par(family = "")
 
 
 ```{r}
-#| echo: false
-
 #Set a serifed font
 par(family = "serif")
 

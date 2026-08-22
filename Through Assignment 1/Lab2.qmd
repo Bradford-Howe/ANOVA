@@ -4,13 +4,17 @@ format: html
 execute:
    echo: false
    warning: false
-   message: false
+   fig-dpi: 300
 ---
 
 ```{r}
 library(knitr)
 ```
 
+```{r}
+#Choose the maximum number of digits after your decimal in this document
+DecimalPlaces = 7
+```
 
 ```{r}
 TransformationTable = data.frame(iris$Sepal.Length)
@@ -30,8 +34,8 @@ TransformationTableResults = rbind(c("Means",Means),
                                    c("Std. Dev.",StdDev)
                                    )
 
-kable(TransformationTable)
-kable(TransformationTableResults)
+kable(TransformationTable, digit = DecimalPlaces)
+kable(TransformationTableResults, digit = DecimalPlaces)
 ```
 
 ```{r}
@@ -40,6 +44,8 @@ boxplot(iris$Sepal.Length)
 #########################################
 
 
+# These are to show you the different ways to calculate the placement of whiskers.
+# If you uncomment the second definitions of UpperWhisker and LowerWhisker, then render this document again, you'll see horizontal lines appear at the upper and lower whiskers on your boxplot.
 FirstQuart = summary(iris$Sepal.Length)[2]
 ThirdQuart = summary(iris$Sepal.Length)[5]
 Median = median(iris$Sepal.Length)
@@ -50,9 +56,11 @@ BoxTop = ThirdQuart
 BoxBottom = FirstQuart
 UpperWhisker = ThirdQuart + IQR * 1.5
 LowerWhisker = FirstQuart - IQR * 1.5
-UpperWhisker = max(iris$Sepal.Length)
-LowerWhisker = min(iris$Sepal.Length)
+#UpperWhisker = max(iris$Sepal.Length)
+#LowerWhisker = min(iris$Sepal.Length)
 
+
+### These will draw your lines. Don't change them.
 abline(h = Midline)
 abline(h = BoxTop)
 abline(h = BoxBottom)
