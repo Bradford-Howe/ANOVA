@@ -1,6 +1,6 @@
 ---
 title: "Assignment 2"
-format: docx
+format: html
 execute:
    echo: FALSE
    warning: FALSE
@@ -27,7 +27,7 @@ library(effectsize) # cohens_d()
 - All of your numerical results for questions 5-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
 
 
-Q1. The incidence of schizophrenia in the population is 2% in adults. A proposed screening test claims to have a sensitivity of 96% (meaning that if someone is schizophrenic, the test indicates it 96% of the time). It also claims to have a 93% specificity (meaning that if someone is healthy, the test indicates it 93% of the time). There is a 7% likelihood that a healthy person’s test result is positive (indicating schizophrenia). What is the likelihood that someone is healthy given the test is positive (indicating schizophrenia)? 
+Q1. The incidence of schizophrenia in the population is 2% in adults. A proposed screening test claims to have a sensitivity of 96% (meaning that if someone is schizophrenic, the test indicates it 96% of the time). It also claims to have a 93% specificity (meaning that if someone is healthy, the test indicates it 93% of the time). There is a 7% likelihood that a healthy person’s test result is positive (indicating schizophrenia). What is the likelihood that someone is healthy given the test is positive (indicating schizophrenia)? (50 pts) 
 
 
 ## Overview & instructions for questions two through four.
@@ -36,11 +36,11 @@ Q1. The incidence of schizophrenia in the population is 2% in adults. A proposed
 
 ---
 
-Q2. How does the Central Limit Theorem define the shape, or ‘nature’ of our sampling distributions of M₁ and M₂? How does the same theorem (not the variance sum law) define the shape, or ‘nature’ of the sampling distribution of mean differences between M₁ − M₂?
+Q2. How does the Central Limit Theorem define the shape, or ‘nature’ of our sampling distributions of M₁ and M₂? How does the same theorem (not the variance sum law) define the shape, or ‘nature’ of the sampling distribution of mean differences between M₁ − M₂? (70 pts)
 
-Q3. How does the Central Limit Theorem (CLT) allow us to calculate a relevant t-statistic via the sampling distribution of the difference scores?
+Q3. How does the Central Limit Theorem (CLT) allow us to calculate a relevant t-statistic via the sampling distribution of the difference scores?(40 pts)
 
-Q4. How does the sampling distribution of the difference scores allow us to obtain a p-value which corresponds to an obtained t-statistic?
+Q4. How does the sampling distribution of the difference scores allow us to obtain a p-value which corresponds to an obtained t-statistic?(40 pts)
 
 
 
@@ -66,13 +66,26 @@ You may also change the outcome variable (column name) if you want to explore bu
 
 ---
 
-Q5. Transmission type and fuel efficiency.
+Q5. Transmission type and fuel efficiency. (50 pts)
 
 Research context:
 A researcher wants to know whether cars with automatic transmissions (`am == 0`) and cars with manual transmissions (`am == 1`) differ in fuel efficiency. The data come from the `mtcars` data set; each row is a different car. We will examine the `mpg` column.
 
 ```{r}
-# Creating groups and arbitrarily making them equal sizes (don't do it this way in the wild).
+# This is where you make your analysis choices.
+
+# Is this a paired / repeated-measures design or an independent-groups design?
+# Set the flag to the value that matches the research context and your data.
+paired_flag = F
+Welch_flag = F
+
+# Optional:  Levene's test. Change this to T (stand for TRUE) to perform the test.
+LeveneTest = FALSE
+
+```
+
+```{r}
+# Creating groups and arbitrarily making them equal sizes (don't do it this way in the wild). You don't need to do anything in this code block.
 group1 = mtcars[mtcars$am == 0, c("am","mpg")]   # automatic 
 group2 = mtcars[mtcars$am == 1, c("am","mpg")]   # manual    
 group1 = group1[7:19,]
@@ -84,16 +97,13 @@ describe(group2$mpg)
 ```
 
 ```{r}
-# Optional:  Levene's test
-# Uncomment the next line to run it.
-# leveneTest(mpg ~ factor(am), AMDF)
+if (LeveneTest == T)
+{
+ leveneTest(mpg ~ factor(am), AMDF)
+}
 ```
 
 ```{r}
-# Is this a paired / repeated-measures design or an independent-groups design?
-# Set the flag to the value that matches the research context and your data.
-paired_flag = F
-Welch_flag = F
 
 # Running and reporting the t-test you have chosen.
 tt = t.test(group1$mpg, group2$mpg, paired = paired_flag, var.equal = !Welch_flag)
@@ -101,13 +111,14 @@ tt
 
 # Cohen's d uses the same paired flag
 d = cohens_d(group1$mpg, group2$mpg, paired = paired_flag)
-d
+
+paste("Cohen's d: ", d)
 ```
 
 
 ---
 
-Q6. Two soporific drugs and extra sleep.  
+Q6. Two soporific drugs and extra sleep.  (50 pts)
 
 Research context:
 The `sleep` data set records the extra hours of sleep obtained by subjects under the effects of a drug during two nights (`group` from the data, night1 and night2 for us). Importantly, the same ten subjects participated each night. The label group1 is for the first night and group2 is for the second night.
@@ -141,13 +152,13 @@ tt
 
 # Cohen's d uses the same paired flag
 d = cohens_d(night1, night2, paired = paired_flag)
-d
+paste("Cohen's d: ", d)
 ```
 
 
 ---
 
-Q7. Average fuel efficiency versus a benchmark.  
+Q7. Average fuel efficiency versus a benchmark.  (50 pts)
 
 Research context:
 Is the average fuel efficiency of the cars in `mtcars` different from a hypothesized value of 21 mpg? Use the code below to get your t and its p-value. Then, compare that p-value to an alpha of .05 to determine if you have found a significant difference.
@@ -166,25 +177,27 @@ describe(x)
 
 t-score
 ``` {r}
-# choose the functions below to get you the correct t-test formula. Comment them out so they don't appear in your Word document.
-# for simplicity, one of the first four will give you your n.
+# You need to create your t-score formula. Start by selecting the correct definition of your n. Leave only one of the four choices uncommented.
 n = 21
-n = 21 - 1
-n = length(mtcars$mpg)
-n = length(mtcars$mpg) - 1
-21 # Just the number 21
-mean(21)
-mean(mtcars$mpg)
-var(21)
-var(mtcars$mpg)
-sd(21)
-sd(mtcars$mpg)
-mean(mtcars$mpg)
-sqrt(21)
-sqrt(mtcars$mpg)
-sqrt(n)
+# n = 21 - 1
+# n = length(mtcars$mpg)
+# n = length(mtcars$mpg) - 1
 
-# Put your chosen functions, values, or variables into the correct form to calculate your observed t. Replace 1 and 2 with the numerator and denomenator formulas.
+
+# Choose the functions below to get you the correct t-test formula. Use them to define t_numerator and t_denomenator below.
+# mean(21)
+# mean(mtcars$mpg)
+# var(21)
+# 21 # Just the number 21
+# var(mtcars$mpg)
+# sd(21)
+# sd(mtcars$mpg)
+# mean(mtcars$mpg)
+# sqrt(21)
+# sqrt(mtcars$mpg)
+# sqrt(n)
+
+# Put your chosen functions, values, or variables into the correct form to calculate your observed t. They shouls replace the numbders 1 and 2 below.
 
 t_numerator = 1
 
@@ -216,7 +229,7 @@ d_denominator = 2
 
 cohens_d = abs(d_numerator / d_denominator)
 
-cohens_d
+paste ("Cohen's d", cohens_d)
 ```
 
 CI

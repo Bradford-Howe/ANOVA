@@ -1,0 +1,136 @@
+---
+title: "Lab 5"
+format: html
+execute:
+   echo: false
+   warning: false
+   message: false
+---
+
+```{r}
+library(knitr)
+library(car)
+library(emmeans)
+library(effectsize)
+library(psych)
+
+```
+
+
+# Power analysis for the repeated-measures (paired) t-test
+### Note: with this small df (9) the textbook will give a higher power than what you see here.
+```{r}
+PreGroup = sleep$extra[1:10]
+PostGroup = sleep$extra[11:20]
+diff = PostGroup - PreGroup
+
+# Mean difference, SD of differences, and Cohen's d (explicit calculation)
+mean_diff = mean(diff)
+sd_diff   = sd(diff)
+d         = mean_diff / sd_diff
+
+paste(c("Mean of differences:", mean_diff))
+paste(c("SD of differences:", sd_diff))
+paste(c("Cohen's d:", d))
+
+# --- Power of the test just demonstrated ---
+# For paired: delta = mean of differences, sd = SD of the differences
+power.t.test(n = 10,
+             delta = mean_diff,
+             sd = sd_diff,
+             type = "paired")
+
+# --- Sample size needed for a future experiment (80% power) ---
+power.t.test(power = 0.80,
+             delta = mean_diff,
+             sd = sd_diff,
+             type = "paired")
+
+```
+
+
+
+# Power analysis for the independent-groups t-test (equal n)
+### Note: No problem with this higher df (49), but you will still get differences from the hand calculations because the computer is more exact.
+```{r}
+group1 = iris[iris$Species == "setosa", ]
+group2 = iris[iris$Species == "versicolor", ]
+
+# Means, SDs, and pooled SD (explicit calculation)
+m1  = mean(group1$Sepal.Length)
+m2  = mean(group2$Sepal.Length)
+s1  = sd(group1$Sepal.Length)
+s2  = sd(group2$Sepal.Length)
+n1  = nrow(group1)
+n2  = nrow(group2)
+
+sd_pooled = sqrt( ((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2) )
+
+paste(c("Pooled SD:", sd_pooled))
+
+# Cohen's d (for reference / comparison with the table)
+d = abs(m1 - m2) / sd_pooled
+
+paste(c("Cohen's d:", d))
+
+# --- Power of the test just demonstrated ---
+# delta = raw mean difference, sd = pooled SD
+power.t.test(n = 50,
+             delta = abs(m1 - m2),
+             sd = sd_pooled,
+             type = "two.sample")
+
+# --- Sample size needed for a future experiment (80% power) ---
+power.t.test(power = 0.80,
+             delta = abs(m1 - m2),
+             sd = sd_pooled,
+             type = "two.sample")
+
+```
+
+
+# Power analysis for the independent-groups t-test (unequal n)
+### Note: power.t.test() assumes equal n; the calls below approximate using the smaller group size (n = 20)
+```{r}
+group1 = iris[iris$Species == "virginica", ]
+group2 = iris[iris$Species == "versicolor", ][1:20, ]
+
+# Means, SDs, ns, and pooled SD (explicit calculation)
+m1  = mean(group1$Sepal.Width)
+m2  = mean(group2$Sepal.Width)
+s1  = sd(group1$Sepal.Width)
+s2  = sd(group2$Sepal.Width)
+n1  = nrow(group1)
+n2  = nrow(group2)
+
+sd_pooled = sqrt( ((n1 - 1) * s1^2 + (n2 - 1) * s2^2) / (n1 + n2 - 2) )
+
+paste(c("n1 (virginica):", n1, "  n2 (versicolor subset):", n2))
+paste(c("Pooled SD:", sd_pooled))
+
+# Cohen's d (for reference)
+d = abs(m1 - m2) / sd_pooled
+
+paste(c("Cohen's d:", d))
+
+# Harmonic mean
+n_h <- 2 * n1 * n2 / (n1 + n2)
+
+paste(c("Harmonic Mean:", n_h))
+
+power.t.test(n = n_h,
+             delta = abs(m1 - m2),
+             sd = sd_pooled,
+             type = "two.sample")
+# --- Sample size needed for a future experiment (80% power) ---
+# This returns the n *per group* under the equal-n assumption
+power.t.test(power = 0.80,
+             delta = abs(m1 - m2),
+             sd = sd_pooled,
+             type = "two.sample")
+
+```
+
+
+
+

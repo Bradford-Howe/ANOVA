@@ -68,9 +68,16 @@ ul.task-list li input[type="checkbox"] {
 <h1>Power analysis for the repeated-measures (paired) t-test</h1>
 <section id="note-with-this-small-df-9-the-textbook-will-give-a-higher-power-than-what-you-see-here." class="level3">
 <h3 class="anchored" data-anchor-id="note-with-this-small-df-9-the-textbook-will-give-a-higher-power-than-what-you-see-here.">Note: with this small df (9) the textbook will give a higher power than what you see here.</h3>
+<hr>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.284558</code></pre>
+<pre><code>[1] "Mean of differences:" "1.58"                </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "SD of differences:" "1.22999548327987"  </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Cohen's d:"       "1.28455756259105"</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -103,23 +110,23 @@ NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code
 </section>
 <section id="power-analysis-for-the-independent-groups-t-test-equal-n" class="level1">
 <h1>Power analysis for the independent-groups t-test (equal n)</h1>
-<section id="note-no-problem-with-this-higher-df-49" class="level3">
-<h3 class="anchored" data-anchor-id="note-no-problem-with-this-higher-df-49">Note: No problem with this higher df (49)</h3>
+<section id="note-no-problem-with-this-higher-df-49-but-you-will-still-get-differences-from-the-hand-calculations-because-the-computer-is-more-exact." class="level3">
+<h3 class="anchored" data-anchor-id="note-no-problem-with-this-higher-df-49-but-you-will-still-get-differences-from-the-hand-calculations-because-the-computer-is-more-exact.">Note: No problem with this higher df (49), but you will still get differences from the hand calculations because the computer is more exact.</h3>
+<hr>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Cohen's d |         95% CI
---------------------------
--2.10     | [-2.59, -1.61]
-
-- Estimated using pooled SD.</code></pre>
+<pre><code>[1] "Pooled SD:"        "0.441973773346938"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Cohen's d:"       "2.10419725350982"</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
 
               n = 50
-          delta = 2.104197
-             sd = 1
+          delta = 0.93
+             sd = 0.4419738
       sig.level = 0.05
           power = 1
     alternative = two.sided
@@ -131,8 +138,8 @@ NOTE: n is number in *each* group</code></pre>
      Two-sample t test power calculation 
 
               n = 4.728827
-          delta = 2.104197
-             sd = 1
+          delta = 0.93
+             sd = 0.4419738
       sig.level = 0.05
           power = 0.8
     alternative = two.sided
@@ -144,23 +151,32 @@ NOTE: n is number in *each* group</code></pre>
 </section>
 <section id="power-analysis-for-the-independent-groups-t-test-unequal-n" class="level1">
 <h1>Power analysis for the independent-groups t-test (unequal n)</h1>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+<hr>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>Cohen's d |       95% CI
-------------------------
-0.63      | [0.10, 1.16]
-
-- Estimated using pooled SD.</code></pre>
+<pre><code>[1] "n1 (virginica):"           "50"                       
+[3] "  n2 (versicolor subset):" "20"                       </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Pooled SD:"        "0.338773740214355"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Cohen's d:"        "0.631690047359026"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Harmonic Mean:"   "28.5714285714286"</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      Two-sample t test power calculation 
 
-              n = 20
-          delta = 0.63169
-             sd = 1
+              n = 28.57143
+          delta = 0.214
+             sd = 0.3387737
       sig.level = 0.05
-          power = 0.4948258
+          power = 0.6501999
     alternative = two.sided
 
 NOTE: n is number in *each* group</code></pre>
@@ -170,8 +186,8 @@ NOTE: n is number in *each* group</code></pre>
      Two-sample t test power calculation 
 
               n = 40.3228
-          delta = 0.63169
-             sd = 1
+          delta = 0.214
+             sd = 0.3387737
       sig.level = 0.05
           power = 0.8
     alternative = two.sided
@@ -179,6 +195,7 @@ NOTE: n is number in *each* group</code></pre>
 NOTE: n is number in *each* group</code></pre>
 </div>
 </div>
+</section>
 </section>
 
 </main>

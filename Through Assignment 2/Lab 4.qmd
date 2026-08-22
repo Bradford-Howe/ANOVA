@@ -4,7 +4,7 @@ format: html
 execute:
    echo: false
    warning: false
-   message: false
+   fig-dpi: 300
 ---
 
 ```{r}
@@ -47,9 +47,9 @@ PreGroup = sleep$extra[1:10]
 
 PostGroup = sleep$extra[11:20]
 
-describe (PreGroup)
+kable(describe (PreGroup)[2:4], align = 'c', digit = 3)
 
-describe (PostGroup)
+kable(describe (PostGroup)[2:4], align = 'c', digit = 3)
 
 diff = PostGroup - PreGroup
 sd(df)
@@ -75,9 +75,10 @@ EqualIndependentData = rbind(group1,
                              group2
                              )
 
-describe(group1$Sepal.Length)
+kable(describe(group1$Sepal.Length)[2:4], align = 'c', digit = 3)
 
-describe(group2$Sepal.Length)
+kable(describe(group2$Sepal.Length)[2:4], align = 'c', digit = 3)
+
 
 leveneTest(Sepal.Length ~ Species,EqualIndependentData)
 
