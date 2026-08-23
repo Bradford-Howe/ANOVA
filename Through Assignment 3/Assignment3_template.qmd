@@ -1,6 +1,6 @@
 ---
 title: "Assignment 3"
-format: docx
+format: html
 execute:
    echo: false
    warning: false
@@ -26,17 +26,17 @@ library(emmeans)
 
 - All of your numerical results for questions 3-7 should come up when the grader runs this script. However, you still need to manually write the specific statistics and  the short interpretations which are requested below.
 
-Q1. Explain the core logic of the ANOVA that follows from the CLT: Why, if the CLT formula is true, should two different estimates of the variance of a sampling distribution give the same result under the null hypothesis?
+Q1. Explain the core logic of the ANOVA that follows from the CLT: Why, if the CLT formula is true, should two different estimates of the variance of a sampling distribution give the same result under the null hypothesis? (70 pts)
 
 ---
 
-Q2. What role does Levene’s test play in allowing us to use MSerror as a legitimate estimate of the population-level variance that appears in the CLT formula?
+Q2. What role does Levene’s test play in allowing us to use MSerror as a legitimate estimate of the population-level variance that appears in the CLT formula? (50 pts)
 
 ---
 
 Q3. A researcher conducts a taste-study on how much people like three different cookies. Five participants are assigned to one of three conditions (vanilla cookie, chocolate cookie and peanut butter cookie). Each participant rates how much they like their cookie on a scale from 1 (not at all) to 8 (very much).
 
-A. Compute the ANOVA and report the Levene test in one sentence and the finding of the omnibus in one additional sentence.
+A. Compute (render this document) the ANOVA and report the Levene test in one sentence and the finding of the omnibus in one additional sentence.(30 pts)
 
 ### Your data
 ```{r}
@@ -64,6 +64,7 @@ Anova(cookieANOVAmodel, type = 3)
 
 ```
 
+---
 
 B. Calculate eta squared. Describe what the effect size is measuring? (30 points)
 ```{r}
@@ -71,14 +72,16 @@ B. Calculate eta squared. Describe what the effect size is measuring? (30 points
 numerator = 1
 denominator = 2
 
-# This calculate eta squared from the values you input above. No need to adjust.
+# This calculates eta squared from the values you input above. No need to adjust.
 etaSq = numerator/denominator
 
 # This will print your result. No need to adjust.
 paste(c("Eta squared: ", round(etaSq,3)))
 ```
 
-C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.
+---
+
+C. To determine which group differs significantly from one another, calculate linear comparisons. Analyze these comparisons using the Bonferroni correction.(30 pts)
 ```{r}
 # Replace the zeros with your coefficients in order to calculate a set of
 # contrasts. If you wish to add aditional contrasts, you may.
@@ -92,8 +95,9 @@ contrast(emmeans(cookieANOVAmodel, ~ Group),
          adjust = "none")
 ```
 
+---
 
-D. Using Tukey a test, analyze which groups differ significantly from each other. Manually calculate this as you did in lab. Show your work. It would probably be easiest to do so in tables in Word.
+D. Using Tukey a test, analyze which groups differ significantly from each other. Manually calculate this as you did in lab. Show your work. It would probably be easiest to do so in tables in Word.(40 pts)
 
 ### Your groups, their n, and their means.
 ```{r}
@@ -102,7 +106,7 @@ describe(cookies)[2:3] %>% kable(align = 'c')
 
 ---
 
-Q4. A researcher randomly assigned 20 people to one of two conditions. Examine the results of both a t-test and an ANOVA on the same data. What is the relationship between the F-statistic and the t-statistic?
+Q4. A researcher randomly assigned 20 people to one of two conditions. Examine the results of both a t-test and an ANOVA on the same data. What is the relationship between the F-statistic and the t-statistic? (30 pts)
 ```{r}
 a = read.table("A2_Q3_data.csv", sep = ",", header = T)
 
@@ -122,7 +126,7 @@ Anova(Q3ANOVAmodel, type = 3)
 
 ---
 
-Q5. A researcher conducted an analysis on three groups and computed two comparisons. Below are the coefficients for the individual comparisons. Are they orthogonal? Show your work. It would probably be easiest to do so in tables in Word.
+Q5. A researcher conducted an analysis on three groups and computed two comparisons. Below are the coefficients for the individual comparisons. Are they orthogonal? Show your work. It would probably be easiest to do so in tables in Word. (30 pts)
 ```{r}
 ContrastCoefs = data.frame(Group1 = c("0", "+1"),
                              Group2 = c("+1", "-1/2"),
