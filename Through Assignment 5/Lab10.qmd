@@ -1,0 +1,290 @@
+---
+title: "Lab 10"
+format: html
+execute:
+   echo: false
+   warning: false
+   fig-dpi: 300
+---
+
+```{r}
+library(knitr)
+library(car)
+library(psych)
+library(emmeans)
+library(effectsize)
+```
+
+# Wide formatted data
+
+```{r}
+# Load wide data
+Lab10Wide = read.table("Lab10Data_wide.csv",
+                       sep = ",",
+                       header = T)
+
+kable(Lab10Wide, align = 'c', digits = 3)
+```
+
+# Long formatted data (same values as above)
+
+```{r}
+# Load long data
+Lab10Long = read.table("Lab10Data_long.csv",
+                       sep = ",",
+                       header = T)
+
+Lab10Long$Subject = factor(Lab10Long$Subject)
+Lab10Long$Hemisphere = factor(Lab10Long$Hemisphere)
+Lab10Long$Time = factor(Lab10Long$Time)
+
+kable(Lab10Long, align = 'c', digits = 3)
+```
+
+```{r}
+# "contr.sum" is the correct option for type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+```
+
+## Descriptives
+
+```{r}
+# Use left hemisphere columns only, treated as the single group
+describe(Lab10Wide[,2:5])
+```
+
+## One-way repeated measures (Time) on only left hemisphere data
+
+```{r}
+Lab10OneWayLM = lm(cbind(Left10, Left20, Left30, Left40) ~ 1,
+                   data = Lab10Wide)
+
+idata_one = data.frame(Time = factor(c("10", "20", "30", "40")))
+
+a_one = Anova(Lab10OneWayLM, idata = idata_one, idesign = ~ Time, type = 3)
+summary(a_one, multivariate = FALSE)
+```
+
+```{r}
+# How the GG and HF corrections work.
+# 1) You multiply any df in your omnbimus by the epsilon value. In this case 
+# your variable of interest and the error term.
+df_time_GG  = 3 * 0.4956
+df_error_GG = 21 * 0.4956
+
+df_time_HF  = 3 * 0.5982211
+df_error_HF = 21 * 0.5982211
+
+# 2) Plug in the F you have and the new df to get your new p, which is already 
+# printed in the summary above. Below is a fuller demonstration.
+
+# p-values with the adjusted dfs (F = 199.063 from the omnibus)
+print("Manually calculated p-value for GG correction")
+pf(199.063, df_time_GG, df_error_GG, lower.tail = FALSE)
+print("Manually calculated p-value for HF correction")
+pf(199.063, df_time_HF, df_error_HF, lower.tail = FALSE)
+```
+
+```{r}
+# You don't need to recalculate your various SS or MS values, becuase the df
+# scales all the values the same way. This means that the top and bottom of the
+# fraction that gives you F have both been scaled the same way. For example, 
+# if you multiply the top and bottom of 1/4 by 3, you still have 1/4.
+
+# Full demonstration of the correction (reuses the dfs above).
+SS_time  = 7774.125
+SS_error = 273.375
+
+# Greenhouse-Geisser
+MS_time_GG  = SS_time  / df_time_GG
+MS_error_GG = SS_error / df_error_GG
+F_GG        = MS_time_GG / MS_error_GG
+
+# Huynh-Feldt
+MS_time_HF  = SS_time  / df_time_HF
+MS_error_HF = SS_error / df_error_HF
+F_HF        = MS_time_HF / MS_error_HF
+
+print("Second Manually calculated p-value for GG correction")
+pf(F_GG, df_time_GG, df_error_GG, lower.tail = FALSE)
+print("Second Manually calculated p-value for HF correction")
+pf(F_HF, df_time_HF, df_error_HF, lower.tail = FALSE)
+
+```
+
+# Partial eta-squared (Time) SSTime/(SSTime + SSError)
+
+```{r}
+# Use the correct variables from above to calculate partial eta for time.
+
+partialEta_Time = 1/1
+
+print("Manual")
+print (partialEta_Time)
+
+eta_squared(a_one)
+```
+
+
+
+```{r}
+# Effect size using emmeans function.
+Lab10OneWayLong = Lab10Long[Lab10Long$Hemisphere == "Left", ]
+Lab10OneWayLongLM = lm(CBFV ~ Time + Subject, data = Lab10OneWayLong)
+
+```
+
+
+
+# Post hoc comparisons (no need for simple effects)
+
+Bonferroni
+```{r}
+emm_time_one = emmeans(Lab10OneWayLongLM, ~ Time)
+kable(summary(pairs(emm_time_one, adjust = "bonferroni")), align = 'c', digits = 3)
+```
+
+LSD (equal to none)
+```{r}
+kable(summary(pairs(emm_time_one, adjust = "none")), align = 'c', digits = 3)
+```
+
+Tukey
+```{r}
+kable(summary(pairs(emm_time_one, adjust = "tukey")), align = 'c', digits = 3)
+```
+
+
+## Two-way repeated measures (Hemisphere x Time)
+
+```{r}
+describe(Lab10Wide[2:9])
+```
+
+```{r}
+Lab10LM = lm(cbind(Left10, Left20, Left30, Left40, Right10, Right20, Right30, Right40) ~ 1,
+             data = Lab10Wide)
+
+idata = expand.grid(Time = factor(c("10", "20", "30", "40")),
+                    Hemisphere = factor(c("Left", "Right")))
+
+a = Anova(Lab10LM, idata = idata, idesign = ~ Hemisphere * Time, type = 3)
+summary(a, multivariate = FALSE)
+```
+
+```{r}
+# Partial eta-squared
+# Hemisphere
+partialEta_Hemisphere = 1/1
+
+# Time
+partialEta_Time = 1/1
+
+# Hemisphere x Time
+partialEta_Hemisphere_Time = 1/1
+
+print("Manual Hemisphere")
+print(partialEta_Hemisphere)
+
+print("Manual Time")
+print(partialEta_Time)
+
+print("Manual Hemisphere x Time")
+print(partialEta_Hemisphere_Time)
+
+eta_squared(a)
+```
+
+```{r}
+# Effect size using emmeans function.
+Lab10LongLM = lm(CBFV ~ Hemisphere * Time + Subject, data = Lab10Long)
+```
+
+Bonferroni
+```{r}
+emm_hemi = emmeans(Lab10LongLM, ~ Hemisphere)
+emm_time = emmeans(Lab10LongLM, ~ Time)
+
+kable(summary(pairs(emm_hemi, adjust = "bonferroni")), align = 'c', digits = 3)
+kable(summary(pairs(emm_time, adjust = "bonferroni")), align = 'c', digits = 3)
+```
+
+LSD (equal to none)
+```{r}
+kable(summary(pairs(emm_hemi, adjust = "none")), align = 'c', digits = 3)
+kable(summary(pairs(emm_time, adjust = "none")), align = 'c', digits = 3)
+```
+
+Tukey
+```{r}
+kable(summary(pairs(emm_hemi, adjust = "tukey")), align = 'c', digits = 3)
+kable(summary(pairs(emm_time, adjust = "tukey")), align = 'c', digits = 3)
+```
+
+# Pairwise follow-ups for the interaction
+# Multiple t-tests of Hemisphere at each level of Time
+# (only two levels of Hemisphere, so no simple-effect ANOVA required)
+
+Bonferroni
+```{r}
+kable(summary(pairs(emmeans(Lab10LongLM, ~ Hemisphere | Time), adjust = "bonferroni")),
+      align = 'c', digits = 3)
+```
+
+LSD (equal to none)
+```{r}
+kable(summary(pairs(emmeans(Lab10LongLM, ~ Hemisphere | Time), adjust = "none")),
+      align = 'c', digits = 3)
+```
+
+Tukey
+```{r}
+kable(summary(pairs(emmeans(Lab10LongLM, ~ Hemisphere | Time), adjust = "tukey")),
+      align = 'c', digits = 3)
+```
+
+# Simple effect follow-ups for the interaction
+# Time has more than two levels, so pairwise comparisons among Time
+# at each level of Hemisphere require a significant simple effect.
+# Because Time is repeated, each simple effect is a one-way RM ANOVA.
+
+```{r}
+# Simple effect of Time at Left Hemisphere
+# (reprint of the one-way omnibus already run above)
+a_one$univariate
+```
+
+```{r}
+# Simple effect of Time at Right Hemisphere
+Lab10RightLM = lm(cbind(Right10, Right20, Right30, Right40) ~ 1,
+                  data = Lab10Wide)
+
+idata_right = data.frame(Time = factor(c("10", "20", "30", "40")))
+
+a_right = Anova(Lab10RightLM, idata = idata_right, idesign = ~ Time, type = 3)
+summary(a_right, multivariate = FALSE)
+```
+
+# Pairwise follow-ups for the interaction
+# Multiple t-tests of Time at each level of Hemisphere
+# (uses the error term from the model)
+
+Bonferroni
+```{r}
+kable(summary(pairs(emmeans(Lab10LongLM, ~ Time | Hemisphere), adjust = "bonferroni")),
+      align = 'c', digits = 3)
+```
+
+LSD (equal to none)
+```{r}
+kable(summary(pairs(emmeans(Lab10LongLM, ~ Time | Hemisphere), adjust = "none")),
+      align = 'c', digits = 3)
+```
+
+Tukey
+```{r}
+kable(summary(pairs(emmeans(Lab10LongLM, ~ Time | Hemisphere), adjust = "tukey")),
+      align = 'c', digits = 3)
+```
+
+
