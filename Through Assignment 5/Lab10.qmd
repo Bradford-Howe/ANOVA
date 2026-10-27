@@ -46,14 +46,14 @@ kable(Lab10Long, align = 'c', digits = 3)
 options(contrasts = c("contr.sum", "contr.poly"))
 ```
 
-## Descriptives
+# One-way repeated measures (Time) on only left hemisphere data
 
+## Descriptives
 ```{r}
 # Use left hemisphere columns only, treated as the single group
 describe(Lab10Wide[,2:5])
 ```
 
-## One-way repeated measures (Time) on only left hemisphere data
 
 ```{r}
 Lab10OneWayLM = lm(cbind(Left10, Left20, Left30, Left40) ~ 1,
@@ -62,6 +62,7 @@ Lab10OneWayLM = lm(cbind(Left10, Left20, Left30, Left40) ~ 1,
 idata_one = data.frame(Time = factor(c("10", "20", "30", "40")))
 
 a_one = Anova(Lab10OneWayLM, idata = idata_one, idesign = ~ Time, type = 3)
+
 summary(a_one, multivariate = FALSE)
 ```
 
@@ -86,12 +87,9 @@ pf(199.063, df_time_HF, df_error_HF, lower.tail = FALSE)
 ```
 
 ```{r}
-# You don't need to recalculate your various SS or MS values, becuase the df
-# scales all the values the same way. This means that the top and bottom of the
-# fraction that gives you F have both been scaled the same way. For example, 
-# if you multiply the top and bottom of 1/4 by 3, you still have 1/4.
+# You don't need to recalculate your various SS or MS values, becuase the df scales all the values the same way. This means that the top and bottom of the fraction that gives you F have both been scaled the same way. For example,if you multiply the top and bottom of 1/4 by 3, you still have 1/4.
 
-# Full demonstration of the correction (reuses the dfs above).
+# Full demonstration of the corrections (reuses the dfs above).
 SS_time  = 7774.125
 SS_error = 273.375
 
@@ -112,7 +110,7 @@ pf(F_HF, df_time_HF, df_error_HF, lower.tail = FALSE)
 
 ```
 
-# Partial eta-squared (Time) SSTime/(SSTime + SSError)
+### Partial eta-squared (Time) SSTime/(SSTime + SSError)
 
 ```{r}
 # Use the correct variables from above to calculate partial eta for time.
@@ -128,15 +126,16 @@ eta_squared(a_one)
 
 
 ```{r}
-# Effect size using emmeans function.
+# A model using long data is necessary for post hoc comparisons.
 Lab10OneWayLong = Lab10Long[Lab10Long$Hemisphere == "Left", ]
+
 Lab10OneWayLongLM = lm(CBFV ~ Time + Subject, data = Lab10OneWayLong)
 
 ```
 
 
 
-# Post hoc comparisons (no need for simple effects)
+### Post hoc comparisons (no need for simple effects)
 
 Bonferroni
 ```{r}
@@ -155,7 +154,8 @@ kable(summary(pairs(emm_time_one, adjust = "tukey")), align = 'c', digits = 3)
 ```
 
 
-## Two-way repeated measures (Hemisphere x Time)
+# Two-way repeated measures (Hemisphere x Time)
+## Descriptives
 
 ```{r}
 describe(Lab10Wide[2:9])
@@ -221,9 +221,8 @@ kable(summary(pairs(emm_hemi, adjust = "tukey")), align = 'c', digits = 3)
 kable(summary(pairs(emm_time, adjust = "tukey")), align = 'c', digits = 3)
 ```
 
-# Pairwise follow-ups for the interaction
-# Multiple t-tests of Hemisphere at each level of Time
-# (only two levels of Hemisphere, so no simple-effect ANOVA required)
+## Pairwise follow-ups for the interaction
+### Multiple t-tests of Hemisphere at each level of Time (only two levels of Hemisphere, so no simple-effect ANOVA required)
 
 Bonferroni
 ```{r}
@@ -243,10 +242,8 @@ kable(summary(pairs(emmeans(Lab10LongLM, ~ Hemisphere | Time), adjust = "tukey")
       align = 'c', digits = 3)
 ```
 
-# Simple effect follow-ups for the interaction
-# Time has more than two levels, so pairwise comparisons among Time
-# at each level of Hemisphere require a significant simple effect.
-# Because Time is repeated, each simple effect is a one-way RM ANOVA.
+## Simple effect follow-ups for the interaction
+### Time has more than two levels, so pairwise comparisons among Time at each level of Hemisphere require a significant simple effect. Because Time is repeated, each simple effect is a one-way RM ANOVA.
 
 ```{r}
 # Simple effect of Time at Left Hemisphere
@@ -265,9 +262,8 @@ a_right = Anova(Lab10RightLM, idata = idata_right, idesign = ~ Time, type = 3)
 summary(a_right, multivariate = FALSE)
 ```
 
-# Pairwise follow-ups for the interaction
-# Multiple t-tests of Time at each level of Hemisphere
-# (uses the error term from the model)
+## Pairwise follow-ups for the interaction
+### Multiple t-tests of Time at each level of Hemisphere (uses the error term from the model)
 
 Bonferroni
 ```{r}

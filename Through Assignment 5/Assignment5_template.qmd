@@ -1,0 +1,241 @@
+---
+title: "Assignment5"
+format: html
+execute:
+   echo: false
+   warning: false
+   fig-dpi: 300
+---
+
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(car)
+library(psych)
+library(emmeans)
+library(effectsize)
+```
+
+
+### Your data and analysis
+If you correctly import your data you will see the output for a hypothetical repeated-measures experiment assessing how many novels people read each month and whether it is influenced by the kind of novel they read. It is a 2 (Novel: science fiction vs. mystery) × 3 (Month: 1, 2, 3) within-subjects design (each participant provides data in every condition). Participants started with one novel type for three months, then switched to the other novel type for three months. The dependent variable is the number of books read (Books).
+
+You have been given two data files that contain the same values:
+- Wide format (one row per subject, six condition columns) for the omnibus repeated-measures ANOVA.
+- Long format (one row per observation) for descriptives and follow-up comparisons.
+
+```{r}
+# Load your data and make some analysis choices in this code block.
+
+# Put the full names of your data files in here, between the quotation marks, including the file extension.
+NAMEOFWIDEDATA = ""
+NAMEOFLONGDATA = ""
+
+# Column classes for the wide file (Subject is integer; the six condition columns are integer).
+# Column1- Subject
+# Column2- SF_Month1
+# Column3- SF_Month2
+# Column4- SF_Month3
+# Column5- Myst_Month1
+# Column6- Myst_Month2
+# Column7- Myst_Month3
+Column1 = ""
+Column2 = ""
+Column3 = ""
+Column4 = ""
+Column5 = ""
+Column6 = ""
+Column7 = ""
+
+# Column classes for the long file.
+# Column1- Subject
+# Column2- Novel
+# Column3- Month
+# Column4- Books
+LongColumn1 = ""
+LongColumn2 = ""
+LongColumn3 = ""
+LongColumn4 = ""
+
+
+###########################
+### Your analysis choices.
+
+# Choose the type of follow-up tests that you will use and set the comment marks correctly. Your choices are as follows.
+
+# none - This will perform the 'Multiple t-test' method without correction.
+# bonferroni - This will adjust the p-value in your 'Multiple t-test' follow-ups with a BF correction.
+# tukey - This will perform a Tukey post hoc test instead of the 'Multiple t-test' method.
+
+AdjustmentChoice = "none"
+# AdjustmentChoice = "bonferroni"
+# AdjustmentChoice = "tukey"
+
+
+```
+
+### A) Render this mark down file and look at the omnibus output. Use it to manually calculate the effect size for each of your main effects and interactions. The 'Effect Sizes' table below the omnibus will count as your response.
+
+```{r}
+# Replace each 1 below with the partial eta-squared values you calculate from the Omnibus table. Don't change the names of the variables.
+# Main effects
+Novel_Peta = 1
+Month_Peta = 1
+
+# Two-way interaction
+Novel_Month_Peta = 1
+
+```
+
+### B) Write a results section (100 points). Note there is a results section example in your textbook.
+
+
+---
+
+---
+
+### Wide data (for omnibus)
+```{r}
+A5Wide = read.table(NAMEOFWIDEDATA,
+                    sep = ",",
+                    header = T,
+                    colClasses = c(Column1,
+                                   Column2,
+                                   Column3,
+                                   Column4,
+                                   Column5,
+                                   Column6,
+                                   Column7))
+
+kable(A5Wide, align = 'c', digits = 3)
+```
+
+### Long data (for descriptives and follow-ups)
+```{r}
+A5Long = read.table(NAMEOFLONGDATA,
+                    sep = ",",
+                    header = T,
+                    colClasses = c(LongColumn1,
+                                   LongColumn2,
+                                   LongColumn3,
+                                   LongColumn4))
+
+A5Long$Subject = factor(A5Long$Subject)
+A5Long$Novel = factor(A5Long$Novel)
+A5Long$Month = factor(A5Long$Month)
+
+kable(A5Long, align = 'c', digits = 3)
+```
+
+---
+
+### Descriptives
+```{r}
+describeBy(Books ~ Novel + Month, data = A5Long, mat = TRUE, digits = 2) %>%
+  kable(align = 'c', digits = 3)
+```
+
+---
+
+```{r}
+# "contr.sum" is the correct option for type III SS
+options(contrasts = c("contr.sum", "contr.poly"))
+```
+
+### Omnibus (wide-format multivariate model)
+```{r}
+A5LM = lm(cbind(SF_Month1, SF_Month2, SF_Month3, Myst_Month1, Myst_Month2, Myst_Month3) ~ 1,
+          data = A5Wide)
+
+idata = expand.grid(Month = factor(c("1", "2", "3")),
+                    Novel = factor(c("SF", "Mystery")))
+
+a = Anova(A5LM, idata = idata, idesign = ~ Novel * Month, type = 3)
+
+summary(a, multivariate = FALSE)
+```
+
+### Effect Sizes 
+
+```{r}
+EffectSizes = data.frame(
+  Term = c("Novel", "Month", "Novel:Month"),
+  Partial_Eta_Squared = c(Novel_Peta, Month_Peta, Novel_Month_Peta)
+)
+
+kable(EffectSizes, align = 'c', digits = 3, caption = "Partial Eta-Squared Effect Sizes")
+```
+
+### Long-format model (for follow-ups only)
+```{r}
+A5LongLM = lm(Books ~ Novel * Month + Subject, data = A5Long)
+```
+
+### Main-effect follow-ups
+
+```{r}
+# Novel (two levels)
+emmeans(A5LongLM, pairwise ~ Novel, adjust = AdjustmentChoice)$contrasts %>%
+  kable(caption = "Pairwise Novel", align = 'c', digits = 3)
+```
+
+```{r}
+# Month (three levels) — simple-effect justification is not required for a main effect,
+# but pairwise comparisons are still performed with the chosen adjustment.
+emmeans(A5LongLM, pairwise ~ Month, adjust = AdjustmentChoice)$contrasts %>%
+  kable(caption = "Pairwise Month", align = 'c', digits = 3)
+```
+
+### Interaction follow-ups
+
+#### Novel at each level of Month (two levels of Novel — no simple-effect ANOVA required)
+
+```{r}
+# Cell means
+d = describeBy(Books ~ Month + Novel, data = A5Long, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Month"
+names(d)[names(d) == "group2"] = "Novel"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Novel at each level of Month", align = 'c', digits = 3)
+```
+
+```{r}
+emmeans(A5LongLM, pairwise ~ Novel | Month, adjust = AdjustmentChoice)$contrasts %>%
+  kable(caption = "Pairwise Novel at each level of Month", align = 'c', digits = 3)
+```
+
+#### Month at each level of Novel (three levels of Month — simple-effect ANOVAs required)
+
+```{r}
+# Simple effect of Month at SF
+# (one-way RM ANOVA on the three SF columns)
+SF_LM = lm(cbind(SF_Month1, SF_Month2, SF_Month3) ~ 1, data = A5Wide)
+idata_SF = data.frame(Month = factor(c("1", "2", "3")))
+a_SF = Anova(SF_LM, idata = idata_SF, idesign = ~ Month, type = 3)
+summary(a_SF, multivariate = FALSE)
+```
+
+```{r}
+# Simple effect of Month at Mystery
+Myst_LM = lm(cbind(Myst_Month1, Myst_Month2, Myst_Month3) ~ 1, data = A5Wide)
+idata_Myst = data.frame(Month = factor(c("1", "2", "3")))
+a_Myst = Anova(Myst_LM, idata = idata_Myst, idesign = ~ Month, type = 3)
+summary(a_Myst, multivariate = FALSE)
+```
+
+```{r}
+# Cell means
+d = describeBy(Books ~ Novel + Month, data = A5Long, mat = TRUE, digits = 2)
+names(d)[names(d) == "group1"] = "Novel"
+names(d)[names(d) == "group2"] = "Month"
+rownames(d) = NULL
+d[c(2,3,5:7,16)] %>%
+  kable(caption = "Descriptives: Month at each level of Novel", align = 'c', digits = 3)
+```
+
+```{r}
+emmeans(A5LongLM, pairwise ~ Month | Novel, adjust = AdjustmentChoice)$contrasts %>%
+  kable(caption = "Pairwise Month at each level of Novel", align = 'c', digits = 3)
+```
