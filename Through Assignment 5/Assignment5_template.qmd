@@ -7,60 +7,45 @@ execute:
    fig-dpi: 300
 ---
 
-
 ```{r}
 library(tidyverse)
 library(knitr)
 library(car)
 library(psych)
 library(emmeans)
-library(effectsize)
 ```
 
+# This file will not render until you correctly name your data and choose a type for your variables. (Delete this line when you have accomplished the task.)
 
 ### Your data and analysis
-If you correctly import your data you will see the output for a hypothetical repeated-measures experiment assessing how many novels people read each month and whether it is influenced by the kind of novel they read. It is a 2 (Novel: science fiction vs. mystery) × 3 (Month: 1, 2, 3) within-subjects design (each participant provides data in every condition). Participants started with one novel type for three months, then switched to the other novel type for three months. The dependent variable is the number of books read (Books).
+If you correctly import your data you will see the output for a hypothetical experiment. It assesses how many novels people read each month and whether that is influenced by the kind of novel they read. It is a 2 (Genre: science fiction vs. mystery) × 3 (Month: 1, 2, 3) within-subjects design (each participant provides data in every condition). Participants started with one genre type for three months, then switched to the other type for three months. The dependent variable is the number of books read (Books).
 
 You have been given two data files that contain the same values:
 - Wide format (one row per subject, six condition columns) for the omnibus repeated-measures ANOVA.
 - Long format (one row per observation) for descriptives and follow-up comparisons.
+- You need only adjust the first two code blocks here in R studio. The remainder of your responses should be in Word.
 
 ```{r}
-# Load your data and make some analysis choices in this code block.
+# Load your data and make your analysis choices in this code block.
 
-# Put the full names of your data files in here, between the quotation marks, including the file extension.
+# Put the full names of your data files between the quotation marks, including the file extension.
 NAMEOFWIDEDATA = ""
 NAMEOFLONGDATA = ""
 
-# Column classes for the wide file (Subject is integer; the six condition columns are integer).
-# Column1- Subject
-# Column2- SF_Month1
-# Column3- SF_Month2
-# Column4- SF_Month3
-# Column5- Myst_Month1
-# Column6- Myst_Month2
-# Column7- Myst_Month3
-Column1 = ""
-Column2 = ""
-Column3 = ""
-Column4 = ""
-Column5 = ""
-Column6 = ""
-Column7 = ""
-
-# Column classes for the long file.
-# Column1- Subject
-# Column2- Novel
-# Column3- Month
-# Column4- Books
-LongColumn1 = ""
-LongColumn2 = ""
-LongColumn3 = ""
-LongColumn4 = ""
+# Class of your variables. 
+# Continuous variables will be 'integer' or 'numeric'.
+# Categorical variables will be 'factor'.
+Month = ""
+Genre = ""
+Books = ""
 
 
 ###########################
 ### Your analysis choices.
+
+# Choose whether each factor is repeated measures (T) or between subjects (F).
+GenreRepeated = F
+MonthRepeated = F
 
 # Choose the type of follow-up tests that you will use and set the comment marks correctly. Your choices are as follows.
 
@@ -72,27 +57,54 @@ AdjustmentChoice = "none"
 # AdjustmentChoice = "bonferroni"
 # AdjustmentChoice = "tukey"
 
+# Set to T to perform pairwise follow-up comparisons. Leave all F to generate only the omnibus and effect sizes.
+DoGenreFollowup = F
+DoMonthFollowup = F
+DoGenreAtMonth = F
+DoMonthAtGenre = F
+
+# Choose the varriables for which you want to perform a simple effect and which type of simple effect. Change the F to a T, if you want to perform a simple effect test on that variable. You also need to change F to T for a repeated measures simple effect.
+
+GenreSimple = F
+GenreSimpleRepeated = F
+
+MonthSimple = F
+MonthSimpleRepeated = F
+
 
 ```
 
-### A) Render this mark down file and look at the omnibus output. Use it to manually calculate the effect size for each of your main effects and interactions. The 'Effect Sizes' table below the omnibus will count as your response.
+### A) Render this mark down file and look at the omnibus output. Use it to manually calculate the effect size for each of your main effects and interactions. Pull the relevant Sum of Squares values from the omnibus table into the variables below, then use those variables to compute the partial eta-squared values. The 'Effect Sizes' table below the omnibus will count as your response.
 
 ```{r}
-# Replace each 1 below with the partial eta-squared values you calculate from the Omnibus table. Don't change the names of the variables.
+# Pull the Sum of Squares values from the omnibus table into these variables. They will display below the omnibus.
+# Genre main effect
+SS_Genre = 1
+SS_Genre_error = 1
+
+# Month main effect
+SS_Month = 1
+SS_Month_error = 1
+
+# Genre × Month interaction
+SS_Genre_Month = 1
+SS_Genre_Month_error = 1
+
+# Compute partial eta-squared from the SS variables above.
 # Main effects
-Novel_Peta = 1
-Month_Peta = 1
+Genre_Peta = SS_Genre / (SS_Genre + SS_Genre_error)
+Month_Peta = SS_Month / (SS_Month + SS_Month_error)
 
 # Two-way interaction
-Novel_Month_Peta = 1
+Genre_Month_Peta = SS_Genre_Month / (SS_Genre_Month + SS_Genre_Month_error)
 
 ```
 
-### B) Write a results section (100 points). Note there is a results section example in your textbook.
+### B) Write a results section. Note there is a results section example in your textbook.
 
 
 ---
-
+#Nothing below this line should be adjusted by the students.
 ---
 
 ### Wide data (for omnibus)
@@ -100,13 +112,9 @@ Novel_Month_Peta = 1
 A5Wide = read.table(NAMEOFWIDEDATA,
                     sep = ",",
                     header = T,
-                    colClasses = c(Column1,
-                                   Column2,
-                                   Column3,
-                                   Column4,
-                                   Column5,
-                                   Column6,
-                                   Column7))
+                    colClasses = c("integer",   # Subject
+                                   Books, Books, Books,
+                                   Books, Books, Books))
 
 kable(A5Wide, align = 'c', digits = 3)
 ```
@@ -116,13 +124,13 @@ kable(A5Wide, align = 'c', digits = 3)
 A5Long = read.table(NAMEOFLONGDATA,
                     sep = ",",
                     header = T,
-                    colClasses = c(LongColumn1,
-                                   LongColumn2,
-                                   LongColumn3,
-                                   LongColumn4))
+                    colClasses = c("integer",   # Subject
+                                   Genre,
+                                   Month,
+                                   Books))
 
 A5Long$Subject = factor(A5Long$Subject)
-A5Long$Novel = factor(A5Long$Novel)
+A5Long$Genre = factor(A5Long$Genre)
 A5Long$Month = factor(A5Long$Month)
 
 kable(A5Long, align = 'c', digits = 3)
@@ -131,9 +139,26 @@ kable(A5Long, align = 'c', digits = 3)
 ---
 
 ### Descriptives
+
 ```{r}
-describeBy(Books ~ Novel + Month, data = A5Long, mat = TRUE, digits = 2) %>%
-  kable(align = 'c', digits = 3)
+# Genre
+d_genre = describeBy(Books ~ Genre, data = A5Long, mat = TRUE, digits = 2)
+d_genre[c("group1", "n", "mean", "sd", "median")] %>%
+  kable(caption = "Descriptives by Genre", align = 'c', digits = 3, row.names = FALSE)
+```
+
+```{r}
+# Month
+d_month = describeBy(Books ~ Month, data = A5Long, mat = TRUE, digits = 2)
+d_month[c("group1", "n", "mean", "sd", "median")] %>%
+  kable(caption = "Descriptives by Month", align = 'c', digits = 3, row.names = FALSE)
+```
+
+```{r}
+# Genre × Month
+d_cells = describeBy(Books ~ Genre + Month, data = A5Long, mat = TRUE, digits = 2)
+d_cells[c("group1", "group2", "n", "mean", "sd", "median")] %>%
+  kable(caption = "Descriptives by Genre × Month", align = 'c', digits = 3, row.names = FALSE)
 ```
 
 ---
@@ -143,99 +168,367 @@ describeBy(Books ~ Novel + Month, data = A5Long, mat = TRUE, digits = 2) %>%
 options(contrasts = c("contr.sum", "contr.poly"))
 ```
 
-### Omnibus (wide-format multivariate model)
+### Omnibus
 ```{r}
-A5LM = lm(cbind(SF_Month1, SF_Month2, SF_Month3, Myst_Month1, Myst_Month2, Myst_Month3) ~ 1,
-          data = A5Wide)
+if (GenreRepeated && MonthRepeated) {
+  # Both factors repeated measures
+  A5LM = lm(cbind(SF_Month1, SF_Month2, SF_Month3, Myst_Month1, Myst_Month2, Myst_Month3) ~ 1,
+            data = A5Wide)
+  idata = expand.grid(Month = factor(c("1", "2", "3")),
+                      Genre = factor(c("SF", "Mystery")))
+  a = Anova(A5LM, idata = idata, idesign = ~ Genre * Month, type = 3)
+  summary(a, multivariate = FALSE)
 
-idata = expand.grid(Month = factor(c("1", "2", "3")),
-                    Novel = factor(c("SF", "Mystery")))
+} else if (!GenreRepeated && MonthRepeated) {
+  # Genre between, Month repeated measures
+  # Build wide data with one row per subject-genre (Month as within)
+  wide_mb = expand.grid(Subject = unique(A5Long$Subject),
+                        Genre = levels(A5Long$Genre))
+  wide_mb$Month1 = NA
+  wide_mb$Month2 = NA
+  wide_mb$Month3 = NA
+  for (i in 1:nrow(wide_mb)) {
+    s = wide_mb$Subject[i]
+    g = wide_mb$Genre[i]
+    wide_mb$Month1[i] = A5Long$Books[A5Long$Subject == s & A5Long$Genre == g & A5Long$Month == "1"]
+    wide_mb$Month2[i] = A5Long$Books[A5Long$Subject == s & A5Long$Genre == g & A5Long$Month == "2"]
+    wide_mb$Month3[i] = A5Long$Books[A5Long$Subject == s & A5Long$Genre == g & A5Long$Month == "3"]
+  }
+  wide_mb$Genre = factor(wide_mb$Genre)
+  A5LM = lm(cbind(Month1, Month2, Month3) ~ Genre, data = wide_mb)
+  idata = data.frame(Month = factor(c("1", "2", "3")))
+  a = Anova(A5LM, idata = idata, idesign = ~ Month, type = 3)
+  summary(a, multivariate = FALSE)
 
-a = Anova(A5LM, idata = idata, idesign = ~ Novel * Month, type = 3)
+} else if (GenreRepeated && !MonthRepeated) {
+  # Month between, Genre repeated measures
+  # Build wide data with one row per subject-month (Genre as within)
+  wide_gb = expand.grid(Subject = unique(A5Long$Subject),
+                        Month = levels(A5Long$Month))
+  wide_gb$SF = NA
+  wide_gb$Mystery = NA
+  for (i in 1:nrow(wide_gb)) {
+    s = wide_gb$Subject[i]
+    m = wide_gb$Month[i]
+    wide_gb$SF[i] = A5Long$Books[A5Long$Subject == s & A5Long$Month == m & A5Long$Genre == "SF"]
+    wide_gb$Mystery[i] = A5Long$Books[A5Long$Subject == s & A5Long$Month == m & A5Long$Genre == "Mystery"]
+  }
+  wide_gb$Month = factor(wide_gb$Month)
+  A5LM = lm(cbind(SF, Mystery) ~ Month, data = wide_gb)
+  idata = data.frame(Genre = factor(c("SF", "Mystery")))
+  a = Anova(A5LM, idata = idata, idesign = ~ Genre, type = 3)
+  summary(a, multivariate = FALSE)
 
-summary(a, multivariate = FALSE)
+} else {
+  # Both factors between subjects
+  A5LM = lm(Books ~ Genre * Month, data = A5Long)
+  a = Anova(A5LM, type = 3)
+  print(a)
+}
 ```
 
-### Effect Sizes 
+---
+
+### Effect Sizes (manual calculation from student-entered SS values)
 
 ```{r}
 EffectSizes = data.frame(
-  Term = c("Novel", "Month", "Novel:Month"),
-  Partial_Eta_Squared = c(Novel_Peta, Month_Peta, Novel_Month_Peta)
+  Term = c("Genre", "Month", "Genre:Month"),
+  Partial_Eta_Squared = c(Genre_Peta, Month_Peta, Genre_Month_Peta)
 )
 
-kable(EffectSizes, align = 'c', digits = 3, caption = "Partial Eta-Squared Effect Sizes")
+kable(EffectSizes, align = 'c', digits = 3, caption = "Partial Eta-Squared Effect Sizes (manual)")
 ```
 
-### Long-format model (for follow-ups only)
-```{r}
-A5LongLM = lm(Books ~ Novel * Month + Subject, data = A5Long)
-```
+---
 
-### Main-effect follow-ups
+### Effect Sizes (function calculation)
 
 ```{r}
-# Novel (two levels)
-emmeans(A5LongLM, pairwise ~ Novel, adjust = AdjustmentChoice)$contrasts %>%
-  kable(caption = "Pairwise Novel", align = 'c', digits = 3)
-```
+# Compute partial eta-squared directly from the omnibus object
+# so the values match the printed SS table for any design the student chose.
+if (inherits(a, "Anova.mlm")) {
+  # Repeated-measures or mixed: univariate.tests is a numeric matrix (class "anova")
+  s <- summary(a, multivariate = FALSE)
+  uni <- s$univariate.tests
+  ss     <- uni[, "Sum Sq"]
+  err_ss <- uni[, "Error SS"]
+  pes    <- ss / (ss + err_ss)
+  keep   <- rownames(uni) != "(Intercept)"
+  FunctionEffectSizes <- data.frame(
+    Term = rownames(uni)[keep],
+    Partial_Eta_Squared = pes[keep]
+  )
+} else {
+  # Pure between-subjects
+  ss <- a$"Sum Sq"
+  ss_error <- ss["Residuals"]
+  pes <- ss / (ss + ss_error)
+  pes <- pes[!names(pes) %in% c("(Intercept)", "Residuals")]
+  FunctionEffectSizes <- data.frame(
+    Term = names(pes),
+    Partial_Eta_Squared = pes
+  )
+}
 
-```{r}
-# Month (three levels) — simple-effect justification is not required for a main effect,
-# but pairwise comparisons are still performed with the chosen adjustment.
-emmeans(A5LongLM, pairwise ~ Month, adjust = AdjustmentChoice)$contrasts %>%
-  kable(caption = "Pairwise Month", align = 'c', digits = 3)
-```
-
-### Interaction follow-ups
-
-#### Novel at each level of Month (two levels of Novel — no simple-effect ANOVA required)
-
-```{r}
-# Cell means
-d = describeBy(Books ~ Month + Novel, data = A5Long, mat = TRUE, digits = 2)
-names(d)[names(d) == "group1"] = "Month"
-names(d)[names(d) == "group2"] = "Novel"
-rownames(d) = NULL
-d[c(2,3,5:7,16)] %>%
-  kable(caption = "Descriptives: Novel at each level of Month", align = 'c', digits = 3)
-```
-
-```{r}
-emmeans(A5LongLM, pairwise ~ Novel | Month, adjust = AdjustmentChoice)$contrasts %>%
-  kable(caption = "Pairwise Novel at each level of Month", align = 'c', digits = 3)
-```
-
-#### Month at each level of Novel (three levels of Month — simple-effect ANOVAs required)
-
-```{r}
-# Simple effect of Month at SF
-# (one-way RM ANOVA on the three SF columns)
-SF_LM = lm(cbind(SF_Month1, SF_Month2, SF_Month3) ~ 1, data = A5Wide)
-idata_SF = data.frame(Month = factor(c("1", "2", "3")))
-a_SF = Anova(SF_LM, idata = idata_SF, idesign = ~ Month, type = 3)
-summary(a_SF, multivariate = FALSE)
+kable(FunctionEffectSizes, align = "c", digits = 3,
+      caption = "Partial Eta-Squared (from omnibus SS)")
 ```
 
 ```{r}
-# Simple effect of Month at Mystery
-Myst_LM = lm(cbind(Myst_Month1, Myst_Month2, Myst_Month3) ~ 1, data = A5Wide)
-idata_Myst = data.frame(Month = factor(c("1", "2", "3")))
-a_Myst = Anova(Myst_LM, idata = idata_Myst, idesign = ~ Month, type = 3)
-summary(a_Myst, multivariate = FALSE)
+# Long-format model (for follow-ups only; respects the repeated/between choices)
+if (DoGenreFollowup || DoMonthFollowup || DoGenreAtMonth || DoMonthAtGenre) {
+  if (GenreRepeated || MonthRepeated) {
+    A5LongLM = lm(Books ~ Genre * Month + Subject, data = A5Long)
+  } else {
+    A5LongLM = lm(Books ~ Genre * Month, data = A5Long)
+  }
+}
 ```
 
 ```{r}
-# Cell means
-d = describeBy(Books ~ Novel + Month, data = A5Long, mat = TRUE, digits = 2)
-names(d)[names(d) == "group1"] = "Novel"
-names(d)[names(d) == "group2"] = "Month"
-rownames(d) = NULL
-d[c(2,3,5:7,16)] %>%
-  kable(caption = "Descriptives: Month at each level of Novel", align = 'c', digits = 3)
+#| results: asis
+if (DoGenreFollowup || DoMonthFollowup) {
+  cat("\n---\n\n### Main-effect follow-ups\n\n")
+}
 ```
 
 ```{r}
-emmeans(A5LongLM, pairwise ~ Month | Novel, adjust = AdjustmentChoice)$contrasts %>%
-  kable(caption = "Pairwise Month at each level of Novel", align = 'c', digits = 3)
+if (DoGenreFollowup) {
+  # Genre (two levels). If repeated, use subject-level means so the SE/df match SPSS.
+  if (GenreRepeated) {
+    g_means = aggregate(Books ~ Subject + Genre, data = A5Long, mean)
+    emmeans(lm(Books ~ Genre + Subject, data = g_means),
+            pairwise ~ Genre, adjust = AdjustmentChoice)$contrasts %>%
+      kable(caption = "Pairwise Genre", align = 'c', digits = 3)
+  } else {
+    emmeans(A5LongLM, pairwise ~ Genre, adjust = AdjustmentChoice)$contrasts %>%
+      kable(caption = "Pairwise Genre", align = 'c', digits = 3)
+  }
+}
+```
+
+```{r}
+if (DoMonthFollowup) {
+  # Month (three levels). If repeated, use pair-specific SEs from the subject-level means
+  # so the unadjusted results match SPSS LSD (df = n - 1, separate SE for each pair).
+  # Bonferroni adjusts those p-values; Tukey uses the pooled model.
+  if (MonthRepeated) {
+    m_means = aggregate(Books ~ Subject + Month, data = A5Long, mean)
+    if (AdjustmentChoice == "tukey") {
+      emmeans(lm(Books ~ Month + Subject, data = m_means),
+              pairwise ~ Month, adjust = "tukey")$contrasts %>%
+        kable(caption = "Pairwise Month", align = 'c', digits = 3)
+    } else {
+      pairs = combn(levels(m_means$Month), 2, simplify = FALSE)
+      rows = list()
+      for (pr in pairs) {
+        d = m_means[m_means$Month %in% pr, ]
+        ct = as.data.frame(emmeans(lm(Books ~ Month + Subject, data = d),
+                                   pairwise ~ Month, adjust = "none")$contrasts)
+        rows[[paste(pr, collapse = "-")]] = ct
+      }
+      out = do.call(rbind, rows)
+      if (AdjustmentChoice == "bonferroni") {
+        out$p.value = p.adjust(out$p.value, method = "bonferroni")
+      }
+      kable(out, caption = "Pairwise Month", align = 'c', digits = 3)
+    }
+  } else {
+    emmeans(A5LongLM, pairwise ~ Month, adjust = AdjustmentChoice)$contrasts %>%
+      kable(caption = "Pairwise Month", align = 'c', digits = 3)
+  }
+}
+```
+
+```{r}
+#| results: asis
+if (GenreSimple || DoGenreAtMonth || MonthSimple || DoMonthAtGenre) {
+  cat("\n---\n\n### Interaction follow-ups\n\n")
+}
+```
+
+```{r}
+#| results: asis
+if (GenreSimple) {
+  cat("\n---\n\n#### Simple effects of Genre\n\n")
+}
+```
+
+```{r}
+if (GenreSimple) {
+  # Repeated simple effect only when Genre is actually within and the wide file has the columns.
+  if (GenreSimpleRepeated && GenreRepeated && MonthRepeated) {
+    # Repeated-measures simple effect of Genre at each level of Month
+    # Month 1
+    Genre_M1_LM = lm(cbind(SF_Month1, Myst_Month1) ~ 1, data = A5Wide)
+    idata_g1 = data.frame(Genre = factor(c("SF", "Mystery")))
+    a_g1 = Anova(Genre_M1_LM, idata = idata_g1, idesign = ~ Genre, type = 3)
+    cat("Simple effect of Genre at Month 1 (repeated measures)\n")
+    print(summary(a_g1, multivariate = FALSE))
+
+    # Month 2
+    Genre_M2_LM = lm(cbind(SF_Month2, Myst_Month2) ~ 1, data = A5Wide)
+    idata_g2 = data.frame(Genre = factor(c("SF", "Mystery")))
+    a_g2 = Anova(Genre_M2_LM, idata = idata_g2, idesign = ~ Genre, type = 3)
+    cat("Simple effect of Genre at Month 2 (repeated measures)\n")
+    print(summary(a_g2, multivariate = FALSE))
+
+    # Month 3
+    Genre_M3_LM = lm(cbind(SF_Month3, Myst_Month3) ~ 1, data = A5Wide)
+    idata_g3 = data.frame(Genre = factor(c("SF", "Mystery")))
+    a_g3 = Anova(Genre_M3_LM, idata = idata_g3, idesign = ~ Genre, type = 3)
+    cat("Simple effect of Genre at Month 3 (repeated measures)\n")
+    print(summary(a_g3, multivariate = FALSE))
+  } else {
+    # Between-groups (or fallback) simple effect of Genre at each level of Month
+    cat("Simple effect of Genre at Month 1\n")
+    print(Anova(lm(Books ~ Genre, data = A5Long[A5Long$Month == "1", ]), type = 3))
+
+    cat("Simple effect of Genre at Month 2\n")
+    print(Anova(lm(Books ~ Genre, data = A5Long[A5Long$Month == "2", ]), type = 3))
+
+    cat("Simple effect of Genre at Month 3\n")
+    print(Anova(lm(Books ~ Genre, data = A5Long[A5Long$Month == "3", ]), type = 3))
+  }
+}
+```
+
+```{r}
+#| results: asis
+if (DoGenreAtMonth) {
+  cat("\n---\n\n#### Genre at each level of Month\n\n")
+}
+```
+
+```{r}
+if (DoGenreAtMonth) {
+  # Cell means
+  d = describeBy(Books ~ Month + Genre, data = A5Long, mat = TRUE, digits = 2)
+  names(d)[names(d) == "group1"] = "Month"
+  names(d)[names(d) == "group2"] = "Genre"
+  rownames(d) = NULL
+  print(kable(d[c(2,3,5:7,16)], caption = "Descriptives: Genre at each level of Month", align = 'c', digits = 3, row.names = FALSE))
+}
+```
+
+```{r}
+if (DoGenreAtMonth) {
+  # If Genre is repeated, fit within each Month so the error is the paired (subject-level) error.
+  # Only one pair per Month, so Tukey equals none; Bonferroni adjusts across the set of Months.
+  if (GenreRepeated) {
+    rows = list()
+    for (m in levels(A5Long$Month)) {
+      d = A5Long[A5Long$Month == m, ]
+      ct = as.data.frame(emmeans(lm(Books ~ Genre + Subject, data = d),
+                                 pairwise ~ Genre, adjust = "none")$contrasts)
+      ct$Month = m
+      rows[[m]] = ct
+    }
+    out = do.call(rbind, rows)
+    if (AdjustmentChoice == "bonferroni") {
+      out$p.value = p.adjust(out$p.value, method = "bonferroni")
+    }
+    kable(out, caption = "Pairwise Genre at each level of Month", align = 'c', digits = 3)
+  } else {
+    emmeans(A5LongLM, pairwise ~ Genre | Month, adjust = AdjustmentChoice)$contrasts %>%
+      kable(caption = "Pairwise Genre at each level of Month", align = 'c', digits = 3)
+  }
+}
+```
+
+```{r}
+#| results: asis
+if (MonthSimple) {
+  cat("\n---\n\n#### Simple effects of Month\n\n")
+}
+```
+
+```{r}
+if (MonthSimple) {
+  # Repeated simple effect only when Month is actually within and the wide file has the columns.
+  if (MonthSimpleRepeated && MonthRepeated && GenreRepeated) {
+    # Repeated-measures simple effect of Month at each level of Genre
+    # SF
+    SF_LM = lm(cbind(SF_Month1, SF_Month2, SF_Month3) ~ 1, data = A5Wide)
+    idata_SF = data.frame(Month = factor(c("1", "2", "3")))
+    a_SF = Anova(SF_LM, idata = idata_SF, idesign = ~ Month, type = 3)
+    cat("Simple effect of Month at SF (repeated measures)\n")
+    print(summary(a_SF, multivariate = FALSE))
+
+    # Mystery
+    Myst_LM = lm(cbind(Myst_Month1, Myst_Month2, Myst_Month3) ~ 1, data = A5Wide)
+    idata_Myst = data.frame(Month = factor(c("1", "2", "3")))
+    a_Myst = Anova(Myst_LM, idata = idata_Myst, idesign = ~ Month, type = 3)
+    cat("Simple effect of Month at Mystery (repeated measures)\n")
+    print(summary(a_Myst, multivariate = FALSE))
+  } else {
+    # Between-groups (or fallback) simple effect of Month at each level of Genre
+    cat("Simple effect of Month at SF\n")
+    print(Anova(lm(Books ~ Month, data = A5Long[A5Long$Genre == "SF", ]), type = 3))
+
+    cat("Simple effect of Month at Mystery\n")
+    print(Anova(lm(Books ~ Month, data = A5Long[A5Long$Genre == "Mystery", ]), type = 3))
+  }
+}
+```
+
+```{r}
+#| results: asis
+if (DoMonthAtGenre) {
+  cat("\n---\n\n#### Month at each level of Genre\n\n")
+}
+```
+
+```{r}
+if (DoMonthAtGenre) {
+  # Cell means
+  d = describeBy(Books ~ Genre + Month, data = A5Long, mat = TRUE, digits = 2)
+  names(d)[names(d) == "group1"] = "Genre"
+  names(d)[names(d) == "group2"] = "Month"
+  rownames(d) = NULL
+  print(kable(d[c(2,3,5:7,16)], caption = "Descriptives: Month at each level of Genre", align = 'c', digits = 3, row.names = FALSE))
+}
+```
+
+```{r}
+if (DoMonthAtGenre) {
+  # If Month is repeated, use pair-specific SEs within each Genre (matches SPSS LSD).
+  # Bonferroni adjusts across the full set of contrasts; Tukey uses the pooled model within Genre.
+  if (MonthRepeated) {
+    if (AdjustmentChoice == "tukey") {
+      rows = list()
+      for (g in levels(A5Long$Genre)) {
+        d = A5Long[A5Long$Genre == g, ]
+        ct = as.data.frame(emmeans(lm(Books ~ Month + Subject, data = d),
+                                   pairwise ~ Month, adjust = "tukey")$contrasts)
+        ct$Genre = g
+        rows[[g]] = ct
+      }
+      do.call(rbind, rows) %>%
+        kable(caption = "Pairwise Month at each level of Genre", align = 'c', digits = 3)
+    } else {
+      rows = list()
+      for (g in levels(A5Long$Genre)) {
+        d = A5Long[A5Long$Genre == g, ]
+        pairs = combn(levels(d$Month), 2, simplify = FALSE)
+        for (pr in pairs) {
+          dd = d[d$Month %in% pr, ]
+          ct = as.data.frame(emmeans(lm(Books ~ Month + Subject, data = dd),
+                                     pairwise ~ Month, adjust = "none")$contrasts)
+          ct$Genre = g
+          rows[[paste(g, pr, collapse = "-")]] = ct
+        }
+      }
+      out = do.call(rbind, rows)
+      if (AdjustmentChoice == "bonferroni") {
+        out$p.value = p.adjust(out$p.value, method = "bonferroni")
+      }
+      kable(out, caption = "Pairwise Month at each level of Genre", align = 'c', digits = 3)
+    }
+  } else {
+    emmeans(A5LongLM, pairwise ~ Month | Genre, adjust = AdjustmentChoice)$contrasts %>%
+      kable(caption = "Pairwise Month at each level of Genre", align = 'c', digits = 3)
+  }
+}
 ```
